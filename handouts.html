@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="zh-Hant" data-lang="zh" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>講義 Handouts — Workshop 事前準備</title>
+<script>(function(){var d=document.documentElement;try{d.setAttribute('data-theme',localStorage.getItem('how_theme')||'dark');}catch(e){d.setAttribute('data-theme','dark');}try{var l=localStorage.getItem('how_lang')||'zh';d.setAttribute('data-lang',l);d.setAttribute('lang',l==='zh'?'zh-Hant':'en');}catch(e){d.setAttribute('data-lang','zh');}})();</script>
+<style>html{background:#0b0a13}html[data-theme="light"]{background:#fbf9fc}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="styles.css" />
+<style>
+  /* WiFi info card */
+  .wifi-card {
+    margin-top: var(--space-8);
+    padding: var(--space-6);
+    background:
+      linear-gradient(var(--surface), var(--surface)),
+      var(--gradient-bg);
+    border: 1px solid var(--c-pink-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+  }
+  .wifi-card .wifi-head {
+    display: flex; align-items: center; gap: 10px;
+    font-family: var(--font-mono); font-size: 12px; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-text);
+    margin-bottom: var(--space-4);
+  }
+  .wifi-card .wifi-head svg { width: 16px; height: 16px; }
+  .wifi-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-3); }
+  .wifi-field {
+    display: flex; flex-direction: column; gap: 4px;
+    padding: 14px 16px;
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+  }
+  .wifi-field .k {
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--text-3);
+  }
+  .wifi-field .v {
+    font-family: var(--font-mono); font-size: 16px; font-weight: 600; color: var(--text);
+    min-height: 22px;
+  }
+  .wifi-field .v.blank::after {
+    content: '— — — —';
+    color: var(--text-3);
+    letter-spacing: 0.1em;
+  }
+
+  /* Checklist */
+  .check-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-3);
+    margin-top: var(--space-4);
+  }
+  .check-item {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 16px 18px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+  }
+  .check-item .n {
+    width: 26px; height: 26px; flex-shrink: 0;
+    display: grid; place-items: center;
+    font-family: var(--font-mono); font-size: 12px; font-weight: 600;
+    color: var(--accent-text); background: var(--accent-bg); border-radius: 8px;
+  }
+  .check-item .txt { font-size: 14.5px; color: var(--text); line-height: 1.5; padding-top: 2px; }
+  .check-item .txt .note { color: var(--text-3); font-size: 13px; }
+  .check-item .qty {
+    font-family: var(--font-mono); font-size: 12px; color: var(--accent-text);
+    font-weight: 600; margin-left: 4px;
+  }
+
+  /* Bring-vs-provided groups */
+  .bring-label { white-space: nowrap; }
+  .bring-group { margin-top: var(--space-6); }
+  .bring-label {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--font-mono); font-size: 12px; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    margin-bottom: var(--space-3);
+  }
+  .bring-label svg { width: 15px; height: 15px; }
+  .bring-label--self { color: var(--accent-text); }
+  .bring-label--provided { color: var(--text-3); }
+  .bring-label .bl-tag {
+    display: inline-block;
+    font-size: 10px; letter-spacing: 0.04em; text-transform: none;
+    padding: 2px 8px; border-radius: 999px; white-space: nowrap;
+  }
+  .bring-label--self .bl-tag { background: var(--accent-bg); color: var(--accent-text); }
+  .bring-label--provided .bl-tag { background: var(--surface-2); color: var(--text-3); }
+  .check-item--self {
+    grid-column: 1 / -1;
+    background: linear-gradient(var(--surface), var(--surface)), var(--gradient-bg);
+    border-color: var(--c-pink-border);
+  }
+  .check-item--self .n { background: var(--gradient-btn); color: var(--on-accent); }
+  .check-item .pv {
+    width: 26px; height: 26px; flex-shrink: 0;
+    display: grid; place-items: center;
+    color: var(--success);
+    background: color-mix(in oklab, var(--success) 16%, transparent);
+    border-radius: 8px;
+  }
+  .check-item .pv svg { width: 14px; height: 14px; }
+
+  /* Repo cards */
+  .repo-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4); margin-top: var(--space-4); }
+  .repo-card {
+    display: flex; flex-direction: column; gap: var(--space-3);
+    padding: var(--space-6);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    transition: border-color var(--dur-base), transform var(--dur-base);
+  }
+  .repo-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .repo-card .gh {
+    width: 40px; height: 40px;
+    display: grid; place-items: center;
+    background: var(--accent-bg); border-radius: 10px; color: var(--accent-text);
+  }
+  .repo-card .gh svg { width: 22px; height: 22px; }
+  .repo-card h4 {
+    font-family: var(--font-display); font-weight: 700; font-size: 19px;
+    letter-spacing: -0.01em; margin: 0; color: var(--text);
+  }
+  .repo-card .url {
+    font-family: var(--font-mono); font-size: 12px; color: var(--text-3);
+    word-break: break-all;
+  }
+  .repo-card .go {
+    margin-top: auto;
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: var(--font-mono); font-size: 12px; font-weight: 600;
+    color: var(--accent-text);
+  }
+  .repo-card .go svg { width: 13px; height: 13px; transition: transform var(--dur-fast); }
+  .repo-card:hover .go svg { transform: translate(2px,-2px); }
+
+  .acct-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    margin-top: var(--space-3);
+    font-family: var(--font-mono); font-size: 14px; font-weight: 600;
+    color: var(--accent-text);
+  }
+  .acct-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+  @media (max-width: 720px) {
+    .wifi-grid, .check-grid, .repo-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" class="face-icon" overflow="visible">
+          <circle class="eye eye-l" cx="9" cy="10.5" r="1.6" fill="currentColor"/>
+          <circle class="eye eye-r" cx="15" cy="10.5" r="1.6" fill="currentColor"/>
+          <path d="M8.5 15 Q12 17.5 15.5 15" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+        </svg>
+      </span>
+      <span class="brand-text">
+        <span class="top"><span class="zh-only">Workshop 事前準備</span><span class="en-only">Workshop Prep</span></span>
+        <span class="sub">PREP · BEFORE YOU ARRIVE</span>
+      </span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html" class="nav-link"><span class="zh-only">總覽</span><span class="en-only">Overview</span></a>
+      <a href="pre-install.html" class="nav-link"><span class="zh-only">預先安裝</span><span class="en-only">Pre-Install</span></a>
+      <a href="flashing.html" class="nav-link"><span class="zh-only">燒錄</span><span class="en-only">Flashing</span></a>
+      <a href="faq.html" class="nav-link"><span class="zh-only">FAQ</span><span class="en-only">FAQ</span></a>
+      <a href="handouts.html" class="nav-link active"><span class="zh-only">講義</span><span class="en-only">Handouts</span></a>
+    </nav>
+    <span class="nav-spacer"></span>
+    <button class="nav-search" data-open-search aria-label="Open search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <span class="label zh-only">搜尋軟體 / 步驟…</span>
+      <span class="label en-only">Search software / steps…</span>
+      <span class="kbd">⌘K</span>
+    </button>
+    <div class="lang-toggle"><button data-lang="zh">中</button><button data-lang="en">EN</button></div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Toggle theme">
+      <span class="thumb">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      </span>
+    </button>
+    <a href="index.html" class="btn-cta">
+      <span class="zh-only">回總覽</span><span class="en-only">Overview</span>
+    </a>
+  </div>
+</header>
+
+<main class="shell">
+  <section class="page">
+
+    <span class="eyebrow"><span class="zh-only">講義 · 當天攜帶</span><span class="en-only">HANDOUTS · WHAT TO BRING</span></span>
+    <h1 class="display">
+      <span class="zh-only"><span class="grad-text">講義</span></span>
+      <span class="en-only"><span class="grad-text">Handouts</span></span>
+    </h1>
+
+    <!-- Checklist -->
+    <section style="margin-top:var(--space-12);">
+      <span class="eyebrow"><span class="zh-only">攜帶清單</span><span class="en-only">CHECKLIST</span></span>
+      <h2 class="display" style="font-size:clamp(26px,3vw,38px);">
+        <span class="zh-only">請確認手邊有以下元件</span><span class="en-only">Confirm you have these on hand</span>
+      </h2>
+
+      <!-- Bring yourself -->
+      <div class="bring-group">
+        <div class="bring-label bring-label--self">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M2 20h20"/></svg>
+          <span class="zh-only">請自己攜帶</span><span class="en-only">Bring yourself</span>
+          <span class="bl-tag"><span class="zh-only">必備</span><span class="en-only">required</span></span>
+        </div>
+        <div class="check-grid">
+          <div class="check-item check-item--self">
+            <span class="n">1</span>
+            <span class="txt"><span class="zh-only">windows 筆電 <span class="note">（並且已經裝好需要的 tool）</span></span><span class="en-only">Windows laptop <span class="note">(with the required tools installed)</span></span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- We provide -->
+      <div class="bring-group">
+        <div class="bring-label bring-label--provided">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
+          <span class="zh-only">現場會提供</span><span class="en-only">We'll provide</span>
+          <span class="bl-tag"><span class="zh-only">不用帶</span><span class="en-only">no need to bring</span></span>
+        </div>
+        <div class="check-grid">
+          <div class="check-item">
+            <span class="pv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span class="txt">EXMP-Q911 <span class="qty">× 1</span></span>
+          </div>
+          <div class="check-item">
+            <span class="pv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span class="txt">type-c to USB <span class="qty">× 1</span></span>
+          </div>
+          <div class="check-item">
+            <span class="pv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span class="txt"><span class="zh-only">DP2HDMI 轉接線</span><span class="en-only">DP2HDMI adapter</span> <span class="qty">× 1</span></span>
+          </div>
+          <div class="check-item">
+            <span class="pv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span class="txt"><span class="zh-only">HDMI2HDMI 線（主動式）</span><span class="en-only">HDMI2HDMI cable (active)</span> <span class="qty">× 1</span></span>
+          </div>
+          <div class="check-item">
+            <span class="pv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span class="txt"><span class="zh-only">螢幕</span><span class="en-only">Monitor</span> <span class="qty">× 1</span></span>
+          </div>
+          <div class="check-item">
+            <span class="pv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span class="txt">UVC camera <span class="qty">× 1</span></span>
+          </div>
+          <div class="check-item">
+            <span class="pv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span class="txt">USB2UART <span class="zh-only">線</span><span class="en-only">cable</span> <span class="qty">× 1</span> <span class="note"><span class="zh-only">（debug 會使用到）</span><span class="en-only">(used for debug)</span></span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout" style="margin-top:var(--space-5);">
+        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 11h-6"/><path d="M19 8v6"/></svg></span>
+        <div>
+          <span class="zh-only">並且建立 qualcomm 帳號。</span>
+          <span class="en-only">And create a Qualcomm account.</span>
+          <a class="acct-link" href="https://www.qualcomm.com/" target="_blank" rel="noopener">
+            https://www.qualcomm.com/
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Repos -->
+    <section style="margin-top:var(--space-16);">
+      <span class="eyebrow"><span class="zh-only">教材 Repo</span><span class="en-only">REPOSITORIES</span></span>
+      <h2 class="display" style="font-size:clamp(26px,3vw,38px);">
+        <span class="zh-only">GitHub 專案</span><span class="en-only">GitHub projects</span>
+      </h2>
+
+      <div class="repo-grid">
+        <a class="repo-card" href="https://github.com/InnoIPA/iQ-Studio" target="_blank" rel="noopener">
+          <span class="gh"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.5a10.5 10.5 0 0 0-3.32 20.46c.53.1.72-.23.72-.5v-1.74c-2.92.64-3.54-1.4-3.54-1.4-.48-1.22-1.17-1.55-1.17-1.55-.96-.65.07-.64.07-.64 1.06.08 1.61 1.09 1.61 1.09.94 1.6 2.47 1.14 3.07.87.1-.68.37-1.14.67-1.4-2.33-.27-4.78-1.17-4.78-5.18 0-1.15.41-2.08 1.08-2.82-.11-.27-.47-1.34.1-2.79 0 0 .88-.28 2.88 1.07a10 10 0 0 1 5.24 0c2-1.35 2.88-1.07 2.88-1.07.57 1.45.21 2.52.1 2.79.67.74 1.08 1.67 1.08 2.82 0 4.02-2.46 4.9-4.8 5.16.38.33.71.97.71 1.96v2.9c0 .28.19.61.73.5A10.5 10.5 0 0 0 12 1.5z"/></svg></span>
+          <h4>iQ-Studio</h4>
+          <span class="url">github.com/InnoIPA/iQ-Studio</span>
+          <span class="go"><span class="zh-only">開啟 repo</span><span class="en-only">open repo</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+          </span>
+        </a>
+        <a class="repo-card" href="https://github.com/InnoIPA/iQ-Foundry" target="_blank" rel="noopener">
+          <span class="gh"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.5a10.5 10.5 0 0 0-3.32 20.46c.53.1.72-.23.72-.5v-1.74c-2.92.64-3.54-1.4-3.54-1.4-.48-1.22-1.17-1.55-1.17-1.55-.96-.65.07-.64.07-.64 1.06.08 1.61 1.09 1.61 1.09.94 1.6 2.47 1.14 3.07.87.1-.68.37-1.14.67-1.4-2.33-.27-4.78-1.17-4.78-5.18 0-1.15.41-2.08 1.08-2.82-.11-.27-.47-1.34.1-2.79 0 0 .88-.28 2.88 1.07a10 10 0 0 1 5.24 0c2-1.35 2.88-1.07 2.88-1.07.57 1.45.21 2.52.1 2.79.67.74 1.08 1.67 1.08 2.82 0 4.02-2.46 4.9-4.8 5.16.38.33.71.97.71 1.96v2.9c0 .28.19.61.73.5A10.5 10.5 0 0 0 12 1.5z"/></svg></span>
+          <h4>iQ-Foundry</h4>
+          <span class="url">github.com/InnoIPA/iQ-Foundry</span>
+          <span class="go"><span class="zh-only">開啟 repo</span><span class="en-only">open repo</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+          </span>
+        </a>
+      </div>
+    </section>
+
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:var(--space-12);padding-top:var(--space-8);border-top:1px solid var(--border);">
+      <a href="faq.html" class="btn-ghost">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg>
+        <span class="zh-only">回 FAQ</span><span class="en-only">Back to FAQ</span>
+      </a>
+      <a href="index.html" class="btn-cta">
+        <span class="zh-only">回總覽</span><span class="en-only">Back to overview</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+      </a>
+    </div>
+
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="foot-inner">
+    <span><span class="zh-only">WORKSHOP 事前準備</span><span class="en-only">WORKSHOP PREP SITE</span></span>
+    <span>
+      <span class="zh-only">問題回報：請於現場或工作群組 @主辦</span>
+      <span class="en-only">Questions: ping the organisers on-site or in the channel</span>
+    </span>
+    <span>v1.0</span>
+  </div>
+</footer>
+
+<div class="search-overlay" id="search-overlay" role="dialog" aria-modal="true">
+  <div class="search-panel">
+    <div class="search-input-row">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input id="search-input" type="text" placeholder="搜尋軟體、步驟、FAQ… / search software, steps, FAQ…" autocomplete="off" />
+      <span class="esc">ESC</span>
+    </div>
+    <div class="search-results" id="search-results"></div>
+  </div>
+</div>
+
+<script src="search-index.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

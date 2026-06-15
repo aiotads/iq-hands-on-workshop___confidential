@@ -1,0 +1,784 @@
+<!doctype html>
+<html lang="zh-Hant" data-lang="zh" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>色票 / Tokens — Hands-On Workshop</title>
+<script>(function(){var d=document.documentElement;try{d.setAttribute('data-theme',localStorage.getItem('how_theme')||'dark');}catch(e){d.setAttribute('data-theme','dark');}try{var l=localStorage.getItem('how_lang')||'zh';d.setAttribute('data-lang',l);d.setAttribute('lang',l==='zh'?'zh-Hant':'en');}catch(e){d.setAttribute('data-lang','zh');}})();</script>
+<style>html{background:#0b0a13}html[data-theme="light"]{background:#fbf9fc}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="styles.css" />
+<style>
+  /* Page-specific styles for the swatch grid */
+  .tk-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: var(--space-3);
+    margin-top: var(--space-6);
+  }
+  .tk-grid--wide {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  }
+  .tk-grid--two {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .swatch {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: border-color var(--dur-fast), transform var(--dur-fast);
+  }
+  .swatch:hover { border-color: var(--border-strong); }
+  .swatch-chip {
+    height: 92px;
+    position: relative;
+  }
+  .swatch-chip::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.04);
+    pointer-events: none;
+  }
+  .swatch-meta {
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .swatch-meta .name {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text);
+    font-weight: 500;
+  }
+  .swatch-meta .role {
+    font-size: 12px;
+    color: var(--text-3);
+  }
+  .swatch-meta .hex {
+    margin-top: 4px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-2);
+    letter-spacing: 0.04em;
+  }
+  .swatch-meta .hex .light, .swatch-meta .hex .dark {
+    display: inline-flex; align-items: center; gap: 4px;
+  }
+  .swatch-meta .hex .mode {
+    font-size: 9px; padding: 1px 5px; border-radius: 3px;
+    background: var(--surface-2); color: var(--text-3);
+    letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .copy-tag {
+    position: absolute;
+    top: 8px; right: 8px;
+    background: rgba(0,0,0,0.45);
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    padding: 3px 7px;
+    border-radius: 4px;
+    opacity: 0;
+    transition: opacity var(--dur-fast);
+    cursor: pointer;
+  }
+  .swatch:hover .copy-tag { opacity: 1; }
+  .copy-tag.copied { background: var(--success); color: #fff; opacity: 1; }
+
+  /* Token section header */
+  .tk-section { margin-top: var(--space-16); }
+  .tk-section h2 {
+    font-family: var(--font-display);
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin: 0;
+  }
+  .tk-section .sub {
+    margin-top: 6px;
+    color: var(--text-2);
+    font-size: 14.5px;
+    max-width: 60ch;
+  }
+
+  /* Gradient row */
+  .grad-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-3);
+    margin-top: var(--space-6);
+  }
+  .grad-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+  .grad-card .preview {
+    height: 110px;
+    display: grid;
+    place-items: center;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 24px;
+    letter-spacing: -0.01em;
+  }
+  .grad-card .meta { padding: 12px 14px; }
+  .grad-card .meta .name { font-family: var(--font-mono); font-size: 12px; color: var(--text); }
+  .grad-card .meta .role { font-size: 12px; color: var(--text-3); margin-top: 2px; }
+
+  /* Type sample */
+  .type-row {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    margin-top: var(--space-6);
+  }
+  .type-sample {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    align-items: baseline;
+    gap: var(--space-6);
+    padding: var(--space-4) var(--space-5);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+  }
+  .type-sample .label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-3);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .type-sample .label .spec {
+    display: block;
+    margin-top: 4px;
+    font-size: 10px;
+    color: var(--text-3);
+    text-transform: none;
+    letter-spacing: 0.04em;
+  }
+
+  /* Component preview row */
+  .comp-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-4);
+    margin-top: var(--space-6);
+  }
+  .comp-card {
+    padding: var(--space-5);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    min-height: 200px;
+  }
+  .comp-card .head {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-3);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .comp-card .stage {
+    flex: 1;
+    display: grid;
+    place-items: center;
+    padding: var(--space-4);
+    background: var(--bg-2);
+    border-radius: var(--radius-sm);
+  }
+
+  /* Shadow demo */
+  .shadow-demo {
+    display: grid;
+    place-items: center;
+    height: 110px;
+    background: var(--surface);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-2);
+    border: 1px solid var(--border);
+  }
+  .shadow-demo--elev { box-shadow: var(--shadow-elevated); }
+
+  /* Code panel for the spec dump */
+  .spec-dump {
+    margin-top: var(--space-8);
+    padding: var(--space-5);
+    background: var(--code-bg);
+    border: 1px solid var(--code-border);
+    border-radius: var(--radius-md);
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    line-height: 1.7;
+    color: var(--code-text);
+    overflow-x: auto;
+    white-space: pre;
+  }
+  .spec-dump .k { color: #B6A4F4; }
+  .spec-dump .v { color: #7ee0c5; }
+  .spec-dump .c { color: #5A547A; font-style: italic; }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" class="face-icon" overflow="visible">
+          <circle class="eye eye-l" cx="9" cy="10.5" r="1.6" fill="currentColor"/>
+          <circle class="eye eye-r" cx="15" cy="10.5" r="1.6" fill="currentColor"/>
+          <path d="M8.5 15 Q12 17.5 15.5 15" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+        </svg>
+      </span>
+      <span class="brand-text">
+        <span class="top"><span class="zh-only">Workshop 事前準備</span><span class="en-only">Workshop Prep</span></span>
+        <span class="sub">DESIGN TOKENS</span>
+      </span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html" class="nav-link"><span class="zh-only">總覽</span><span class="en-only">Overview</span></a>
+      <a href="pre-install.html" class="nav-link"><span class="zh-only">預先安裝</span><span class="en-only">Pre-Install</span></a>
+      <a href="flashing.html" class="nav-link"><span class="zh-only">燒錄</span><span class="en-only">Flashing</span></a>
+      <a href="faq.html" class="nav-link"><span class="zh-only">FAQ</span><span class="en-only">FAQ</span></a>
+      <a href="handouts.html" class="nav-link"><span class="zh-only">講義</span><span class="en-only">Handouts</span></a>
+      <a href="color-tokens.html" class="nav-link active">Tokens</a>
+    </nav>
+    <span class="nav-spacer"></span>
+    <button class="nav-search" data-open-search aria-label="Open search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <span class="label zh-only">搜尋…</span>
+      <span class="label en-only">Search…</span>
+      <span class="kbd">⌘K</span>
+    </button>
+    <div class="lang-toggle"><button data-lang="zh">中</button><button data-lang="en">EN</button></div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Toggle theme">
+      <span class="thumb">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      </span>
+    </button>
+    <a href="index.html" class="btn-cta">
+      <span class="zh-only">回網站</span><span class="en-only">To site</span>
+    </a>
+  </div>
+</header>
+
+<main class="shell">
+  <section class="page">
+
+    <span class="eyebrow">DESIGN TOKENS · LIGHT + DARK</span>
+    <h1 class="display">
+      <span class="zh-only">色票、字級、<br/><span class="grad-text">與所有 token。</span></span>
+      <span class="en-only">Palette, type,<br/><span class="grad-text">and every token.</span></span>
+    </h1>
+    <p class="lead">
+      <span class="zh-only">整個網站的視覺都由這份 token 驅動。切換右上角的主題開關，每個區塊會跟著翻面。</span>
+      <span class="en-only">The whole site is driven by these CSS custom properties. Flip the theme switch top-right and every section follows.</span>
+    </p>
+
+    <!-- ===== SURFACE ===== -->
+    <section class="tk-section">
+      <h2><span class="zh-only">背景與表面 · Surfaces</span><span class="en-only">Surfaces</span></h2>
+      <p class="sub">
+        <span class="zh-only">頁面背景、卡片、提升卡片、邊框。一律以語義 token 引用，不要硬編 hex。</span>
+        <span class="en-only">Page background, surfaces, elevated surfaces, borders. Always reference these by token — never hardcode the hex.</span>
+      </p>
+      <div class="tk-grid">
+        <div class="swatch">
+          <div class="swatch-chip" style="background:var(--bg);"></div>
+          <div class="swatch-meta">
+            <span class="name">--bg</span>
+            <span class="role"><span class="zh-only">頁面底色</span><span class="en-only">Page background</span></span>
+            <span class="hex"><span class="mode">L</span>#fbf9fc · <span class="mode">D</span>#0b0a13</span>
+          </div>
+          <button class="copy-tag" data-copy="--bg">copy</button>
+        </div>
+        <div class="swatch">
+          <div class="swatch-chip" style="background:var(--bg-2);"></div>
+          <div class="swatch-meta">
+            <span class="name">--bg-2</span>
+            <span class="role"><span class="zh-only">次層背景 / 區段</span><span class="en-only">Secondary bg / sections</span></span>
+            <span class="hex"><span class="mode">L</span>#f5f0fa · <span class="mode">D</span>#13111d</span>
+          </div>
+          <button class="copy-tag" data-copy="--bg-2">copy</button>
+        </div>
+        <div class="swatch">
+          <div class="swatch-chip" style="background:var(--surface);"></div>
+          <div class="swatch-meta">
+            <span class="name">--surface</span>
+            <span class="role"><span class="zh-only">卡片表面</span><span class="en-only">Card surface</span></span>
+            <span class="hex"><span class="mode">L</span>#ffffff · <span class="mode">D</span>#1a1727</span>
+          </div>
+          <button class="copy-tag" data-copy="--surface">copy</button>
+        </div>
+        <div class="swatch">
+          <div class="swatch-chip" style="background:var(--surface-2);"></div>
+          <div class="swatch-meta">
+            <span class="name">--surface-2</span>
+            <span class="role"><span class="zh-only">提升 / hover 卡片</span><span class="en-only">Elevated / hover card</span></span>
+            <span class="hex"><span class="mode">L</span>#ebe4f4 · <span class="mode">D</span>#221d35</span>
+          </div>
+          <button class="copy-tag" data-copy="--surface-2">copy</button>
+        </div>
+        <div class="swatch">
+          <div class="swatch-chip" style="background:var(--surface);border-bottom:1px solid var(--border);">
+            <div style="position:absolute;left:14px;top:50%;right:14px;border-top:1px solid var(--border);transform:translateY(-50%);"></div>
+          </div>
+          <div class="swatch-meta">
+            <span class="name">--border</span>
+            <span class="role"><span class="zh-only">細邊框 / 分隔線</span><span class="en-only">Hairline / divider</span></span>
+            <span class="hex"><span class="mode">L</span>#e0d6ec · <span class="mode">D</span>#2a2541</span>
+          </div>
+          <button class="copy-tag" data-copy="--border">copy</button>
+        </div>
+        <div class="swatch">
+          <div class="swatch-chip" style="background:var(--surface);">
+            <div style="position:absolute;left:14px;top:50%;right:14px;border-top:1px solid var(--border-strong);transform:translateY(-50%);"></div>
+          </div>
+          <div class="swatch-meta">
+            <span class="name">--border-strong</span>
+            <span class="role"><span class="zh-only">較強邊框 · hover 用</span><span class="en-only">Stronger border · hover</span></span>
+            <span class="hex"><span class="mode">L</span>#d3c5e6 · <span class="mode">D</span>#3a3357</span>
+          </div>
+          <button class="copy-tag" data-copy="--border-strong">copy</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TEXT ===== -->
+    <section class="tk-section">
+      <h2><span class="zh-only">文字 · Text</span><span class="en-only">Text</span></h2>
+      <p class="sub">
+        <span class="zh-only">三階文字色 + accent text。記得：標題用 --text，內文用 --text-2，附註用 --text-3。</span>
+        <span class="en-only">Three text greys + accent text. Rule of thumb: headings on --text, body on --text-2, captions on --text-3.</span>
+      </p>
+      <div class="tk-grid">
+        <div class="swatch">
+          <div class="swatch-chip" style="background:var(--surface);display:grid;place-items:center;color:var(--text);font-family:var(--font-display);font-size:28px;font-weight:700;">Aa 你好</div>
+          <div class="swatch-meta">
+            <span class="name">--text</span>
+            <span class="role"><span class="zh-only">主要文字</span><span class="en-only">Primary text</span></span>
+            <span class="hex"><span class="mode">L</span>#1c1530 · <span class="mode">D</span>#ece9f5</span>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-chip" style="background:var(--surface);display:grid;place-items:center;color:var(--text-2);font-family:var(--font-display);font-size:28px;font-weight:600;">Aa 你好</div>
+          <div class="swatch-meta">
+            <span class="name">--text-2</span>
+            <span class="role"><span class="zh-only">次要文字 / 內文</span><span class="en-only">Secondary / body</span></span>
+            <span class="hex"><span class="mode">L</span>#6b5d85 · <span class="mode">D</span>#9690b3</span>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-chip" style="background:var(--surface);display:grid;place-items:center;color:var(--text-3);font-family:var(--font-mono);font-size:20px;">tertiary / hint</div>
+          <div class="swatch-meta">
+            <span class="name">--text-3</span>
+            <span class="role"><span class="zh-only">三階 / hint / kbd</span><span class="en-only">Tertiary / hint / kbd</span></span>
+            <span class="hex"><span class="mode">L</span>#9690b3 · <span class="mode">D</span>#5f5a7a</span>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-chip" style="background:var(--surface);display:grid;place-items:center;color:var(--accent-text);font-family:var(--font-display);font-size:24px;font-weight:700;">→ accent text</div>
+          <div class="swatch-meta">
+            <span class="name">--accent-text</span>
+            <span class="role"><span class="zh-only">accent 在文字上的可讀色</span><span class="en-only">Accent for readable text</span></span>
+            <span class="hex"><span class="mode">L</span>#6a47c8 · <span class="mode">D</span>#b69cf5</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ACCENT / BRAND ===== -->
+    <section class="tk-section">
+      <h2><span class="zh-only">主色 · Accent</span><span class="en-only">Accent</span></h2>
+      <p class="sub">
+        <span class="zh-only">主互動色：按鈕背景、focus ring、強調文字。淺色用較飽和、深色用較粉嫩，兩邊都過 AA 對比。</span>
+        <span class="en-only">Main interactive color: button bg, focus ring, accent text. Saturated in light, pastel in dark — both clear AA contrast.</span>
+      </p>
+      <div class="tk-grid">
+        <div class="swatch">
+          <div class="swatch-chip" style="background:var(--accent);"></div>
+          <div class="swatch-meta">
+            <span class="name">--accent</span>
+            <span class="role"><span class="zh-only">主色</span><span class="en-only">Primary accent</span></span>
+            <span class="hex"><span class="mode">L</span>#7e5be0 · <span class="mode">D</span>#b69cf5</span>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-chip" style="background:var(--accent-deep);"></div>
+          <div class="swatch-meta">
+            <span class="name">--accent-deep</span>
+            <span class="role"><span class="zh-only">較深 · hover</span><span class="en-only">Deeper · hover</span></span>
+            <span class="hex"><span class="mode">L</span>#6a47c8 · <span class="mode">D</span>#9170e8</span>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-chip" style="background:var(--gradient-btn);display:grid;place-items:center;color:var(--on-accent);font-family:var(--font-display);font-weight:700;font-size:18px;">on-accent</div>
+          <div class="swatch-meta">
+            <span class="name">--on-accent</span>
+            <span class="role"><span class="zh-only">在 accent 上的文字色</span><span class="en-only">Text color on accent</span></span>
+            <span class="hex"><span class="mode">L</span>#ffffff · <span class="mode">D</span>#14101f</span>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-chip" style="background:var(--highlight);"></div>
+          <div class="swatch-meta">
+            <span class="name">--highlight</span>
+            <span class="role"><span class="zh-only">藍色強調 / link</span><span class="en-only">Blue emphasis / link</span></span>
+            <span class="hex"><span class="mode">L</span>#2e7adb · <span class="mode">D</span>#7ab8ff</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PALETTE ===== -->
+    <section class="tk-section">
+      <h2><span class="zh-only">色相 · Palette</span><span class="en-only">Palette</span></h2>
+      <p class="sub">
+        <span class="zh-only">三個招牌色：粉、薰衣草、藍。FAQ badge、callout、icon container 都從這套挑。</span>
+        <span class="en-only">Three signature hues: pink, lavender, blue. FAQ badges, callouts, and icon containers all draw from these.</span>
+      </p>
+      <div class="tk-grid">
+        <div class="swatch">
+          <div class="swatch-chip" style="background:var(--c-pink);"></div>
+          <div class="swatch-meta">
+            <span class="name">--c-pink</span>
+            <span class="role"><span class="zh-only">粉色 · 強調</span><span class="en-only">Pink · accent</span></span>
+            <span class="hex"><span class="mode">L</span>#e15ba3 · <span class="mode">D</span>#f8a5d8</span>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-chip" style="background:var(--c-lavender);"></div>
+          <div class="swatch-meta">
+            <span class="name">--c-lavender</span>
+            <span class="role"><span class="zh-only">薰衣草 · callout</span><span class="en-only">Lavender · callouts</span></span>
+            <span class="hex"><span class="mode">L</span>#7e5be0 · <span class="mode">D</span>#b69cf5</span>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-chip" style="background:var(--c-blue);"></div>
+          <div class="swatch-meta">
+            <span class="name">--c-blue</span>
+            <span class="role"><span class="zh-only">藍色 · info</span><span class="en-only">Blue · info</span></span>
+            <span class="hex"><span class="mode">L</span>#2e7adb · <span class="mode">D</span>#7ab8ff</span>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-chip" style="background:var(--success);"></div>
+          <div class="swatch-meta">
+            <span class="name">--success</span>
+            <span class="role"><span class="zh-only">成功 / 完成</span><span class="en-only">Success / done</span></span>
+            <span class="hex"><span class="mode">L</span>#1a8f6e · <span class="mode">D</span>#7ee0c5</span>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-chip" style="background:var(--c-amber);"></div>
+          <div class="swatch-meta">
+            <span class="name">--c-amber</span>
+            <span class="role"><span class="zh-only">警告 callout</span><span class="en-only">Warning callout</span></span>
+            <span class="hex"><span class="mode">L</span>#d18e1a · <span class="mode">D</span>#f4c97b</span>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-chip" style="background:var(--danger);"></div>
+          <div class="swatch-meta">
+            <span class="name">--danger</span>
+            <span class="role"><span class="zh-only">錯誤 / 危險</span><span class="en-only">Danger / destructive</span></span>
+            <span class="hex"><span class="mode">L</span>#c63a3a · <span class="mode">D</span>#f08585</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== GRADIENTS ===== -->
+    <section class="tk-section">
+      <h2><span class="zh-only">漸層 · Gradients</span><span class="en-only">Gradients</span></h2>
+      <p class="sub">
+        <span class="zh-only">三個漸層各有用途 — 文字（粉→紫→藍）、按鈕（粉→紫，2 stop）、背景（半透明三色）。</span>
+        <span class="en-only">Three flavors — text (pink → violet → blue), button (pink → violet, 2 stops), background (semi-transparent tri-color).</span>
+      </p>
+      <div class="grad-row">
+        <div class="grad-card">
+          <div class="preview" style="background:var(--surface);">
+            <span class="grad-text">Gradient Text</span>
+          </div>
+          <div class="meta">
+            <div class="name">--gradient-text</div>
+            <div class="role"><span class="zh-only">文字用 · 4 stops · 對比足</span><span class="en-only">For text · 4 stops · readable</span></div>
+          </div>
+        </div>
+        <div class="grad-card">
+          <div class="preview" style="background:var(--gradient-btn);color:var(--on-accent);">
+            CTA Button
+          </div>
+          <div class="meta">
+            <div class="name">--gradient-btn</div>
+            <div class="role"><span class="zh-only">按鈕用 · 2 stops</span><span class="en-only">For buttons · 2 stops</span></div>
+          </div>
+        </div>
+        <div class="grad-card">
+          <div class="preview" style="background:linear-gradient(var(--bg-2),var(--bg-2)),var(--gradient-bg);background-blend-mode:normal;color:var(--text-2);font-size:14px;">
+            <span style="font-family:var(--font-mono);letter-spacing:.08em;">SUBTLE OVERLAY</span>
+          </div>
+          <div class="meta">
+            <div class="name">--gradient-bg</div>
+            <div class="role"><span class="zh-only">背景疊層 · 低透明度</span><span class="en-only">Background wash · low alpha</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TYPE ===== -->
+    <section class="tk-section">
+      <h2><span class="zh-only">字體 · Type</span><span class="en-only">Type</span></h2>
+      <p class="sub">
+        <span class="zh-only">三套字 — Inter Tight 標題、Inter 內文、JetBrains Mono 為 code 與小標。中文以 Noto Sans TC 處理。</span>
+        <span class="en-only">Three families — Inter Tight for display, Inter for body, JetBrains Mono for code and eyebrows. CJK falls back to Noto Sans TC.</span>
+      </p>
+      <div class="type-row">
+        <div class="type-sample">
+          <div class="label">DISPLAY<span class="spec">--font-display · 700 · -2.5% tracking</span></div>
+          <div style="font-family:var(--font-display);font-weight:700;font-size:48px;letter-spacing:-0.025em;line-height:1;color:var(--text);">活動當天，直接動手做。</div>
+        </div>
+        <div class="type-sample">
+          <div class="label">H3 / STEP TITLE<span class="spec">--font-display · 700 · 24px</span></div>
+          <div style="font-family:var(--font-display);font-weight:700;font-size:24px;letter-spacing:-0.015em;color:var(--text);">Python 3.10+ Installation</div>
+        </div>
+        <div class="type-sample">
+          <div class="label">LEAD<span class="spec">--font-body · 400 · 17px</span></div>
+          <div style="font-family:var(--font-body);font-weight:400;font-size:17px;line-height:1.55;color:var(--text-2);">為了把活動寶貴的時間留給實作，請在抵達前完成以下準備。</div>
+        </div>
+        <div class="type-sample">
+          <div class="label">BODY<span class="spec">--font-body · 400 · 15px</span></div>
+          <div style="font-family:var(--font-body);font-weight:400;font-size:15px;line-height:1.65;color:var(--text-2);">Activate your venv, then run the bootstrap script in the workshop repo.</div>
+        </div>
+        <div class="type-sample">
+          <div class="label">EYEBROW<span class="spec">--font-mono · 500 · 11px · 16% tracking</span></div>
+          <div style="font-family:var(--font-mono);font-weight:500;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-3);">STEP 02 · FLASH THE IMAGE</div>
+        </div>
+        <div class="type-sample">
+          <div class="label">CODE<span class="spec">--font-mono · 13px · in dark code panel</span></div>
+          <div style="font-family:var(--font-mono);font-size:13px;color:var(--code-text);background:var(--code-bg);padding:8px 12px;border-radius:6px;border:1px solid var(--code-border);">$ docker run hello-world</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== COMPONENTS ===== -->
+    <section class="tk-section">
+      <h2><span class="zh-only">元件 · Components</span><span class="en-only">Components</span></h2>
+      <p class="sub">
+        <span class="zh-only">直接由 token 組成的元件樣本，方便確認 light / dark 兩個模式都正確。</span>
+        <span class="en-only">Sample components composed from tokens — verify both light and dark modes look right.</span>
+      </p>
+      <div class="comp-row">
+        <div class="comp-card">
+          <div class="head">BUTTONS</div>
+          <div class="stage" style="gap:10px;display:flex;flex-wrap:wrap;justify-content:center;">
+            <button class="btn-cta">Primary →</button>
+            <button class="btn-ghost">Ghost</button>
+          </div>
+        </div>
+
+        <div class="comp-card">
+          <div class="head">FAQ BADGES</div>
+          <div class="stage" style="gap:8px;display:flex;flex-wrap:wrap;justify-content:center;">
+            <span class="faq-summary" style="padding:6px 10px;font-size:13px;"><span class="badge">OS</span></span>
+            <span class="faq-summary" style="padding:6px 10px;font-size:13px;"><span class="badge">DOCKER</span></span>
+            <span class="faq-summary" style="padding:6px 10px;font-size:13px;"><span class="badge">NET</span></span>
+          </div>
+        </div>
+
+        <div class="comp-card">
+          <div class="head">CALLOUTS</div>
+          <div class="stage" style="display:flex;flex-direction:column;gap:8px;width:100%;">
+            <div class="callout" style="margin:0;font-size:13px;"><strong>Tip</strong> · gradient line on the left.</div>
+            <div class="callout callout--warn" style="margin:0;font-size:13px;"><strong>Warning</strong> · amber border.</div>
+            <div class="callout callout--info" style="margin:0;font-size:13px;"><strong>Info</strong> · blue border.</div>
+          </div>
+        </div>
+
+        <div class="comp-card">
+          <div class="head">CHECKBOX</div>
+          <div class="stage" style="display:flex;flex-direction:column;gap:8px;">
+            <span class="step-checkbox">
+              <span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+              Not done yet
+            </span>
+            <span class="step-checkbox done">
+              <span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+              Completed
+            </span>
+          </div>
+        </div>
+
+        <div class="comp-card">
+          <div class="head">TABS</div>
+          <div class="stage">
+            <div class="tabs" style="margin:0;">
+              <button class="tab on">Windows</button>
+              <button class="tab">Ubuntu</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="comp-card">
+          <div class="head">STATUS / PROGRESS</div>
+          <div class="stage">
+            <div class="status-bar" style="width:100%;">
+              <span class="dot"></span>
+              <span>Progress</span>
+              <div class="progress"><div class="progress-fill" style="width:65%"></div></div>
+              <span>65%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ELEVATION ===== -->
+    <section class="tk-section">
+      <h2><span class="zh-only">陰影 & 圓角 · Elevation</span><span class="en-only">Elevation & radius</span></h2>
+      <p class="sub">
+        <span class="zh-only">陰影只有兩個 — 一般卡片與較高的搜尋面板。圓角分四階：xs / sm / md / lg。</span>
+        <span class="en-only">Just two shadows — regular cards, and the elevated search panel. Four radii: xs / sm / md / lg.</span>
+      </p>
+      <div class="tk-grid tk-grid--two">
+        <div class="shadow-demo">--shadow</div>
+        <div class="shadow-demo shadow-demo--elev">--shadow-elevated</div>
+      </div>
+
+      <div class="tk-grid" style="margin-top:var(--space-4);">
+        <div class="swatch">
+          <div class="swatch-chip" style="background:var(--surface);display:grid;place-items:center;">
+            <div style="width:60px;height:60px;background:var(--accent);border-radius:var(--radius-xs);"></div>
+          </div>
+          <div class="swatch-meta"><span class="name">--radius-xs</span><span class="role">4px</span></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-chip" style="background:var(--surface);display:grid;place-items:center;">
+            <div style="width:60px;height:60px;background:var(--accent);border-radius:var(--radius-sm);"></div>
+          </div>
+          <div class="swatch-meta"><span class="name">--radius-sm</span><span class="role">8px</span></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-chip" style="background:var(--surface);display:grid;place-items:center;">
+            <div style="width:60px;height:60px;background:var(--accent);border-radius:var(--radius-md);"></div>
+          </div>
+          <div class="swatch-meta"><span class="name">--radius-md</span><span class="role">12px</span></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-chip" style="background:var(--surface);display:grid;place-items:center;">
+            <div style="width:60px;height:60px;background:var(--accent);border-radius:var(--radius-lg);"></div>
+          </div>
+          <div class="swatch-meta"><span class="name">--radius-lg</span><span class="role">18px</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SPEC DUMP ===== -->
+    <section class="tk-section">
+      <h2><span class="zh-only">給工程師 · Spec dump</span><span class="en-only">For engineers · spec dump</span></h2>
+      <p class="sub">
+        <span class="zh-only">複製進你的設計檔或 storybook。完整定義在 <code style="font-family:var(--font-mono);background:var(--surface-2);padding:1px 6px;border-radius:4px;color:var(--accent-text);">styles.css</code> 最上方。</span>
+        <span class="en-only">Paste this into your design file or storybook. The canonical source lives at the top of <code style="font-family:var(--font-mono);background:var(--surface-2);padding:1px 6px;border-radius:4px;color:var(--accent-text);">styles.css</code>.</span>
+      </p>
+      <div class="spec-dump"><span class="c">/* light mode */</span>
+<span class="k">--bg</span>:            <span class="v">#fbf9fc</span>;
+<span class="k">--bg-2</span>:          <span class="v">#f5f0fa</span>;
+<span class="k">--surface</span>:       <span class="v">#ffffff</span>;
+<span class="k">--surface-2</span>:     <span class="v">#ebe4f4</span>;
+<span class="k">--border</span>:        <span class="v">#e0d6ec</span>;
+<span class="k">--border-strong</span>: <span class="v">#d3c5e6</span>;
+<span class="k">--text</span>:          <span class="v">#1c1530</span>;
+<span class="k">--text-2</span>:        <span class="v">#6b5d85</span>;
+<span class="k">--text-3</span>:        <span class="v">#9690b3</span>;
+<span class="k">--accent</span>:        <span class="v">#7e5be0</span>;
+<span class="k">--accent-deep</span>:   <span class="v">#6a47c8</span>;
+<span class="k">--on-accent</span>:     <span class="v">#ffffff</span>;
+<span class="k">--c-pink</span>:       <span class="v">#e15ba3</span>;
+<span class="k">--c-lavender</span>:   <span class="v">#7e5be0</span>;
+<span class="k">--c-blue</span>:       <span class="v">#2e7adb</span>;
+<span class="k">--success</span>:      <span class="v">#1a8f6e</span>;
+
+<span class="c">/* dark mode */</span>
+<span class="k">--bg</span>:            <span class="v">#0b0a13</span>;
+<span class="k">--bg-2</span>:          <span class="v">#13111d</span>;
+<span class="k">--surface</span>:       <span class="v">#1a1727</span>;
+<span class="k">--surface-2</span>:     <span class="v">#221d35</span>;
+<span class="k">--border</span>:        <span class="v">#2a2541</span>;
+<span class="k">--border-strong</span>: <span class="v">#3a3357</span>;
+<span class="k">--text</span>:          <span class="v">#ece9f5</span>;
+<span class="k">--text-2</span>:        <span class="v">#9690b3</span>;
+<span class="k">--text-3</span>:        <span class="v">#5f5a7a</span>;
+<span class="k">--accent</span>:        <span class="v">#b69cf5</span>;
+<span class="k">--accent-deep</span>:   <span class="v">#9170e8</span>;
+<span class="k">--on-accent</span>:     <span class="v">#14101f</span>;
+<span class="k">--c-pink</span>:       <span class="v">#f8a5d8</span>;
+<span class="k">--c-lavender</span>:   <span class="v">#b69cf5</span>;
+<span class="k">--c-blue</span>:       <span class="v">#7ab8ff</span>;
+<span class="k">--success</span>:      <span class="v">#7ee0c5</span>;</div>
+    </section>
+
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="foot-inner">
+    <span>HANDS-ON WORKSHOP · DESIGN TOKENS</span>
+    <span><span class="zh-only">所有 token 定義於 styles.css :root</span><span class="en-only">All tokens live in styles.css :root</span></span>
+    <span>v1.0</span>
+  </div>
+</footer>
+
+<div class="search-overlay" id="search-overlay" role="dialog" aria-modal="true">
+  <div class="search-panel">
+    <div class="search-input-row">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input id="search-input" type="text" placeholder="搜尋… / search…" autocomplete="off" />
+      <span class="esc">ESC</span>
+    </div>
+    <div class="search-results" id="search-results"></div>
+  </div>
+</div>
+
+<script src="search-index.js"></script>
+<script src="app.js"></script>
+<script>
+  // Copy-token-name pills
+  document.querySelectorAll('.copy-tag').forEach(btn => {
+    btn.addEventListener('click', async (e) => {
+      e.preventDefault();
+      const name = btn.dataset.copy;
+      try {
+        await navigator.clipboard.writeText('var(' + name + ')');
+        const original = btn.textContent;
+        btn.classList.add('copied');
+        btn.textContent = 'copied!';
+        setTimeout(() => { btn.classList.remove('copied'); btn.textContent = original; }, 1300);
+      } catch (_) {}
+    });
+  });
+</script>
+</body>
+</html>

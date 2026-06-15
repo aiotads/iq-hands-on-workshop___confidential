@@ -1,0 +1,597 @@
+<!doctype html>
+<html lang="zh-Hant" data-lang="zh" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pre-Install — Workshop 事前準備</title>
+<script>(function(){var d=document.documentElement;try{d.setAttribute('data-theme',localStorage.getItem('how_theme')||'dark');}catch(e){d.setAttribute('data-theme','dark');}try{var l=localStorage.getItem('how_lang')||'zh';d.setAttribute('data-lang',l);d.setAttribute('lang',l==='zh'?'zh-Hant':'en');}catch(e){d.setAttribute('data-lang','zh');}})();</script>
+<style>html{background:#0b0a13}html[data-theme="light"]{background:#fbf9fc}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" class="face-icon" overflow="visible">
+          <circle class="eye eye-l" cx="9" cy="10.5" r="1.6" fill="currentColor"/>
+          <circle class="eye eye-r" cx="15" cy="10.5" r="1.6" fill="currentColor"/>
+          <path d="M8.5 15 Q12 17.5 15.5 15" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+        </svg>
+      </span>
+      <span class="brand-text">
+        <span class="top"><span class="zh-only">Workshop 事前準備</span><span class="en-only">Workshop Prep</span></span>
+        <span class="sub">PREP · BEFORE YOU ARRIVE</span>
+      </span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html" class="nav-link"><span class="zh-only">總覽</span><span class="en-only">Overview</span></a>
+      <a href="pre-install.html" class="nav-link active"><span class="zh-only">預先安裝</span><span class="en-only">Pre-Install</span></a>
+      <a href="flashing.html" class="nav-link"><span class="zh-only">燒錄</span><span class="en-only">Flashing</span></a>
+      <a href="faq.html" class="nav-link"><span class="zh-only">FAQ</span><span class="en-only">FAQ</span></a>
+      <a href="handouts.html" class="nav-link"><span class="zh-only">講義</span><span class="en-only">Handouts</span></a>
+    </nav>
+    <span class="nav-spacer"></span>
+    <button class="nav-search" data-open-search aria-label="Open search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <span class="label zh-only">搜尋軟體 / 步驟…</span>
+      <span class="label en-only">Search software / steps…</span>
+      <span class="kbd">⌘K</span>
+    </button>
+    <div class="lang-toggle"><button data-lang="zh">中</button><button data-lang="en">EN</button></div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Toggle theme">
+      <span class="thumb">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      </span>
+    </button>
+    <a href="flashing.html" class="btn-cta">
+      <span class="zh-only">下一步：燒錄</span><span class="en-only">Next: Flashing</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+    </a>
+  </div>
+</header>
+
+<main class="shell">
+  <section class="page">
+
+    <span class="eyebrow"><span class="zh-only">步驟 01 · 預先安裝</span><span class="en-only">STEP 01 · PRE-INSTALL</span></span>
+    <h1 class="display">
+      <span class="zh-only">預先安裝說明<br/><span class="grad-text">把工具裝好。</span></span>
+      <span class="en-only">Pre-install Guide<br/><span class="grad-text">Get the Toolchain Ready.</span></span>
+    </h1>
+    <p class="lead">
+      <span class="zh-only">活動日期 June 30, 2026。請在抵達前依下方清單把工具裝好。提供 Windows 與 Ubuntu 兩條流程，每段指令都可一鍵複製貼上。</span>
+      <span class="en-only">Event date: June 30, 2026. Please install everything below before you arrive. Two flows — Windows and Ubuntu — with one-click copy on every command.</span>
+    </p>
+
+    <!-- Prerequisite: Qualcomm account -->
+    <div class="prereq">
+      <span class="badge-ring" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 11h-6"/><path d="M19 8v6"/></svg>
+      </span>
+      <div class="body">
+        <div class="k"><span class="zh-only">開始前 · 必做</span><span class="en-only">BEFORE YOU START · REQUIRED</span></div>
+        <h3><span class="zh-only">先註冊 Qualcomm 帳號</span><span class="en-only">Register a Qualcomm account first</span></h3>
+        <p>
+          <span class="zh-only">開始前請先到 <a class="link" href="https://www.qualcomm.com/" target="_blank" rel="noopener">https://www.qualcomm.com/</a> 註冊 Qualcomm 帳號（Qualcomm Software Center 登入與後續 AI Hub 都會用到）。</span>
+          <span class="en-only">Before you start, register a Qualcomm account at <a class="link" href="https://www.qualcomm.com/" target="_blank" rel="noopener">https://www.qualcomm.com/</a> — you'll need it to sign into Qualcomm Software Center and for AI Hub later.</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- Software overview table -->
+    <section style="margin-top:var(--space-12);">
+      <span class="eyebrow"><span class="zh-only">軟體清單</span><span class="en-only">SOFTWARE LIST</span></span>
+      <h2 class="display" style="font-size:clamp(26px,3vw,38px);">
+        <span class="zh-only">一張表看懂要裝什麼</span><span class="en-only">Everything at a glance</span>
+      </h2>
+      <div class="soft-table-wrap">
+        <div class="soft-scroll">
+          <table class="soft-table">
+            <thead>
+              <tr>
+                <th><span class="zh-only">軟體</span><span class="en-only">Software</span></th>
+                <th><span class="zh-only">用途</span><span class="en-only">Purpose</span></th>
+                <th>Windows</th>
+                <th>Ubuntu</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="tool">adb</td>
+                <td><span class="zh-only">連線 / 除錯平台</span><span class="en-only">Device connect / debug</span></td>
+                <td><span class="cell-yes"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></span></td>
+                <td><span class="cell-yes"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></span></td>
+              </tr>
+              <tr>
+                <td class="tool">Qualcomm Software Center <span style="color:var(--text-3);font-weight:500;">(QSC)</span></td>
+                <td><span class="zh-only">下載 PCAT / QUD</span><span class="en-only">Download PCAT / QUD</span></td>
+                <td><span class="cell-yes"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></span></td>
+                <td><span class="cell-yes"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></span></td>
+              </tr>
+              <tr>
+                <td class="tool">PCAT Tool</td>
+                <td><span class="zh-only">燒錄 image 工具</span><span class="en-only">Image flashing tool</span></td>
+                <td><span class="cell-yes"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></span></td>
+                <td><span class="cell-yes"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></span></td>
+              </tr>
+              <tr>
+                <td class="tool">QUD</td>
+                <td><span class="zh-only">Qualcomm USB 驅動</span><span class="en-only">Qualcomm USB driver</span></td>
+                <td><span class="cell-yes"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></span></td>
+                <td><span class="cell-yes"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></span></td>
+              </tr>
+              <tr>
+                <td class="tool">QDL</td>
+                <td><span class="zh-only">命令列燒錄工具</span><span class="en-only">CLI flashing tool</span></td>
+                <td><span class="cell-na"><span class="dash"></span><span class="note"><span class="zh-only">改用 PCAT</span><span class="en-only">use PCAT</span></span></span></td>
+                <td><span class="cell-yes"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></span></td>
+              </tr>
+              <tr>
+                <td class="tool">Docker</td>
+                <td><span class="zh-only">容器執行環境</span><span class="en-only">Container runtime</span></td>
+                <td><span class="cell-yes"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="note"><span class="zh-only">需 WSL2</span><span class="en-only">needs WSL2</span></span></span></td>
+                <td><span class="cell-yes"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></span></td>
+              </tr>
+              <tr>
+                <td class="tool"><span class="zh-only">UART 序列埠工具</span><span class="en-only">UART serial tool</span></td>
+                <td><span class="zh-only">看 boot log / debug</span><span class="en-only">View boot log / debug</span></td>
+                <td><span class="cell-alt">MobaXterm</span></td>
+                <td><span class="cell-alt">minicom</span></td>
+              </tr>
+              <tr>
+                <td class="tool">CP210x USB-UART <span class="zh-only" style="color:var(--text-3);font-weight:500;">驅動</span><span class="en-only" style="color:var(--text-3);font-weight:500;">driver</span></td>
+                <td><span class="zh-only">USB 轉序列埠</span><span class="en-only">USB-to-serial</span></td>
+                <td><span class="cell-alt"><span class="zh-only">手動安裝</span><span class="en-only">manual install</span></span></td>
+                <td><span class="cell-alt"><span class="zh-only">核心內建免裝</span><span class="en-only">built-in, none</span></span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- OS tab -->
+    <div style="display:flex;gap:var(--space-4);align-items:center;flex-wrap:wrap;margin-top:var(--space-12);">
+      <div class="tabs" data-tabs role="tablist">
+        <button class="tab" data-tab="windows" role="tab">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 5.4 10.2 4.4v7.5H3zM11 4.2 21 3v8.9H11zM3 12.6h7.2v7.5L3 19.1zM11 12.6h10V21l-10-1.2z"/></svg>
+          Windows
+        </button>
+        <button class="tab" data-tab="ubuntu" role="tab">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="5.5" cy="12" r="1.6" fill="currentColor"/><circle cx="15" cy="6.5" r="1.6" fill="currentColor"/><circle cx="15" cy="17.5" r="1.6" fill="currentColor"/></svg>
+          Ubuntu
+        </button>
+      </div>
+    </div>
+
+    <!-- Step flows (swap by OS tab) -->
+    <div data-tabs style="margin-top:var(--space-8);">
+
+      <!-- ============ WINDOWS ============ -->
+      <div class="tab-panel" data-tab="windows">
+        <div class="page--with-side">
+          <aside class="side-nav" aria-label="On this page">
+            <div class="side-nav-head"><span class="zh-only">Windows 流程</span><span class="en-only">Windows flow</span></div>
+            <a href="#win-adb"><span class="num">01</span> adb</a>
+            <a href="#win-qsc"><span class="num">02</span> QSC</a>
+            <a href="#win-pcat"><span class="num">03</span> PCAT Tool</a>
+            <a href="#win-qud"><span class="num">04</span> QUD</a>
+            <a href="#win-docker"><span class="num">05</span> Docker</a>
+            <a href="#win-moba"><span class="num">06</span> MobaXterm</a>
+            <a href="#win-cp210x"><span class="num">07</span> CP210x</a>
+          </aside>
+
+          <div>
+            <!-- W1 adb -->
+            <article class="step" id="win-adb">
+              <div class="step-num">01</div>
+              <div class="step-body">
+                <h3>adb <span class="step-sub-inline">(platform-tools)</span></h3>
+                <div class="sub"><span class="zh-only">連線 / 除錯平台</span><span class="en-only">Device connection / debugging</span></div>
+                <ol class="step-list">
+                  <li><span class="zh-only">下載 <a class="link" href="https://developer.android.com/tools/releases/platform-tools?hl=zh-tw" target="_blank" rel="noopener">platform-tools</a>（Google 官方）。</span><span class="en-only">Download <a class="link" href="https://developer.android.com/tools/releases/platform-tools?hl=zh-tw" target="_blank" rel="noopener">platform-tools</a> (official Google).</span></li>
+                  <li><span class="zh-only">解壓到固定路徑（例：<code>Desktop\platform-tools</code>）。</span><span class="en-only">Extract to a fixed path (e.g. <code>Desktop\platform-tools</code>).</span></li>
+                  <li><span class="zh-only">在該資料夾內按住 Shift 右鍵 → 開啟 PowerShell，執行驗證：</span><span class="en-only">In that folder, Shift + right-click → Open PowerShell, then verify:</span></li>
+                </ol>
+                <div class="code">
+                  <div class="code-head"><span class="lang">PowerShell</span>
+                    <button class="copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">Copy</span></button>
+                  </div>
+<pre>.\adb.exe version</pre>
+                </div>
+                <div class="callout">
+                  <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></span>
+                  <div>
+                    <span class="zh-only">若將該資料夾加入系統 PATH，往後可直接用 <code>adb</code>，不需 <code>.\adb.exe</code> 前綴。</span>
+                    <span class="en-only">If you add this folder to your system PATH, you can use <code>adb</code> directly without the <code>.\adb.exe</code> prefix.</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- W2 QSC -->
+            <article class="step" id="win-qsc">
+              <div class="step-num">02</div>
+              <div class="step-body">
+                <h3>Qualcomm Software Center <span class="step-sub-inline">(QSC)</span></h3>
+                <div class="sub"><span class="zh-only">下載 PCAT / QUD</span><span class="en-only">Download PCAT / QUD</span></div>
+                <ol class="step-list">
+                  <li><span class="zh-only">下載並安裝 QSC：</span><span class="en-only">Download and install QSC:</span> <a class="link" href="https://softwarecenter.qualcomm.com/" target="_blank" rel="noopener">https://softwarecenter.qualcomm.com/</a></li>
+                  <li><span class="zh-only">安裝後以 Qualcomm 帳號登入。</span><span class="en-only">After installing, sign in with your Qualcomm account.</span></li>
+                </ol>
+              </div>
+            </article>
+
+            <!-- W3 PCAT -->
+            <article class="step" id="win-pcat">
+              <div class="step-num">03</div>
+              <div class="step-body">
+                <h3>PCAT Tool</h3>
+                <div class="sub"><span class="zh-only">燒錄 image 工具</span><span class="en-only">Image flashing tool</span></div>
+                <ol class="step-list">
+                  <li><span class="zh-only">打開 Qualcomm Software Center。</span><span class="en-only">Open Qualcomm Software Center.</span></li>
+                  <li><span class="zh-only">在 Tools 搜尋 <code>Product Configuration Assistant Tool</code>，下載並安裝。</span><span class="en-only">Under Tools, search <code>Product Configuration Assistant Tool</code>, then download and install.</span></li>
+                </ol>
+              </div>
+            </article>
+
+            <!-- W4 QUD -->
+            <article class="step" id="win-qud">
+              <div class="step-num">04</div>
+              <div class="step-body">
+                <h3>QUD <span class="step-sub-inline">(Qualcomm USB Driver)</span></h3>
+                <div class="sub"><span class="zh-only">Qualcomm USB 驅動</span><span class="en-only">Qualcomm USB driver</span></div>
+                <ol class="step-list">
+                  <li><span class="zh-only">打開 Qualcomm Software Center。</span><span class="en-only">Open Qualcomm Software Center.</span></li>
+                  <li><span class="zh-only">點選 QUD 下載並安裝。</span><span class="en-only">Select QUD, then download and install.</span></li>
+                </ol>
+                <div class="callout">
+                  <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></span>
+                  <div>
+                    <span class="zh-only">安裝後 QSC 的 connected devices 顯示 <code>you have no devices connected</code> 為正常（此時尚未接上平台）。</span>
+                    <span class="en-only">After installing, QSC showing <code>you have no devices connected</code> is normal (no board attached yet).</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- W5 Docker -->
+            <article class="step" id="win-docker">
+              <div class="step-num">05</div>
+              <div class="step-body">
+                <h3>Docker Desktop <span class="step-sub-inline">(<span class="zh-only">需 WSL2</span><span class="en-only">needs WSL2</span>)</span></h3>
+                <div class="sub"><span class="zh-only">容器執行環境</span><span class="en-only">Container runtime</span></div>
+                <ol class="step-list">
+                  <li><span class="zh-only">以<strong>系統管理員</strong>開啟 PowerShell 啟用 WSL2，完成後重新開機：</span><span class="en-only">Open PowerShell <strong>as administrator</strong> to enable WSL2, then reboot:</span></li>
+                </ol>
+                <div class="code">
+                  <div class="code-head"><span class="lang">PowerShell · admin</span>
+                    <button class="copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">Copy</span></button>
+                  </div>
+<pre>wsl --install</pre>
+                </div>
+                <ol class="step-list" start="2" style="counter-reset: stepitem 1;">
+                  <li><span class="zh-only">下載並安裝 Docker Desktop：</span><span class="en-only">Download and install Docker Desktop:</span> <a class="link" href="https://docs.docker.com/desktop/setup/install/windows-install/" target="_blank" rel="noopener">https://docs.docker.com/desktop/setup/install/windows-install/</a></li>
+                  <li><span class="zh-only">安裝時確認 <code>Use WSL 2 instead of Hyper-V</code> 已勾選。</span><span class="en-only">During install, make sure <code>Use WSL 2 instead of Hyper-V</code> is checked.</span></li>
+                  <li><span class="zh-only">驗證安裝：</span><span class="en-only">Verify the install:</span></li>
+                </ol>
+                <div class="code">
+                  <div class="code-head"><span class="lang">PowerShell</span>
+                    <button class="copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">Copy</span></button>
+                  </div>
+<pre>docker run hello-world</pre>
+                </div>
+              </div>
+            </article>
+
+            <!-- W6 MobaXterm -->
+            <article class="step" id="win-moba">
+              <div class="step-num">06</div>
+              <div class="step-body">
+                <h3>MobaXterm <span class="step-sub-inline">(<span class="zh-only">UART 序列埠工具</span><span class="en-only">UART serial tool</span>)</span></h3>
+                <div class="sub"><span class="zh-only">看 boot log / debug</span><span class="en-only">View boot log / debug</span></div>
+                <ol class="step-list">
+                  <li><span class="zh-only">下載 <strong>MobaXterm Home Edition（Installer edition）</strong>並安裝：</span><span class="en-only">Download and install <strong>MobaXterm Home Edition (Installer edition)</strong>:</span> <a class="link" href="https://mobaxterm.mobatek.net/download-home-edition.html" target="_blank" rel="noopener">https://mobaxterm.mobatek.net/download-home-edition.html</a></li>
+                </ol>
+                <div class="callout">
+                  <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></span>
+                  <div>
+                    <span class="zh-only">UART 連線與使用方式見「<a class="link" href="faq.html">FAQ</a>」頁。</span>
+                    <span class="en-only">See the "<a class="link" href="faq.html">FAQ</a>" page for UART connection and usage.</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- W7 CP210x -->
+            <article class="step" id="win-cp210x">
+              <div class="step-num">07</div>
+              <div class="step-body">
+                <h3>CP210x USB-to-UART <span class="step-sub-inline"><span class="zh-only">驅動</span><span class="en-only">driver</span></span></h3>
+                <div class="sub"><span class="zh-only">USB 轉序列埠</span><span class="en-only">USB-to-serial</span></div>
+                <p>
+                  <span class="zh-only">連接 UART 線後，若「裝置管理員 → 連接埠 (COM 和 LPT)」未出現 COM port，需手動安裝 CP210x 驅動；詳細步驟見「<a class="link" href="faq.html">FAQ</a>」頁。</span>
+                  <span class="en-only">After connecting the UART cable, if no COM port appears under "Device Manager → Ports (COM &amp; LPT)", manually install the CP210x driver; see the "<a class="link" href="faq.html">FAQ</a>" page for detailed steps.</span>
+                </p>
+              </div>
+            </article>
+
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:var(--space-12);padding-top:var(--space-8);border-top:1px solid var(--border);">
+              <a href="index.html" class="btn-ghost">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg>
+                <span class="zh-only">回總覽</span><span class="en-only">Back to overview</span>
+              </a>
+              <a href="flashing.html" class="btn-cta">
+                <span class="zh-only">下一步：燒錄</span><span class="en-only">Next: Flashing</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ UBUNTU ============ -->
+      <div class="tab-panel" data-tab="ubuntu">
+        <div class="page--with-side">
+          <aside class="side-nav" aria-label="On this page">
+            <div class="side-nav-head"><span class="zh-only">Ubuntu 流程</span><span class="en-only">Ubuntu flow</span></div>
+            <a href="#ub-adb"><span class="num">01</span> adb</a>
+            <a href="#ub-qsc"><span class="num">02</span> QSC</a>
+            <a href="#ub-pcat"><span class="num">03</span> PCAT Tool</a>
+            <a href="#ub-qud"><span class="num">04</span> QUD</a>
+            <a href="#ub-qdl"><span class="num">05</span> QDL</a>
+            <a href="#ub-docker"><span class="num">06</span> Docker</a>
+            <a href="#ub-minicom"><span class="num">07</span> minicom</a>
+          </aside>
+
+          <div>
+            <!-- U1 adb -->
+            <article class="step" id="ub-adb">
+              <div class="step-num">01</div>
+              <div class="step-body">
+                <h3>adb</h3>
+                <div class="sub"><span class="zh-only">連線 / 除錯平台</span><span class="en-only">Device connection / debugging</span></div>
+                <div class="code">
+                  <div class="code-head"><span class="lang">bash</span>
+                    <button class="copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">Copy</span></button>
+                  </div>
+<pre>sudo apt update
+sudo apt install -y adb
+adb version</pre>
+                </div>
+              </div>
+            </article>
+
+            <!-- U2 QSC -->
+            <article class="step" id="ub-qsc">
+              <div class="step-num">02</div>
+              <div class="step-body">
+                <h3>Qualcomm Software Center <span class="step-sub-inline">(QSC)</span></h3>
+                <div class="sub"><span class="zh-only">下載 PCAT / QUD</span><span class="en-only">Download PCAT / QUD</span></div>
+                <ol class="step-list">
+                  <li><span class="zh-only">下載並安裝 QSC（Linux 版）：</span><span class="en-only">Download and install QSC (Linux build):</span> <a class="link" href="https://softwarecenter.qualcomm.com/" target="_blank" rel="noopener">https://softwarecenter.qualcomm.com/</a></li>
+                  <li><span class="zh-only">安裝後以 Qualcomm 帳號登入。</span><span class="en-only">After installing, sign in with your Qualcomm account.</span></li>
+                </ol>
+              </div>
+            </article>
+
+            <!-- U3 PCAT -->
+            <article class="step" id="ub-pcat">
+              <div class="step-num">03</div>
+              <div class="step-body">
+                <h3>PCAT Tool</h3>
+                <div class="sub"><span class="zh-only">燒錄 image 工具</span><span class="en-only">Image flashing tool</span></div>
+                <ol class="step-list">
+                  <li><span class="zh-only">打開 Qualcomm Software Center。</span><span class="en-only">Open Qualcomm Software Center.</span></li>
+                  <li><span class="zh-only">在 Tools 搜尋 <code>Product Configuration Assistant Tool</code>，下載並安裝。</span><span class="en-only">Under Tools, search <code>Product Configuration Assistant Tool</code>, then download and install.</span></li>
+                </ol>
+              </div>
+            </article>
+
+            <!-- U4 QUD -->
+            <article class="step" id="ub-qud">
+              <div class="step-num">04</div>
+              <div class="step-body">
+                <h3>QUD <span class="step-sub-inline">(Qualcomm USB Driver)</span></h3>
+                <div class="sub"><span class="zh-only">Qualcomm USB 驅動</span><span class="en-only">Qualcomm USB driver</span></div>
+                <ol class="step-list">
+                  <li><span class="zh-only">打開 Qualcomm Software Center。</span><span class="en-only">Open Qualcomm Software Center.</span></li>
+                  <li><span class="zh-only">點選 QUD 下載並安裝。</span><span class="en-only">Select QUD, then download and install.</span></li>
+                </ol>
+                <div class="callout">
+                  <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></span>
+                  <div>
+                    <span class="zh-only">connected devices 顯示 <code>you have no devices connected</code> 為正常。</span>
+                    <span class="en-only">QSC showing <code>you have no devices connected</code> is normal.</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- U5 QDL -->
+            <article class="step" id="ub-qdl">
+              <div class="step-num">05</div>
+              <div class="step-body">
+                <h3>QDL <span class="step-sub-inline">(<span class="zh-only">命令列燒錄工具</span><span class="en-only">CLI flashing tool</span>)</span></h3>
+                <div class="sub"><span class="zh-only">命令列燒錄工具</span><span class="en-only">CLI flashing tool</span></div>
+                <ol class="step-list">
+                  <li><span class="zh-only">安裝相依套件：</span><span class="en-only">Install dependencies:</span></li>
+                </ol>
+                <div class="code">
+                  <div class="code-head"><span class="lang">bash</span>
+                    <button class="copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">Copy</span></button>
+                  </div>
+<pre>sudo apt install -y git libxml2-dev libusb-1.0-0-dev libzip-dev meson ninja-build help2man</pre>
+                </div>
+                <ol class="step-list" start="2" style="counter-reset: stepitem 1;">
+                  <li><span class="zh-only">編譯並安裝 qdl：</span><span class="en-only">Build and install qdl:</span></li>
+                </ol>
+                <div class="code">
+                  <div class="code-head"><span class="lang">bash</span>
+                    <button class="copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">Copy</span></button>
+                  </div>
+<pre>git clone --depth 1 --branch master https://github.com/linux-msm/qdl
+cd qdl
+meson setup build
+meson compile -C build
+sudo meson install -C build</pre>
+                </div>
+                <ol class="step-list" start="3" style="counter-reset: stepitem 2;">
+                  <li><span class="zh-only">驗證安裝：</span><span class="en-only">Verify the install:</span></li>
+                </ol>
+                <div class="code">
+                  <div class="code-head"><span class="lang">bash</span>
+                    <button class="copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">Copy</span></button>
+                  </div>
+<pre>qdl --help</pre>
+                </div>
+              </div>
+            </article>
+
+            <!-- U6 Docker -->
+            <article class="step" id="ub-docker">
+              <div class="step-num">06</div>
+              <div class="step-body">
+                <h3>Docker</h3>
+                <div class="sub"><span class="zh-only">容器執行環境</span><span class="en-only">Container runtime</span></div>
+                <ol class="step-list">
+                  <li><span class="zh-only">更新系統：</span><span class="en-only">Update the system:</span></li>
+                </ol>
+                <div class="code">
+                  <div class="code-head"><span class="lang">bash</span>
+                    <button class="copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">Copy</span></button>
+                  </div>
+<pre>sudo apt update && sudo apt upgrade -y</pre>
+                </div>
+                <ol class="step-list" start="2" style="counter-reset: stepitem 1;">
+                  <li><span class="zh-only">下載 Docker 官方安裝腳本：</span><span class="en-only">Download the official Docker install script:</span></li>
+                </ol>
+                <div class="code">
+                  <div class="code-head"><span class="lang">bash</span>
+                    <button class="copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">Copy</span></button>
+                  </div>
+<pre>curl -fsSL https://get.docker.com -o get-docker.sh</pre>
+                </div>
+                <ol class="step-list" start="3" style="counter-reset: stepitem 2;">
+                  <li><span class="zh-only">執行安裝腳本：</span><span class="en-only">Run the install script:</span></li>
+                </ol>
+                <div class="code">
+                  <div class="code-head"><span class="lang">bash</span>
+                    <button class="copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">Copy</span></button>
+                  </div>
+<pre>sudo sh get-docker.sh</pre>
+                </div>
+                <ol class="step-list" start="4" style="counter-reset: stepitem 3;">
+                  <li><span class="zh-only">將使用者加入 docker 群組（需重新登入生效）：</span><span class="en-only">Add your user to the docker group (re-login to take effect):</span></li>
+                </ol>
+                <div class="code">
+                  <div class="code-head"><span class="lang">bash</span>
+                    <button class="copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">Copy</span></button>
+                  </div>
+<pre>sudo usermod -aG docker $USER</pre>
+                </div>
+                <ol class="step-list" start="5" style="counter-reset: stepitem 4;">
+                  <li><span class="zh-only">啟用並啟動 Docker 服務：</span><span class="en-only">Enable and start the Docker service:</span></li>
+                </ol>
+                <div class="code">
+                  <div class="code-head"><span class="lang">bash</span>
+                    <button class="copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">Copy</span></button>
+                  </div>
+<pre>sudo systemctl enable --now docker</pre>
+                </div>
+                <ol class="step-list" start="6" style="counter-reset: stepitem 5;">
+                  <li><span class="zh-only">驗證安裝：</span><span class="en-only">Verify the install:</span></li>
+                </ol>
+                <div class="code">
+                  <div class="code-head"><span class="lang">bash</span>
+                    <button class="copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">Copy</span></button>
+                  </div>
+<pre>sudo docker run hello-world</pre>
+                </div>
+                <div class="callout">
+                  <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></span>
+                  <div>
+                    <span class="zh-only">官方安裝文件：<a class="link" href="https://docs.docker.com/engine/install/ubuntu/" target="_blank" rel="noopener">https://docs.docker.com/engine/install/ubuntu/</a></span>
+                    <span class="en-only">Official install docs: <a class="link" href="https://docs.docker.com/engine/install/ubuntu/" target="_blank" rel="noopener">https://docs.docker.com/engine/install/ubuntu/</a></span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- U7 minicom -->
+            <article class="step" id="ub-minicom">
+              <div class="step-num">07</div>
+              <div class="step-body">
+                <h3>minicom <span class="step-sub-inline">(<span class="zh-only">UART 序列埠工具</span><span class="en-only">UART serial tool</span>)</span></h3>
+                <div class="sub"><span class="zh-only">看 boot log / debug</span><span class="en-only">View boot log / debug</span></div>
+                <ol class="step-list">
+                  <li><span class="zh-only">安裝 minicom：</span><span class="en-only">Install minicom:</span></li>
+                </ol>
+                <div class="code">
+                  <div class="code-head"><span class="lang">bash</span>
+                    <button class="copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">Copy</span></button>
+                  </div>
+<pre>sudo apt install -y minicom</pre>
+                </div>
+                <ol class="step-list" start="2" style="counter-reset: stepitem 1;">
+                  <li><span class="zh-only">連線（CP210x 通常為 <code>/dev/ttyUSB0</code>，鮑率 115200）：</span><span class="en-only">Connect (CP210x is usually <code>/dev/ttyUSB0</code>, baud rate 115200):</span></li>
+                </ol>
+                <div class="code">
+                  <div class="code-head"><span class="lang">bash</span>
+                    <button class="copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">Copy</span></button>
+                  </div>
+<pre>sudo minicom -D /dev/ttyUSB0 -b 115200</pre>
+                </div>
+              </div>
+            </article>
+
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:var(--space-12);padding-top:var(--space-8);border-top:1px solid var(--border);">
+              <a href="index.html" class="btn-ghost">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg>
+                <span class="zh-only">回總覽</span><span class="en-only">Back to overview</span>
+              </a>
+              <a href="flashing.html" class="btn-cta">
+                <span class="zh-only">下一步：燒錄</span><span class="en-only">Next: Flashing</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="foot-inner">
+    <span><span class="zh-only">WORKSHOP 事前準備</span><span class="en-only">WORKSHOP PREP SITE</span></span>
+    <span>
+      <span class="zh-only">問題回報：請於現場或工作群組 @主辦</span>
+      <span class="en-only">Questions: ping the organisers on-site or in the channel</span>
+    </span>
+    <span>v1.0</span>
+  </div>
+</footer>
+
+<div class="search-overlay" id="search-overlay" role="dialog" aria-modal="true">
+  <div class="search-panel">
+    <div class="search-input-row">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input id="search-input" type="text" placeholder="搜尋軟體、步驟、FAQ… / search software, steps, FAQ…" autocomplete="off" />
+      <span class="esc">ESC</span>
+    </div>
+    <div class="search-results" id="search-results"></div>
+  </div>
+</div>
+
+<script src="search-index.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

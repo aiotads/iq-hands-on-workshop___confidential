@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="zh-Hant" data-lang="zh" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Workshop 事前準備 / Workshop Prep</title>
+<script>(function(){var d=document.documentElement;try{d.setAttribute('data-theme',localStorage.getItem('how_theme')||'dark');}catch(e){d.setAttribute('data-theme','dark');}try{var l=localStorage.getItem('how_lang')||'zh';d.setAttribute('data-lang',l);d.setAttribute('lang',l==='zh'?'zh-Hant':'en');}catch(e){d.setAttribute('data-lang','zh');}})();</script>
+<style>html{background:#0b0a13}html[data-theme="light"]{background:#fbf9fc}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="styles.css" />
+<style>
+  /* Reusable SVG mascot symbol */
+  .face-icon .eye { transform-origin: center; transform-box: fill-box; }
+</style>
+</head>
+<body>
+
+<!-- ===== Inline SVG library ===== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- Brand face icon: two eyes + smile, sits on gradient pill -->
+    <symbol id="brand-face" viewBox="0 0 24 24">
+      <circle class="eye eye-l" cx="9" cy="10.5" r="1.6" fill="currentColor"/>
+      <circle class="eye eye-r" cx="15" cy="10.5" r="1.6" fill="currentColor"/>
+      <path d="M8.5 15 Q12 17.5 15.5 15" stroke="currentColor" stroke-width="1.6"
+            fill="none" stroke-linecap="round"/>
+    </symbol>
+    <!-- 4-pointed sparkle -->
+    <symbol id="sparkle-glyph" viewBox="0 0 20 20">
+      <path d="M10 0 L11.6 8.4 L20 10 L11.6 11.6 L10 20 L8.4 11.6 L0 10 L8.4 8.4 Z"
+            fill="currentColor"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ===== NAV ===== -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" class="face-icon" overflow="visible">
+          <circle class="eye eye-l" cx="9" cy="10.5" r="1.6" fill="currentColor"/>
+          <circle class="eye eye-r" cx="15" cy="10.5" r="1.6" fill="currentColor"/>
+          <path d="M8.5 15 Q12 17.5 15.5 15" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+        </svg>
+      </span>
+      <span class="brand-text">
+        <span class="top"><span class="zh-only">Hands-On Workshop</span><span class="en-only">Hands-On Workshop</span></span>
+        <span class="sub">PREP · BEFORE YOU ARRIVE</span>
+      </span>
+    </a>
+
+    <nav class="nav-links">
+      <a href="index.html" class="nav-link active"><span class="zh-only">總覽</span><span class="en-only">Overview</span></a>
+      <a href="pre-install.html" class="nav-link"><span class="zh-only">預先安裝</span><span class="en-only">Pre-Install</span></a>
+      <a href="flashing.html" class="nav-link"><span class="zh-only">燒錄</span><span class="en-only">Flashing</span></a>
+      <a href="faq.html" class="nav-link"><span class="zh-only">FAQ</span><span class="en-only">FAQ</span></a>
+      <a href="handouts.html" class="nav-link"><span class="zh-only">講義</span><span class="en-only">Handouts</span></a>
+    </nav>
+
+    <span class="nav-spacer"></span>
+
+    <button class="nav-search" data-open-search aria-label="Open search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <span class="label zh-only">搜尋軟體 / 步驟…</span>
+      <span class="label en-only">Search software / steps…</span>
+      <span class="kbd">⌘K</span>
+    </button>
+
+    <div class="lang-toggle" role="group" aria-label="Language">
+      <button data-lang="zh">中</button>
+      <button data-lang="en">EN</button>
+    </div>
+
+    <button class="theme-toggle" data-theme-toggle aria-label="Toggle theme">
+      <span class="thumb">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      </span>
+    </button>
+
+    <a href="pre-install.html" class="btn-cta">
+      <span class="zh-only">開始準備</span><span class="en-only">Get Started</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+    </a>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<main class="shell">
+  <section class="page hero">
+    <div>
+      <span class="eyebrow">
+        <span class="zh-only">嘿 · 開始前先這樣</span>
+        <span class="en-only">HEY · BEFORE WE BUILD</span>
+      </span>
+      <h1 class="display">
+        <span class="zh-only">一起來準備<br/><span class="grad-text">需要的工具吧</span></span>
+        <span class="en-only">Let's Get<br/><span class="grad-text">Your Tools Ready.</span></span>
+      </h1>
+      <p class="lead">
+        <span class="zh-only">活動當天的每一分鐘都希望留給動手做，所以麻煩你在家先把工具備好。可以分次完成，不用一口氣做完。</span>
+        <span class="en-only">Every minute on the day should go to building, not setup. Get your tools ready at home — you can do it in chunks, no need to finish in one sitting.</span>
+      </p>
+
+      <div class="hero-cta-row">
+        <a href="pre-install.html" class="btn-cta">
+          <span class="zh-only">開始預先安裝</span><span class="en-only">Start pre-install</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+        </a>
+        <a href="#agenda" class="btn-ghost">
+          <span class="zh-only">先看一眼議程</span><span class="en-only">Peek the agenda</span>
+        </a>
+      </div>
+
+      <div class="hero-meta">
+        <span class="zh-only">支援 Windows 11 · Ubuntu 22.04 · 活動日期 June 30, 2026</span>
+        <span class="en-only">Windows 11 · Ubuntu 22.04 · event date June 30, 2026</span>
+      </div>
+    </div>
+
+    <!-- ===== Mascot scene ===== -->
+    <div class="mascot-wrap" aria-hidden="true">
+
+      <span class="sparkle sparkle-1"><svg width="22" height="22"><use href="#sparkle-glyph"/></svg></span>
+      <span class="sparkle sparkle-2"><svg width="14" height="14"><use href="#sparkle-glyph"/></svg></span>
+      <span class="sparkle sparkle-3"><svg width="18" height="18"><use href="#sparkle-glyph"/></svg></span>
+      <span class="sparkle sparkle-4"><svg width="12" height="12"><use href="#sparkle-glyph"/></svg></span>
+
+      <span class="sticker sticker-1 accent">
+        <span class="zh-only">30 分鐘</span><span class="en-only">30 min</span>
+      </span>
+      <span class="sticker sticker-2">
+        <span class="zh-only">超簡單 →</span><span class="en-only">easy →</span>
+      </span>
+      <span class="sticker sticker-3">
+        <span class="zh-only">幾個步驟</span><span class="en-only">steps</span>
+      </span>
+
+      <svg class="mascot" viewBox="0 0 320 380">
+        <defs>
+          <linearGradient id="paperFill" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0"  stop-color="var(--surface)"/>
+            <stop offset="1"  stop-color="var(--surface-2)"/>
+          </linearGradient>
+          <linearGradient id="clipFill" x1="0" x2="1" y1="0" y2="1">
+            <stop offset="0" stop-color="var(--c-pink)"/>
+            <stop offset="1" stop-color="var(--c-lavender)"/>
+          </linearGradient>
+        </defs>
+
+        <!-- ground shadow -->
+        <ellipse cx="160" cy="362" rx="92" ry="7" fill="rgba(0,0,0,0.18)"/>
+
+        <!-- clipboard back panel (slight offset for depth) -->
+        <rect x="54" y="74" width="212" height="270" rx="18"
+              fill="var(--surface-2)" opacity="0.6"/>
+
+        <!-- clipboard body -->
+        <rect x="50" y="68" width="212" height="270" rx="18"
+              fill="url(#paperFill)" stroke="var(--border-strong)" stroke-width="2"/>
+
+        <!-- clip at top -->
+        <rect x="120" y="46" width="72" height="34" rx="7" fill="url(#clipFill)"/>
+        <rect x="138" y="55" width="36" height="6"  rx="3" fill="rgba(255,255,255,0.45)"/>
+        <circle cx="156" cy="63" r="3.5" fill="rgba(255,255,255,0.6)"/>
+
+        <!-- checklist rows -->
+        <g>
+          <!-- row 1 ✓ -->
+          <rect x="74" y="104" width="18" height="18" rx="5" fill="var(--c-blue)"/>
+          <path d="M78 113 L84 119 L92 110" stroke="white" stroke-width="2.6"
+                fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="102" y="110" width="92" height="6" rx="3" fill="var(--text-3)" opacity="0.45"/>
+          <rect x="102" y="120" width="50" height="6" rx="3" fill="var(--text-3)" opacity="0.3"/>
+
+          <!-- row 2 ✓ -->
+          <rect x="74" y="142" width="18" height="18" rx="5" fill="var(--c-blue)"/>
+          <path d="M78 151 L84 157 L92 148" stroke="white" stroke-width="2.6"
+                fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="102" y="148" width="110" height="6" rx="3" fill="var(--text-3)" opacity="0.45"/>
+          <rect x="102" y="158" width="40" height="6"  rx="3" fill="var(--text-3)" opacity="0.3"/>
+
+          <!-- row 3 (open, accented) -->
+          <rect x="74" y="180" width="18" height="18" rx="5"
+                fill="none" stroke="var(--accent)" stroke-width="2.4"/>
+          <rect x="102" y="186" width="80" height="6" rx="3" fill="var(--accent)" opacity="0.75"/>
+          <rect x="102" y="196" width="30" height="6" rx="3" fill="var(--accent)" opacity="0.45"/>
+        </g>
+
+        <!-- face area: blush + eyes + smile -->
+        <g>
+          <ellipse cx="100" cy="265" rx="14" ry="8" fill="var(--c-pink)" opacity="0.45"/>
+          <ellipse cx="212" cy="265" rx="14" ry="8" fill="var(--c-pink)" opacity="0.45"/>
+
+          <circle class="eye eye-l" cx="124" cy="250" r="6.5" fill="var(--text)"/>
+          <circle class="eye eye-r" cx="188" cy="250" r="6.5" fill="var(--text)"/>
+          <!-- eye shine -->
+          <circle cx="126.5" cy="247" r="2" fill="white"/>
+          <circle cx="190.5" cy="247" r="2" fill="white"/>
+
+          <!-- smile -->
+          <path d="M134 280 Q156 298 178 280" stroke="var(--text)" stroke-width="3.6"
+                fill="none" stroke-linecap="round"/>
+        </g>
+
+        <!-- little hand waving -->
+        <g class="hand">
+          <circle cx="252" cy="220" r="14" fill="url(#clipFill)"/>
+          <circle cx="252" cy="220" r="14" fill="none" stroke="rgba(0,0,0,0.08)" stroke-width="1"/>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ===== PICK YOUR PATH ===== -->
+  <section class="section">
+    <div class="section-head">
+      <span class="eyebrow"><span class="zh-only">準備清單</span><span class="en-only">WHAT TO PREP</span></span>
+      <h2 class="display">
+        <span class="zh-only">你需要做<span class="grad-text">什麼？</span></span>
+        <span class="en-only">What do You
+Need to Do?</span>
+      </h2>
+    </div>
+
+    <div class="path-grid">
+      <a href="pre-install.html" class="path-card">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v8"/><path d="m4.93 10.93 1.41 1.41"/><path d="M2 18h2"/><path d="M20 18h2"/><path d="m19.07 10.93-1.41 1.41"/><path d="M22 22H2"/><path d="m16 6-4 4-4-4"/><path d="M16 18a4 4 0 0 0-8 0"/></svg>
+        </span>
+        <h3><span class="zh-only">預先安裝軟體</span><span class="en-only">Pre-install software</span></h3>
+        <p>
+          <span class="zh-only">裝好 adb、Qualcomm Software Center、PCAT、QUD、Docker 與 UART 工具。提供 Windows / Ubuntu 兩條流程。</span>
+          <span class="en-only">Install adb, Qualcomm Software Center, PCAT, QUD, Docker, and UART tools. Side-by-side Windows / Ubuntu flows.</span>
+        </p>
+        <span class="go"><span class="zh-only">前往安裝清單</span><span class="en-only">go to checklist</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+        </span>
+      </a>
+
+      <a href="flashing.html" class="path-card">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></svg>
+        </span>
+        <h3><span class="zh-only">燒錄裝置映像</span><span class="en-only">Flash the device</span></h3>
+        <p>
+          <span class="zh-only">依 Windows 燒錄說明書，用 PCAT（Windows）或 QDL（Ubuntu）把系統映像燒進裝置。</span>
+          <span class="en-only">Follow the Windows flashing guide — write the image to the device with PCAT (Windows) or QDL (Ubuntu).</span>
+        </p>
+        <span class="go"><span class="zh-only">前往燒錄說明</span><span class="en-only">go to flashing</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+        </span>
+      </a>
+
+      <a href="faq.html" class="path-card">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12" y2="17.01"/></svg>
+        </span>
+        <h3><span class="zh-only">常見問題</span><span class="en-only">FAQ</span></h3>
+        <p>
+          <span class="zh-only">UART 接不上？Docker 起不來？驅動裝不起來？卡關前先翻一下。</span>
+          <span class="en-only">UART won't connect? Docker won't start? Driver issues? Skim this before you get stuck.</span>
+        </p>
+        <span class="go"><span class="zh-only">查 FAQ</span><span class="en-only">browse FAQ</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+        </span>
+      </a>
+    </div>
+
+  <!-- ===== AGENDA ===== -->
+  <section class="section" id="agenda">
+    <div class="section-head">
+      <span class="eyebrow"><span class="zh-only">議程表</span><span class="en-only">AGENDA</span></span>
+      <h2 class="display">
+        <span class="zh-only">當天<span class="grad-text">這樣進行</span></span>
+        <span class="en-only">How the Day Runs.</span>
+      </h2>
+    </div>
+
+    <div class="ag-meta">
+      <span class="chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg>
+        2026 / 07 / 30（星期四）
+      </span>
+      <span class="chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        <b>10:00 – 16:00</b>
+      </span>
+      <span class="chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        新北市汐止區大同路一段 237 號 16 樓
+      </span>
+    </div>
+
+    <div class="timeline">
+
+      <div class="ag-row is-break">
+        <div class="ag-time">09:20 – 10:00</div>
+        <div class="ag-body"><div class="ag-label">報到</div></div>
+      </div>
+
+      <div class="ag-row is-break">
+        <div class="ag-time">10:00 - 10:10</div>
+        <div class="ag-body"><div class="ag-label">開場</div></div>
+      </div>
+
+      <div class="ag-row">
+        <div class="ag-time">10:10 - 10:40</div>
+        <div class="ag-body">
+          <div class="ag-speaker">
+            <span class="org">高通技術公司</span>
+            <span class="who"><span class="name">呂承翰</span><span class="divider"></span><span class="role">Director, Business Development,  Qualcomm</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ag-row">
+        <div class="ag-time">10:40 - 11:05</div>
+        <div class="ag-body">
+          <div class="ag-title">高通邊緣平台如何重塑智慧生態系</div>
+          <div class="ag-speaker">
+            <span class="org">宜鼎國際股份有限公司<span class="en">Innodisk Corporation</span></span>
+            <span class="who"><span class="name">吳志清</span><span class="divider"></span><span class="role">智能周邊應用事業處處長</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ag-row">
+        <div class="ag-time">11:05 - 11:30</div>
+        <div class="ag-body">
+          <div class="ag-title">用 Edge Impulse 簡化 Edge AI 開發與部署流程</div>
+          <div class="ag-speaker">
+            <span class="org">Edge Impulse Inc.</span>
+            <span class="who"><span class="name">林宣百</span><span class="divider"></span><span class="role">技術應用工程師, 高通技術公司</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ag-row">
+        <div class="ag-time">11:30 - 11:55</div>
+        <div class="ag-body">
+          <div class="ag-title">高效率 AI On-Prem 解決方案實現 Edge LLM 規模化部署</div>
+          <div class="ag-speaker">
+            <span class="org">安提國際股份有限公司<span class="en">Aetina Corporation</span></span>
+            <span class="who"><span class="name">施良岳</span><span class="divider"></span><span class="role">MegaEdge 邊緣運算平台 產品部副理, 安提國際</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ag-row">
+        <div class="ag-time">11:55 - 12:20</div>
+        <div class="ag-body">
+          <div class="ag-title">Trusted Agentic AI Beyond the Cloud</div>
+          <div class="ag-speaker">
+            <span class="org">行動貝果<span class="en">MoBagel</span></span>
+            <span class="who"><span class="name">鍾哲民</span><span class="divider"></span><span class="role">美商行動貝果 執行長暨共同創辦人</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ag-row is-break">
+        <div class="ag-time">12:20 - 13:30</div>
+        <div class="ag-body"><div class="ag-label">休息 / 午餐時間</div></div>
+      </div>
+
+      <div class="ag-row is-lab">
+        <div class="ag-time">13:30 - 14:30</div>
+        <div class="ag-body">
+          <span class="ag-tag">IQ9 實作演練 I</span>
+          <ul class="ag-nums">
+            <li><span class="n">1.</span> IQ Studio 平台概覽</li>
+            <li><span class="n">2.</span> 韌體燒錄 &amp; 環境初始化</li>
+          </ul>
+          <div class="ag-speaker">
+            <span class="who"><span class="name">黃誌祥</span><span class="divider"></span><span class="role">智能周邊應用事業處軟體研發部副理</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ag-row is-break">
+        <div class="ag-time">14:30 - 14:50</div>
+        <div class="ag-body"><div class="ag-label">休息 / 交流時間</div></div>
+      </div>
+
+      <div class="ag-row is-lab">
+        <div class="ag-time">14:50 - 15:50</div>
+        <div class="ag-body">
+          <span class="ag-tag">IQ9 實作演練 II</span>
+          <ul class="ag-nums">
+            <li><span class="n">1.</span> 高通模型下載與優化轉換</li>
+            <li>2.
+模型轉換與部署 AI PoC 展示與驗證</li>
+          </ul>
+          <div class="ag-speaker">
+            <span class="who"><span class="name">黃誌祥</span><span class="divider"></span><span class="role">智能周邊應用事業處軟體研發部副理</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ag-row is-break">
+        <div class="ag-time">15:50 - 16:00</div>
+        <div class="ag-body"><div class="ag-label">結尾</div></div>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="foot-inner">
+    <span><span class="zh-only">WORKSHOP 事前準備</span><span class="en-only">WORKSHOP PREP SITE</span></span>
+    <span>
+      <span class="zh-only">問題回報：請於現場或工作群組 @主辦</span>
+      <span class="en-only">Questions: ping the organisers on-site or in the channel</span>
+    </span>
+    <span>v1.0</span>
+  </div>
+</footer>
+
+<!-- ===== SEARCH OVERLAY ===== -->
+<div class="search-overlay" id="search-overlay" role="dialog" aria-modal="true">
+  <div class="search-panel">
+    <div class="search-input-row">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input id="search-input" type="text" placeholder="搜尋軟體、步驟、FAQ… / search software, steps, FAQ…" autocomplete="off" />
+      <span class="esc">ESC</span>
+    </div>
+    <div class="search-results" id="search-results"></div>
+  </div>
+</div>
+
+<script src="search-index.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
