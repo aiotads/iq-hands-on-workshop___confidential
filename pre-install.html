@@ -142,7 +142,7 @@
                 <td class="tool"><span class="zh-only">UART 序列埠工具</span><span class="en-only">UART serial tool</span></td>
                 <td><span class="zh-only">看 boot log / debug</span><span class="en-only">View boot log / debug</span></td>
                 <td><span class="cell-alt">MobaXterm</span></td>
-                <td><span class="cell-alt">minicom</span></td>
+                <td><span class="cell-alt">tio</span></td>
               </tr>
               <tr>
                 <td class="tool">CP210x USB-UART <span class="zh-only" style="color:var(--text-3);font-weight:500;">驅動</span><span class="en-only" style="color:var(--text-3);font-weight:500;">driver</span></td>
@@ -266,26 +266,18 @@
               <div class="step-num">05</div>
               <div class="step-body">
                 <h3>Docker Desktop <span class="step-sub-inline">(<span class="zh-only">需 WSL2</span><span class="en-only">needs WSL2</span>)</span></h3>
-                <div class="sub"><span class="zh-only">容器執行環境</span><span class="en-only">Container runtime</span></div>
+                <div class="sub"><span class="zh-only">安裝環境為當日實作(Hands-on的基礎)，請務必於課前完成配置。</span>
+                  <span class="en-only">A pre-configured environment is essential for the hands-on session; please ensure the installation is successful beforehand.</span></div>
                 <ol class="step-list">
-                  <li><span class="zh-only">以<strong>系統管理員</strong>開啟 PowerShell 啟用 WSL2，完成後重新開機：</span><span class="en-only">Open PowerShell <strong>as administrator</strong> to enable WSL2, then reboot:</span></li>
+                  <li><span class="zh-only"><strong>安裝方式：</strong>請直接執行此腳本進行安裝。<a class="link" href="https://github.com/InnoIPA/iQ-Foundry/blob/main/setup-windows-wsl.ps1" target="_blank">https://github.com/InnoIPA/iQ-Foundry/blob/main/setup-windows-wsl.ps1</a></span>
+                      <span class="en-only"><strong>Installation:</strong>Please run the following script to install.<a class="link" href="https://github.com/InnoIPA/iQ-Foundry/blob/main/setup-windows-wsl.ps1" target="_blank">https://github.com/InnoIPA/iQ-Foundry/blob/main/setup-windows-wsl.ps1</a></span></li>
                 </ol>
-                <div class="code">
-                  <div class="code-head"><span class="lang">PowerShell · admin</span>
-                    <button class="copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">Copy</span></button>
+                <div class="callout">
+                  <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></span>
+                  <div>
+                    <span class="zh-only">若安裝過程中遇到權限限制，請聯繫貴公司的 IT 或 MIS 部門協助排除。</span>
+                    <span class="en-only">After installing, QSC showing <code>you have no devices connected</code> is normal (no board attached yet).</span>
                   </div>
-<pre>wsl --install</pre>
-                </div>
-                <ol class="step-list" start="2" style="counter-reset: stepitem 1;">
-                  <li><span class="zh-only">下載並安裝 Docker Desktop：</span><span class="en-only">Download and install Docker Desktop:</span> <a class="link" href="https://docs.docker.com/desktop/setup/install/windows-install/" target="_blank" rel="noopener">https://docs.docker.com/desktop/setup/install/windows-install/</a></li>
-                  <li><span class="zh-only">安裝時確認 <code>Use WSL 2 instead of Hyper-V</code> 已勾選。</span><span class="en-only">During install, make sure <code>Use WSL 2 instead of Hyper-V</code> is checked.</span></li>
-                  <li><span class="zh-only">驗證安裝：</span><span class="en-only">Verify the install:</span></li>
-                </ol>
-                <div class="code">
-                  <div class="code-head"><span class="lang">PowerShell</span>
-                    <button class="copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">Copy</span></button>
-                  </div>
-<pre>docker run hello-world</pre>
                 </div>
               </div>
             </article>
