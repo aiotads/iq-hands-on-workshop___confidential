@@ -1,17 +1,18 @@
-<h1 align="center">🔮 Hands-On Workshop Prep Site</h1>
+<h1 align="center">🔮 <span>Hands-On Workshop</span> Prep Site</h1>
 
-<div align="center">
-  <table width="100px" style="border: none;">
-    <tr>
-      <td align="center">
-        <marquee direction="up" scrollamount="3" height="60px" behavior="scroll">
-          <samp>🚀<br>🔥<br>*<br>.</samp>
-        </marquee>
-      </td>
-    </tr>
-  </table>
-  <code>[⚡ Let's Get Your Tools Ready. ⚡]</code>
-</div>
+<p align="center">
+  <marquee direction="up" scrollamount="3" height="100px" style="background-color: #0d1117; border: 1px dashed #3b82f6; padding: 10px; border-radius: 6px; width: 100px; text-align: center;">
+    <span style="font-size: 22px;">🚀</span><br>
+    <span style="color: #ff4500; font-size: 16px;">🔥</span><br>
+    <span style="color: #ff8c00;">*</span><br>
+    <span style="color: #ffd700;">.</span><br>
+    <span style="color: #555;">.</span>
+  </marquee>
+</p>
+
+<p align="center">
+  👉 <b>[<a href="https://aiotads.github.io/iq-hands-on-workshop___confidential/" style="color: #ff69b4; text-decoration: none;">Click Here to Access Web Platform</a>]</b> 👈
+</p>
 
 ---
 
