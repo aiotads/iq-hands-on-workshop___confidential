@@ -1,0 +1,568 @@
+<!doctype html>
+<html lang="zh-Hant" data-lang="zh" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>腳本 Script — Workshop 事前準備</title>
+<script>(function(){var d=document.documentElement;try{d.setAttribute('data-theme',localStorage.getItem('how_theme')||'dark');}catch(e){d.setAttribute('data-theme','dark');}try{var l=localStorage.getItem('how_lang')||'zh';d.setAttribute('data-lang',l);d.setAttribute('lang',l==='zh'?'zh-Hant':'en');}catch(e){d.setAttribute('data-lang','zh');}})();</script>
+<style>html{background:#0b0a13}html[data-theme="light"]{background:#fbf9fc}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" class="face-icon" overflow="visible">
+          <circle class="eye eye-l" cx="9" cy="10.5" r="1.6" fill="currentColor"/>
+          <circle class="eye eye-r" cx="15" cy="10.5" r="1.6" fill="currentColor"/>
+          <path d="M8.5 15 Q12 17.5 15.5 15" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+        </svg>
+      </span>
+      <span class="brand-text">
+        <span class="top"><span class="zh-only">Workshop 事前準備</span><span class="en-only">Workshop Prep</span></span>
+        <span class="sub">PREP · BEFORE YOU ARRIVE</span>
+      </span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html" class="nav-link"><span class="zh-only">總覽</span><span class="en-only">Overview</span></a>
+      <a href="pre-install.html" class="nav-link"><span class="zh-only">預先安裝</span><span class="en-only">Pre-Install</span></a>
+      <a href="flashing.html" class="nav-link"><span class="zh-only">燒錄</span><span class="en-only">Flashing</span></a>
+      <a href="script.html" class="nav-link active"><span class="zh-only">腳本</span><span class="en-only">Script</span></a>
+      <a href="handouts.html" class="nav-link"><span class="zh-only">講義</span><span class="en-only">Handouts</span></a>
+      <a href="faq.html" class="nav-link"><span class="zh-only">FAQ</span><span class="en-only">FAQ</span></a>
+    </nav>
+    <span class="nav-spacer"></span>
+    <button class="nav-search" data-open-search aria-label="Open search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <span class="label zh-only">搜尋軟體 / 步驟…</span>
+      <span class="label en-only">Search software / steps…</span>
+      <span class="kbd">⌘K</span>
+    </button>
+    <div class="lang-toggle"><button data-lang="zh">中</button><button data-lang="en">EN</button></div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Toggle theme">
+      <span class="thumb">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      </span>
+    </button>
+    <a href="handouts.html" class="btn-cta">
+      <span class="zh-only">下一步：講義</span><span class="en-only">Next: Handouts</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+    </a>
+  </div>
+</header>
+
+<main class="shell">
+  <section class="page">
+
+    <span class="eyebrow"><span class="zh-only">步驟 03 · 當天操作腳本</span><span class="en-only">STEP 03 · WORKSHOP DAY SCRIPT</span></span>
+    <h1 class="display">
+      <span class="zh-only">iQ-Foundry + iQ-Studio<br/><span class="grad-text">實作腳本套件。</span></span>
+      <span class="en-only">iQ-Foundry + iQ-Studio<br/><span class="grad-text">Hands-on Workshop Package.</span></span>
+    </h1>
+    <p class="lead">
+      <span class="zh-only">在 <strong>Windows 11 + WSL2</strong> 主機與 <strong>EXMP-Q911</strong>（Qualcomm QCS9075）裝置上，走一遍完整的 YOLO26 模型部署流程：FP32 匯出（Qualcomm AI Hub）→ streampipe 9 路 FP32 裝置端 demo → INT8 量化（qc）→ mAP 比較 → iQ-Foundry 裝置端測試 → streampipe 9 路 INT8 裝置端 demo。每個步驟都封裝成 <code>scripts/</code> 目錄下的編號腳本，依序執行即可，不需要手動輸入指令。</span>
+      <span class="en-only">Walk through the full YOLO26 model deployment flow on a <strong>Windows 11 + WSL2</strong> host with an <strong>EXMP-Q911</strong> (Qualcomm QCS9075) target device: FP32 export (Qualcomm AI Hub) → streampipe 9-ch FP32 on-device demo → INT8 quantization (qc) → mAP comparison → iQ-Foundry on-device test → streampipe 9-ch INT8 on-device demo. Every step is packaged as a numbered script under <code>scripts/</code> — just run them in order. No manual command typing is required.</span>
+    </p>
+
+    <!-- Pipeline diagram -->
+    <div class="code" style="margin-top:var(--space-8);">
+      <div class="code-head"><span class="lang">pipeline</span>
+        <button class="copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">Copy</span></button>
+      </div>
+<pre>Step 0    Windows: setup-windows-wsl.ps1 (WSL2 + USB passthrough)
+   ↓
+Step 1    WSL: install adb, check Q911 connection
+   ↓
+Step 2    Install Docker, get iQ-Foundry image
+   ↓
+Step 3    Log in to Qualcomm AI Hub
+   ↓
+Step 4_1  YOLO26 FP32 export (.tflite)
+   ↓
+Step 4_2  Install iQ-Studio on Q911, run FP32 streampipe 9ch
+   ↓
+Step 5_1  Deploy Q911 runtime venv
+   ↓
+Step 5_2  INT8 quantization (qc)
+   ↓
+Step 5_3  mAP: FP32 vs INT8
+   ↓
+Step 5_4  iQ-Foundry on-device test
+   ↓
+Step 5_5  Run INT8 streampipe 9ch</pre>
+    </div>
+
+    <!-- Prerequisites -->
+    <section style="margin-top:var(--space-12);">
+      <span class="eyebrow"><span class="zh-only">開始前</span><span class="en-only">PREREQUISITES</span></span>
+      <h2 class="display" style="font-size:clamp(26px,3vw,38px);">
+        <span class="zh-only">你需要準備什麼</span><span class="en-only">What you'll need</span>
+      </h2>
+      <div class="soft-table-wrap">
+        <div class="soft-scroll">
+          <table class="soft-table">
+            <thead>
+              <tr>
+                <th><span class="zh-only">項目</span><span class="en-only">Item</span></th>
+                <th><span class="zh-only">需求</span><span class="en-only">Requirement</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="tool">Host</td>
+                <td><span class="zh-only">x86 Windows 11（建議 16 GB 以上記憶體）</span><span class="en-only">x86 Windows 11 (16 GB RAM or more recommended)</span></td>
+              </tr>
+              <tr>
+                <td class="tool"><span class="zh-only">目標裝置</span><span class="en-only">Target device</span></td>
+                <td><span class="zh-only">EXMP-Q911（Qualcomm QCS9075），以 USB-C 連接主機</span><span class="en-only">EXMP-Q911 (Qualcomm QCS9075), connected to the host via USB-C</span></td>
+              </tr>
+              <tr>
+                <td class="tool"><span class="zh-only">顯示器</span><span class="en-only">Display</span></td>
+                <td><span class="zh-only">Q911 需接上 DP 螢幕，用來觀看 9 路 streampipe demo</span><span class="en-only">DP monitor attached to the Q911 (to watch the 9-channel streampipe demo)</span></td>
+              </tr>
+              <tr>
+                <td class="tool">Qualcomm AI Hub</td>
+                <td><span class="zh-only">個人 API token（<a class="link" href="https://aihub.qualcomm.com/" target="_blank" rel="noopener">aihub.qualcomm.com</a>）</span><span class="en-only">Personal API token (<a class="link" href="https://aihub.qualcomm.com/" target="_blank" rel="noopener">aihub.qualcomm.com</a>)</span></td>
+              </tr>
+              <tr>
+                <td class="tool">Host <span class="zh-only">網路</span><span class="en-only">internet</span></td>
+                <td><span class="zh-only">Step 1–3、4_1、5_2 需要（apt / Docker Hub / AI Hub）</span><span class="en-only">Required for Steps 1–3, 4_1, 5_2 (apt / Docker Hub / AI Hub)</span></td>
+              </tr>
+              <tr>
+                <td class="tool">Q911 <span class="zh-only">網路</span><span class="en-only">internet</span></td>
+                <td><span class="zh-only">Step 4_2 第一次執行需要（自動下載 streampipe image，約 3 分鐘）</span><span class="en-only">Required on first run of Step 4_2 (auto-pulls the streampipe image, ~3 min)</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Package layout -->
+    <section style="margin-top:var(--space-12);">
+      <span class="eyebrow"><span class="zh-only">套件結構</span><span class="en-only">PACKAGE LAYOUT</span></span>
+      <h2 class="display" style="font-size:clamp(26px,3vw,38px);">
+        <span class="zh-only">資料夾裡有什麼</span><span class="en-only">What's in the package</span>
+      </h2>
+      <div class="soft-table-wrap">
+        <div class="soft-scroll">
+          <table class="soft-table">
+            <thead>
+              <tr>
+                <th>Path</th>
+                <th><span class="zh-only">內容</span><span class="en-only">Contents</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="tool">scripts/</td>
+                <td><span class="zh-only">逐步工作坊腳本（本頁的主要內容）</span><span class="en-only">Step-by-step workshop scripts (the main subject of this page)</span></td>
+              </tr>
+              <tr>
+                <td class="tool">github/iQ-Foundry/</td>
+                <td><span class="zh-only">iQ-Foundry 原始碼（量化 qc / mAP / 裝置端測試）</span><span class="en-only">iQ-Foundry source (quantization qc / mAP / on-device test)</span></td>
+              </tr>
+              <tr>
+                <td class="tool">github/iQ-Studio/</td>
+                <td><span class="zh-only">iQ-Studio 原始碼（裝置端 streampipe demo）</span><span class="en-only">iQ-Studio source (on-device streampipe demo)</span></td>
+              </tr>
+              <tr>
+                <td class="tool">export_qai_fp32/</td>
+                <td><span class="zh-only">FP32 匯出用的 Dockerfile 與腳本</span><span class="en-only">Dockerfile and script for the FP32 export</span></td>
+              </tr>
+              <tr>
+                <td class="tool">iqf_save/</td>
+                <td><span class="zh-only">模型（yolo26n.pt）、校正圖片、COCO val2017 資料集、裝置端 venv tarball</span><span class="en-only">Models (yolo26n.pt), calibration images, COCO val2017 dataset, device venv tarball</span></td>
+              </tr>
+              <tr>
+                <td class="tool">iqs_config/</td>
+                <td><span class="zh-only">streampipe 9 路 FP32 / INT8 設定檔</span><span class="en-only">streampipe 9-ch FP32 / INT8 config files</span></td>
+              </tr>
+              <tr>
+                <td class="tool">docker_images/</td>
+                <td><span class="zh-only">離線 Docker image tarball（沒有網路時的備援）</span><span class="en-only">Offline Docker image tarballs (fallback when there is no network)</span></td>
+              </tr>
+              <tr>
+                <td class="tool">command_w.sh / command_ub.sh</td>
+                <td><span class="zh-only">逐指令參考（Windows WSL / Ubuntu host），僅供參考</span><span class="en-only">Command-by-command reference (Windows WSL / Ubuntu host), for reference only</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <div class="page--with-side" style="margin-top:var(--space-12);">
+
+      <aside class="side-nav" aria-label="On this page">
+        <div class="side-nav-head"><span class="zh-only">腳本步驟</span><span class="en-only">Script steps</span></div>
+        <a href="#s0"><span class="num">0</span> <span class="zh-only">Windows 設定</span><span class="en-only">Windows setup</span></a>
+        <a href="#s1"><span class="num">1</span> adb</a>
+        <a href="#s2"><span class="num">2</span> Docker</a>
+        <a href="#s3"><span class="num">3</span> AI Hub</a>
+        <a href="#s4_1"><span class="num">4.1</span> <span class="zh-only">FP32 匯出</span><span class="en-only">FP32 export</span></a>
+        <a href="#s4_2"><span class="num">4.2</span> FP32 streampipe</a>
+        <a href="#s5_1"><span class="num">5.1</span> Q911 venv</a>
+        <a href="#s5_2"><span class="num">5.2</span> <span class="zh-only">量化</span><span class="en-only">Quantize</span></a>
+        <a href="#s5_3"><span class="num">5.3</span> mAP</a>
+        <a href="#s5_4"><span class="num">5.4</span> <span class="zh-only">裝置測試</span><span class="en-only">Device test</span></a>
+        <a href="#s5_5"><span class="num">5.5</span> INT8 streampipe</a>
+      </aside>
+
+      <div>
+
+        <!-- 0 -->
+        <article class="step" id="s0">
+          <div class="step-num">0</div>
+          <div class="step-body">
+            <h3><span class="zh-only">Windows 主機設定（僅需一次）</span><span class="en-only">Windows Host Setup (one-time)</span></h3>
+            <div class="sub">[WIN-PS]</div>
+            <p>
+              <span class="zh-only">以<strong>系統管理員</strong>身分開啟 Windows PowerShell（開始 → 搜尋 PowerShell → 右鍵 → 以系統管理員身分執行），切換到套件的 <code>scripts</code> 資料夾：</span>
+              <span class="en-only">Open Windows PowerShell <strong>as Administrator</strong> (Start → search for PowerShell → right-click → Run as administrator), then change into the package's <code>scripts</code> folder:</span>
+            </p>
+            <div class="code">
+              <div class="code-head"><span class="lang">powershell</span>
+                <button class="copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">Copy</span></button>
+              </div>
+<pre>cd (Get-ChildItem "$env:USERPROFILE" -Directory -Recurse -ErrorAction SilentlyContinue | Where-Object { $_.FullName -like "*hands_on_workshop_package*\scripts" } | Select-Object -First 1 -ExpandProperty FullName)</pre>
+            </div>
+            <p style="margin-top:var(--space-6);">
+              <span class="zh-only">執行 Windows 端的設定腳本（約需 5–10 分鐘）：</span>
+              <span class="en-only">Run the Windows-side setup script (takes about 5–10 minutes):</span>
+            </p>
+            <div class="code">
+              <div class="code-head"><span class="lang">powershell</span>
+                <button class="copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">Copy</span></button>
+              </div>
+<pre>powershell -ExecutionPolicy Bypass -File .\setup-windows-wsl.ps1</pre>
+            </div>
+            <p style="margin-top:var(--space-6);">
+              <span class="zh-only">此腳本會安裝並設定 WSL2 Ubuntu-22.04、啟用 systemd，並透過 usbipd 把 EXMP-Q911 的 USB 裝置掛進 WSL。過程需要互動：</span>
+              <span class="en-only">The script installs and configures WSL2 Ubuntu-22.04, enables systemd, and attaches the EXMP-Q911 USB device into WSL via usbipd. The setup is interactive:</span>
+            </p>
+            <ul style="margin:var(--space-4) 0 0; padding-left:20px; color:var(--text-2); font-size:15px; line-height:1.65;">
+              <li><span class="zh-only">Windows 詢問是否繼續時，回答 <code>Y</code> 或 <code>Yes</code>。</span><span class="en-only">When Windows asks whether to continue, answer <code>Y</code> or <code>Yes</code>.</span></li>
+              <li style="margin-top:6px;"><span class="zh-only">若是第一次初始化 Ubuntu-22.04，出現提示時請建立 WSL 帳號（設定使用者名稱與密碼）。</span><span class="en-only">If Ubuntu-22.04 is being initialized for the first time, create the WSL account when prompted (set a username and password).</span></li>
+            </ul>
+            <div class="callout">
+              <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></span>
+              <div>
+                <span class="zh-only">完成後會自動開啟一個 WSL Ubuntu 終端機。<strong>之後所有步驟都在 WSL 內執行。</strong></span>
+                <span class="en-only">When it finishes, a WSL Ubuntu terminal opens automatically. <strong>All remaining steps run inside WSL.</strong></span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <div style="margin:var(--space-10) 0;padding-top:var(--space-8);border-top:1px solid var(--border);">
+          <span class="eyebrow"><span class="zh-only">在 WSL 內執行</span><span class="en-only">RUN INSIDE WSL</span></span>
+          <h2 class="display" style="font-size:clamp(22px,2.6vw,30px);margin-top:var(--space-3);">
+            <span class="zh-only">工作坊步驟</span><span class="en-only">Workshop Steps</span>
+          </h2>
+          <p class="lead" style="font-size:15px;">
+            <span class="zh-only">在 WSL 內，先切換到套件的 <code>scripts</code> 資料夾：</span>
+            <span class="en-only">Inside WSL, first change into the package's <code>scripts</code> folder:</span>
+          </p>
+          <div class="code">
+            <div class="code-head"><span class="lang">bash</span>
+              <button class="copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">Copy</span></button>
+            </div>
+<pre>cd "$(find /mnt/c/Users -maxdepth 4 -type d -iname 'hands_on_workshop_package*' -print -quit)/scripts"</pre>
+          </div>
+          <p style="margin-top:var(--space-4);color:var(--text-2);font-size:15px;">
+            <span class="zh-only">依序執行以下腳本即可（每支腳本都會自動定位套件路徑，並檢查自己的前置條件）：</span>
+            <span class="en-only">Run the scripts in order (each script locates the package path and checks its own preconditions automatically):</span>
+          </p>
+          <p style="margin-top:var(--space-3);color:var(--text-3);font-size:13.5px;">
+            <span class="zh-only">想看每支腳本背後的原始指令？閱讀 <code>command_w.sh</code>（Windows WSL 版本）或 <code>command_ub.sh</code>（Ubuntu host 版本，含每步驟實測的時間與網路需求）。</span>
+            <span class="en-only">Want the raw commands behind each script? Read <code>command_w.sh</code> (Windows WSL version) or <code>command_ub.sh</code> (Ubuntu host version, includes measured per-step timing and network requirements).</span>
+          </p>
+        </div>
+
+        <!-- 1 -->
+        <article class="step" id="s1">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h3><span class="zh-only">安裝 adb，確認 Q911 連線</span><span class="en-only">Install adb, check Q911 connection</span></h3>
+            <div class="sub">[HOST] · <span class="zh-only">約 1 分鐘</span><span class="en-only">~1 min</span></div>
+            <p>
+              <span class="zh-only">用 <code>apt</code> 安裝 adb；<code>adb devices</code> 應該會列出 EXMP-Q911。</span>
+              <span class="en-only">Install adb via <code>apt</code>; <code>adb devices</code> should list EXMP-Q911.</span>
+            </p>
+            <div class="code">
+              <div class="code-head"><span class="lang">bash</span>
+                <button class="copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">Copy</span></button>
+              </div>
+<pre>bash step_1.sh</pre>
+            </div>
+            <div class="callout">
+              <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></span>
+              <div>
+                <span class="zh-only"><strong><code>adb devices</code> 沒看到 Q911？</strong>檢查 USB-C 線是否插好、Step 0 的 usbipd USB passthrough 是否完成；必要時回到 Step 0 重新執行一次 <code>setup-windows-wsl.ps1</code>。</span>
+                <span class="en-only"><strong><code>adb devices</code> doesn't list the Q911?</strong> Check that the USB-C cable is seated and that the usbipd USB passthrough from Step 0 completed; go back and rerun <code>setup-windows-wsl.ps1</code> if needed.</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 2 -->
+        <article class="step" id="s2">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h3><span class="zh-only">安裝 Docker，取得 iQ-Foundry image</span><span class="en-only">Install Docker, get iQ-Foundry image</span></h3>
+            <div class="sub">[HOST] · <span class="zh-only">數分鐘</span><span class="en-only">a few min</span></div>
+            <p>
+              <span class="zh-only">安裝 Docker Engine，pull <code>innodiskorg/iqf:latest</code>。</span>
+              <span class="en-only">Install Docker Engine, pull <code>innodiskorg/iqf:latest</code>.</span>
+            </p>
+            <div class="code">
+              <div class="code-head"><span class="lang">bash</span>
+                <button class="copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">Copy</span></button>
+              </div>
+<pre>bash step_2.sh</pre>
+            </div>
+          </div>
+        </article>
+
+        <!-- 3 -->
+        <article class="step" id="s3">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h3><span class="zh-only">登入 Qualcomm AI Hub</span><span class="en-only">Log in to Qualcomm AI Hub</span></h3>
+            <div class="sub">[HOST] · <span class="zh-only">幾秒</span><span class="en-only">seconds</span></div>
+            <p>
+              <span class="zh-only">登入 Qualcomm AI Hub 並驗證 token（需要帶入 API key 參數）。</span>
+              <span class="en-only">Log in to Qualcomm AI Hub and verify the token (API key argument required).</span>
+            </p>
+            <div class="code">
+              <div class="code-head"><span class="lang">bash</span>
+                <button class="copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">Copy</span></button>
+              </div>
+<pre>bash step_3.sh &lt;YOUR_QAI_HUB_API_KEY&gt;</pre>
+            </div>
+            <div class="callout callout--warn">
+              <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>
+              <div>
+                <span class="zh-only">把 <code>&lt;YOUR_QAI_HUB_API_KEY&gt;</code> 換成你自己在 <a class="link" href="https://aihub.qualcomm.com/" target="_blank" rel="noopener">aihub.qualcomm.com</a> 取得的個人 API token。請刪除 <code>&lt; &gt;</code></span>
+                <span class="en-only">Replace <code>&lt;YOUR_QAI_HUB_API_KEY&gt;</code> with your own personal API token from <a class="link" href="https://aihub.qualcomm.com/" target="_blank" rel="noopener">aihub.qualcomm.com</a>. Please remove the <code>&lt; &gt;</code> brackets.</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 4.1 -->
+        <article class="step" id="s4_1">
+          <div class="step-num">4.1</div>
+          <div class="step-body">
+            <h3><span class="zh-only">FP32 匯出（YOLO26 → .tflite）</span><span class="en-only">FP32 export (YOLO26 → .tflite)</span></h3>
+            <div class="sub">[HOST · AI Hub] · <span class="zh-only">約 1–2 分鐘</span><span class="en-only">~1–2 min</span></div>
+            <p>
+              <span class="zh-only">建置 <code>iqf-aihub</code> image，匯出 YOLO26 FP32 TFLite 模型。</span>
+              <span class="en-only">Build the <code>iqf-aihub</code> image, export YOLO26 FP32 TFLite.</span>
+            </p>
+            <div class="code">
+              <div class="code-head"><span class="lang">bash</span>
+                <button class="copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">Copy</span></button>
+              </div>
+<pre>bash step_4_1.sh</pre>
+            </div>
+            <div class="sub"><span class="zh-only">產出：</span><span class="en-only">Output:</span> <code>iqf_save/models/qualcomm_ai_hub_fp32/yolo26_det-tflite-float/yolo26_det.tflite</code></div>
+          </div>
+        </article>
+
+        <!-- 4.2 -->
+        <article class="step" id="s4_2">
+          <div class="step-num">4.2</div>
+          <div class="step-body">
+            <h3><span class="zh-only">安裝 iQ-Studio 到 Q911，執行 FP32 streampipe 9ch</span><span class="en-only">Install iQ-Studio on Q911 and run FP32 streampipe 9ch</span></h3>
+            <div class="sub">[Q911 · <span class="zh-only">首次執行</span><span class="en-only">first run</span>] · <span class="zh-only">首次約 3 分鐘</span><span class="en-only">~3 min first run</span></div>
+            <p>
+              <span class="zh-only">把 iQ-Studio 推送並安裝到 Q911，啟動 FP32 streampipe 9ch。</span>
+              <span class="en-only">Push and install iQ-Studio on Q911, start FP32 streampipe 9ch.</span>
+            </p>
+            <div class="code">
+              <div class="code-head"><span class="lang">bash</span>
+                <button class="copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">Copy</span></button>
+              </div>
+<pre>bash step_4_2.sh</pre>
+            </div>
+            <div class="callout">
+              <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></span>
+              <div>
+                <span class="zh-only">第一次執行需要 Q911 能連上網路（自動下載 streampipe image，約 3 分鐘）。腳本會在 Q911 螢幕顯示即時 9 路推論畫面，完成後按 <code>Ctrl+C</code> 即可，腳本會自動清除裝置上殘留的 streampipe container。</span>
+                <span class="en-only">The Q911 needs internet access on first run (auto-pulls the streampipe image, ~3 min). The script shows a live 9-channel inference grid on the Q911's monitor — press <code>Ctrl+C</code> when done; it automatically cleans up any leftover streampipe container on the device.</span>
+              </div>
+            </div>
+            <div class="callout">
+              <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></span>
+              <div>
+                <span class="zh-only"><strong>Q911 沒有網路？</strong>改用離線 tarball 載入 streampipe image（<code>docker_images/</code>；參考 <code>command_ub.sh</code> 內的「(2-fallback)」段落）。</span>
+                <span class="en-only"><strong>No internet on the Q911?</strong> Load the streampipe image from the offline tarball instead (<code>docker_images/</code>; see the "(2-fallback)" section in <code>command_ub.sh</code>).</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 5.1 -->
+        <article class="step" id="s5_1">
+          <div class="step-num">5.1</div>
+          <div class="step-body">
+            <h3><span class="zh-only">部署 Q911 runtime venv</span><span class="en-only">Deploy Q911 runtime venv</span></h3>
+            <div class="sub"><span class="zh-only">離線</span><span class="en-only">Offline</span> · <span class="zh-only">幾秒</span><span class="en-only">seconds</span></div>
+            <p>
+              <span class="zh-only">部署裝置端的 venv；執行 <code>adb kill-server</code>，把 USB 讓給 iQ-Foundry container 內的 adb 使用。</span>
+              <span class="en-only">Deploy the device-side venv; run <code>adb kill-server</code> to release USB for the container.</span>
+            </p>
+            <div class="code">
+              <div class="code-head"><span class="lang">bash</span>
+                <button class="copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">Copy</span></button>
+              </div>
+<pre>bash step_5_1.sh</pre>
+            </div>
+            <div class="callout">
+              <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></span>
+              <div>
+                <span class="zh-only">從現在到 Step 5.4，host 端的 <code>adb</code> 會無法使用——這是預期行為，USB 已經讓給 container 內的 adb。Step 5.5 會執行 <code>adb start-server</code> 把它還原。</span>
+                <span class="en-only">From here through Step 5.4, host-side <code>adb</code> will be unavailable — this is expected; the USB device has been handed to the adb inside the container. Step 5.5 runs <code>adb start-server</code> to restore it.</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 5.2 -->
+        <article class="step" id="s5_2">
+          <div class="step-num">5.2</div>
+          <div class="step-body">
+            <h3><span class="zh-only">INT8 量化（qc）</span><span class="en-only">INT8 quantization (qc)</span></h3>
+            <div class="sub">[HOST · AI Hub] · <span class="zh-only">約 5–9 分鐘</span><span class="en-only">~5–9 min</span></div>
+            <p>
+              <span class="zh-only">qc 量化流程：YOLO26 <code>.pt</code> → INT8 <code>.tflite</code>。</span>
+              <span class="en-only">qc quantization: YOLO26 <code>.pt</code> → INT8 <code>.tflite</code>.</span>
+            </p>
+            <div class="code">
+              <div class="code-head"><span class="lang">bash</span>
+                <button class="copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">Copy</span></button>
+              </div>
+<pre>bash step_5_2.sh</pre>
+            </div>
+            <div class="sub"><span class="zh-only">產出：</span><span class="en-only">Output:</span> <code>github/iQ-Foundry/out/model/yolov26/yolov26_int8_&lt;timestamp&gt;.tflite</code></div>
+          </div>
+        </article>
+
+        <!-- 5.3 -->
+        <article class="step" id="s5_3">
+          <div class="step-num">5.3</div>
+          <div class="step-body">
+            <h3><span class="zh-only">mAP 比較：FP32 vs INT8</span><span class="en-only">mAP comparison (FP32 vs INT8)</span></h3>
+            <div class="sub"><span class="zh-only">離線</span><span class="en-only">Offline</span> · <span class="zh-only">數分鐘</span><span class="en-only">a few min</span></div>
+            <p>
+              <span class="zh-only">比較 FP32 與 INT8 模型的 mAP（<code>--max-images 50</code>）。</span>
+              <span class="en-only">Compare FP32 vs INT8 mAP (<code>--max-images 50</code>).</span>
+            </p>
+            <div class="code">
+              <div class="code-head"><span class="lang">bash</span>
+                <button class="copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">Copy</span></button>
+              </div>
+<pre>bash step_5_3.sh</pre>
+            </div>
+            <div class="sub"><span class="zh-only">產出：</span><span class="en-only">Output:</span> <code>github/iQ-Foundry/out/mAP_results/yolov26/</code></div>
+          </div>
+        </article>
+
+        <!-- 5.4 -->
+        <article class="step" id="s5_4">
+          <div class="step-num">5.4</div>
+          <div class="step-body">
+            <h3><span class="zh-only">iQ-Foundry 裝置端測試</span><span class="en-only">iQ-Foundry on-device test</span></h3>
+            <div class="sub"><span class="zh-only">離線</span><span class="en-only">Offline</span> · <span class="zh-only">數十秒</span><span class="en-only">tens of seconds</span></div>
+            <p>
+              <span class="zh-only">透過 adb 在 Q911 上執行 INT8 推論。</span>
+              <span class="en-only">Run INT8 inference on the Q911 via adb.</span>
+            </p>
+            <div class="code">
+              <div class="code-head"><span class="lang">bash</span>
+                <button class="copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">Copy</span></button>
+              </div>
+<pre>bash step_5_4.sh</pre>
+            </div>
+            <div class="sub"><span class="zh-only">產出：</span><span class="en-only">Output:</span> <code>github/iQ-Foundry/out/test/yolov26/</code></div>
+          </div>
+        </article>
+
+        <!-- 5.5 -->
+        <article class="step" id="s5_5">
+          <div class="step-num">5.5</div>
+          <div class="step-body">
+            <h3><span class="zh-only">執行 INT8 streampipe 9ch</span><span class="en-only">Run INT8 streampipe 9ch</span></h3>
+            <div class="sub"><span class="zh-only">離線</span><span class="en-only">Offline</span> · <span class="zh-only">幾秒</span><span class="en-only">seconds</span></div>
+            <p>
+              <span class="zh-only">推送 INT8 模型與設定檔，啟動 INT8 streampipe 9ch。</span>
+              <span class="en-only">Push the INT8 model and config, start INT8 streampipe 9ch.</span>
+            </p>
+            <div class="code">
+              <div class="code-head"><span class="lang">bash</span>
+                <button class="copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">Copy</span></button>
+              </div>
+<pre>bash step_5_5.sh</pre>
+            </div>
+            <div class="callout">
+              <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M20 6 9 17l-5-5"/></svg></span>
+              <div>
+                <span class="zh-only">同樣會在 Q911 螢幕顯示即時 9 路畫面，完成後按 <code>Ctrl+C</code>。腳本會執行 <code>adb start-server</code>，把 host 端的 adb 恢復。</span>
+                <span class="en-only">Again shows a live 9-channel grid on the Q911's monitor — press <code>Ctrl+C</code> when done. The script runs <code>adb start-server</code> to restore host-side adb.</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:var(--space-12);padding-top:var(--space-8);border-top:1px solid var(--border);">
+      <a href="flashing.html" class="btn-ghost">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg>
+        <span class="zh-only">回燒錄</span><span class="en-only">Back to flashing</span>
+      </a>
+      <a href="handouts.html" class="btn-cta">
+        <span class="zh-only">下一步：講義</span><span class="en-only">Next: Handouts</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+      </a>
+    </div>
+
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="foot-inner">
+    <span><span class="zh-only">WORKSHOP 事前準備</span><span class="en-only">WORKSHOP PREP SITE</span></span>
+    <span>
+      <span class="zh-only">問題回報：請於現場或工作群組 @主辦</span>
+      <span class="en-only">Questions: ping the organisers on-site or in the channel</span>
+    </span>
+    <span>v1.0</span>
+  </div>
+</footer>
+
+<div class="search-overlay" id="search-overlay" role="dialog" aria-modal="true">
+  <div class="search-panel">
+    <div class="search-input-row">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input id="search-input" type="text" placeholder="搜尋軟體、步驟、FAQ… / search software, steps, FAQ…" autocomplete="off" />
+      <span class="esc">ESC</span>
+    </div>
+    <div class="search-results" id="search-results"></div>
+  </div>
+</div>
+
+<script src="search-index.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
