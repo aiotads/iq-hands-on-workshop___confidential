@@ -104,7 +104,6 @@
                 <th><span class="zh-only">軟體</span><span class="en-only">Software</span></th>
                 <th><span class="zh-only">用途</span><span class="en-only">Purpose</span></th>
                 <th><strong>Windows 11</strong></th>
-                <th>Ubuntu</th>
               </tr>
             </thead>
             <tbody>
@@ -112,38 +111,25 @@
                 <td class="tool">adb</td>
                 <td><span class="zh-only">連線 / 除錯平台</span><span class="en-only">Device connect / debug</span></td>
                 <td><span class="cell-yes"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></span></td>
-                <td><span class="cell-yes"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></span></td>
-              </tr>
               <tr>
                 <td class="tool">Qualcomm Software Center <span style="color:var(--text-3);font-weight:500;">(QSC)</span></td>
                 <td><span class="zh-only">下載 PCAT / QUD</span><span class="en-only">Download PCAT / QUD</span></td>
                 <td><span class="cell-yes"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></span></td>
-                <td><span class="cell-yes"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></span></td>
-              </tr>
               <tr>
                 <td class="tool">PCAT Tool</td>
                 <td><span class="zh-only">燒錄 image 工具</span><span class="en-only">Image flashing tool</span></td>
-                <td><span class="cell-yes"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></span></td>
                 <td><span class="cell-yes"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></span></td>
               </tr>
               <tr>
                 <td class="tool">QUD</td>
                 <td><span class="zh-only">Qualcomm USB 驅動</span><span class="en-only">Qualcomm USB driver</span></td>
                 <td><span class="cell-yes"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></span></td>
-                <td><span class="cell-yes"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></span></td>
-              </tr>
               <tr>
                 <td class="tool">QDL</td>
                 <td><span class="zh-only">命令列燒錄工具</span><span class="en-only">CLI flashing tool</span></td>
-                <td><span class="cell-na"><span class="dash"></span><span class="note"><span class="zh-only">改用 PCAT</span><span class="en-only">use PCAT</span></span></span></td>
-                <td><span class="cell-yes"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></span></td>
+                <td><span class="cell-yes"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="note"><span class="zh-only">PCAT</span><span class="en-only">PCAT</span></span></span></td>
               </tr>
-              <tr>
-                <td class="tool">Docker</td>
-                <td><span class="zh-only">容器執行環境</span><span class="en-only">Container runtime</span></td>
-                <td><span class="cell-yes"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="note"><span class="zh-only">需 WSL2</span><span class="en-only">needs WSL2</span></span></span></td>
-                <td><span class="cell-yes"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></span></td>
-              </tr>
+
             </tbody>
           </table>
         </div>
@@ -179,7 +165,7 @@
             <a href="#win-qsc"><span class="num">01</span> QSC</a>
             <a href="#win-pcat"><span class="num">02</span> PCAT Tool</a>
             <a href="#win-qud"><span class="num">03</span> QUD</a>
-            <a href="#win-docker"><span class="num">04</span> Docker</a>
+            <a href="#win-docker"><span class="num">04</span> WSL + Ubuntu Setup</a>
 
           </aside>
 
@@ -249,22 +235,17 @@
               </div>
             </article>
 
-            <!-- W4 Docker -->
+            <!-- W4 wsl+Ubuntu -->
             <article class="step" id="win-docker">
               <div class="step-num">04</div>
               <div class="step-body">
-                <h3>Model Conversion Env Setup (For iQ-foundry)</h3>
+                <h3>WSL + Ubuntu Setup</h3>
                 <div class="sub"><span class="zh-only">安裝環境為當日實作(Hands-on的基礎)，請務必於課前完成配置。</span>
                   <span class="en-only">A pre-configured environment is essential for the hands-on session; please ensure the installation is successful beforehand.</span></div>
                 <ol class="step-list">
                   <li>
-                    <span class="zh-only">下載到本機的<strong>下載資料夾</strong> 裡。<a class="link" href="https://github.com/InnoIPA/iQ-Foundry/blob/main/setup-windows-wsl.ps1" target="_blank">https://github.com/InnoIPA/iQ-Foundry/blob/main/setup-windows-wsl.ps1</a></span>
-                    <span class="en-only">Download to your local <strong>Downloads folder</strong>.<a class="link" href="https://github.com/InnoIPA/iQ-Foundry/blob/main/setup-windows-wsl.ps1" target="_blank">https://github.com/InnoIPA/iQ-Foundry/blob/main/setup-windows-wsl.ps1</a></span>
-                  </li>
-
-                  <li>
-                    <span class="zh-only">以<strong>管理員權限</strong>開啟 <strong>Windows PowerShell</strong>，執行以下指令，此步驟通常需要 <strong>5-10 分鐘</strong>。</span></span>
-                    <span class="en-only">Open <strong>Windows PowerShell</strong> with <strong>Administrator rights</strong>and execute the following command. This step typically takes<strong>5–10 minutes</strong>.</span>
+                    <span class="zh-only">以<strong>管理員權限</strong>開啟 <strong>Windows PowerShell</strong>，執行以下指令。</span></span>
+                    <span class="en-only">Open <strong>Windows PowerShell</strong> with <strong>Administrator rights</strong>and execute the following command.</span>
     
                     <div class="code">
                      <div class="code-head">
@@ -277,10 +258,34 @@
                       <span class="copy-label">Copy</span>
                       </button>
                     </div>
-      <pre>powershell -ExecutionPolicy Bypass -File (Get-ChildItem -Path C:\Users -Recurse -Filter setup-windows-wsl.ps1 -ErrorAction SilentlyContinue | Select-Object -First 1).FullNameㄋ</pre>
+      <pre>wsl.exe --install -d Ubuntu-22.04 --no-launch</pre>
     </div> </li> 
+              <li>
+                    <span class="zh-only">執行以下指令，檢查是否安裝成功。</span>
+                    <span class="en-only">Run the following command to check if the installation was successful.</span>
+                    <div class="code">
+                     <div class="code-head">
+                     <span class="lang">bash</span>
+                      <button class="copy-btn">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="9" y="9" width="13" height="13" rx="2"/>
+                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                      </svg>
+                      <span class="copy-label">Copy</span>
+                      </button>
+                    </div>
+      <pre>wsl.exe --list --verbose</pre>
+    </div> </li>      
                    
                 </ol>
+                <div class="callout callout--success" style="margin-top:var(--space-4);">
+                 <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M20 6 9 17l-5-5"/></svg></span>
+                 <div>
+                   <span class="zh-only">PowerShell顯示Ubuntu-22.04就可以了!!</span>
+                   <span class="en-only">As long as PowerShell displays 'Ubuntu-22.04', you're good to go!</span>
+                 </div>
+                </div>
+                
                 <div class="callout">
                   <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></span>
                   <div>
