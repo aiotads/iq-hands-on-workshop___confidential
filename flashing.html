@@ -126,6 +126,13 @@
         <span class="en-only">This page shows how to flash the image to the Q911 platform with xPCATApp. Finish QSC, PCAT, and QUD in "<a class="link" href="pre-install.html">Pre-install</a>" first.</span>
       </div>
     </div>
+    <div class="callout callout--warn">
+      <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>
+      <div>
+        <span class="zh-only">燒錄異常排除： <strong>1.</strong> 拔掉電源線 <strong>2.</strong> 重新上電 <strong>3.</strong> 再次燒錄。若需要協助，請洽現場助教。</span>
+        <span class="en-only">Flashing Troubleshooting: <strong>1.</strong> Unplug the power cable. <strong>2.</strong> Replug to power cycle. <strong>3.</strong> Retry flashing. You can also ask our TAs for help.</span>
+      </div>
+    </div>
 
     <div class="page--with-side" style="margin-top:var(--space-10);">
 
@@ -148,10 +155,13 @@
           <div class="step-num">1</div>
           <div class="step-body">
             <h3><span class="zh-only">準備電路板</span><span class="en-only">Prepare the Board for Flashing</span></h3>
-            <p>
-              <span class="zh-only">參考下方，完成步驟。</span>
-              <span class="en-only">Refer to the information below to complete the steps.</span>
-            </p>
+            <div class="callout callout--warn">
+              <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>
+            <div>
+              <span class="zh-only">請確保裝置<strong>已拔掉電源</strong>，才能執行以下步驟喔!</span>
+              <span class="en-only">You must <strong>unplug the power supply</strong> before proceeding with the following steps!</span>
+            </div>
+           </div>
             <p>
               <span class="zh-only">請將板子背面的跳帽調整到 <code>EDL mode</code>。</span>
               <span class="en-only">Set the jumper on the bottom side of the board to <code>EDL mode</code>.</span>
@@ -167,8 +177,8 @@
                   <img class="shot-img" src="uploads\boot_mode_ufs.png" style="border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
             </figure>
             <p>
-              <span class="zh-only">請將 USB Type-C 傳輸線連接到目標裝置上標示為 <code>Flash / ADB</code>的連接埠。</span>
-              <span class="en-only">Connect the USB Type-C cable to the port labeled <code>Flash / ADB</code>on the target device.</span>
+              <span class="zh-only">請將 USB Type-C 傳輸線連接到目標裝置上標示為 <code>Flash / ADB</code>的連接埠。並接上電源，接完後<strong>請開機</strong>。</span>
+              <span class="en-only">Connect the USB Type-C cable to the port labeled <code>Flash / ADB</code>on the target device.Plug in the power, and then <strong>turn it on</strong>.</span>
             </p>
             <figure class="shot">
                   <img class="shot-img" src="uploads\connect_adb_boot_flash.png" style="border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
@@ -180,6 +190,13 @@
           <div class="step-num">2</div>
           <div class="step-body">
             <h3><span class="zh-only">打開 xPCATApp</span><span class="en-only">Open xPCATApp</span></h3>
+            <div class="callout callout--warn">
+              <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>
+            <div>
+              <span class="zh-only">請確保裝置已<strong>開機</strong>，才能找到設備喔!</span>
+              <span class="en-only">Please make sure the device is<strong>powered on</strong> so it can be detected!</span>
+            </div>
+           </div>
             <p>
               <span class="zh-only">打開 xPCATApp。</span>
               <span class="en-only">Open xPCATApp.</span>
@@ -286,7 +303,14 @@
         <article class="step" id="s7">
           <div class="step-num">7</div>
           <div class="step-body">
-            <h3><span class="zh-only">切回 Normal mode 並開機</span><span class="en-only">Switch back to Normal mode and boot</span></h3>
+            <h3><span class="zh-only">拔掉電源後切回 Normal mode，並開機</span><span class="en-only">Power off and unplug the device, switch to Normal mode, then turn it on.</span></h3>
+            <div class="callout callout--warn">
+              <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>
+            <div>
+              <span class="zh-only">請確保裝置<strong>已拔掉電源</strong>，才能執行以下步驟喔!</span>
+              <span class="en-only">You must <strong>unplug the power supply</strong> before proceeding with the following steps!</span>
+            </div>
+           </div>
             <p>
               <span class="zh-only">進行下方的步驟 (切回 Normal mode 並開機）。</span>
               <span class="en-only">Proceed with the steps below (Switch back to Normal mode and boot).</span>
@@ -314,8 +338,8 @@
           <div class="step-body">
             <h3><span class="zh-only">啟動進入系統</span><span class="en-only">Boot into the System</span></h3>
             <p>
-              <span class="zh-only">切換回 Normal 模式後，即可開啟裝置電源並啟動進入系統。</span>
-              <span class="en-only">After the board is back in Normal mode, power on the device and boot into the system.</span>
+              <span class="zh-only">切換回 Normal 模式後，接上電源即可開啟裝置電源並啟動進入系統。</span>
+              <span class="en-only">After the board is back in Normal mode, connect the power supply and boot into the system.</span>
             </p>
           </div>
         </article>

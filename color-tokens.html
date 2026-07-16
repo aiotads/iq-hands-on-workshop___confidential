@@ -220,6 +220,89 @@
   }
   .shadow-demo--elev { box-shadow: var(--shadow-elevated); }
 
+  /* Jump nav */
+  .tk-jumpnav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: var(--space-6);
+  }
+  .tk-jumpnav a {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    padding: 6px 12px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--border);
+    color: var(--text-2);
+    text-decoration: none;
+    background: var(--surface);
+    transition: border-color var(--dur-fast), color var(--dur-fast), background var(--dur-fast);
+  }
+  .tk-jumpnav a:hover {
+    border-color: var(--accent);
+    color: var(--accent-text);
+    background: var(--accent-bg-soft);
+  }
+
+  /* Spacing scale */
+  .space-scale {
+    margin-top: var(--space-6);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: var(--space-2) var(--space-5);
+  }
+  .space-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    padding: 9px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .space-row:last-child { border-bottom: none; }
+  .space-row .name {
+    width: 110px;
+    flex-shrink: 0;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text);
+  }
+  .space-row .bar {
+    height: 10px;
+    border-radius: 3px;
+    background: var(--gradient-btn);
+    flex-shrink: 0;
+  }
+  .space-row .px {
+    margin-left: auto;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-3);
+  }
+
+  /* Motion demo */
+  .motion-card {
+    padding: var(--space-5);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    gap: var(--space-5);
+  }
+  .motion-card .swatch-square {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    background: var(--gradient-btn);
+    border-radius: var(--radius-sm);
+    transition: transform var(--motion-dur, 220ms) var(--ease-out);
+  }
+  .motion-card:hover .swatch-square { transform: scale(1.25) rotate(8deg); }
+  .motion-card .name { font-family: var(--font-mono); font-size: 12px; color: var(--text); }
+  .motion-card .role { font-size: 12px; color: var(--text-3); margin-top: 2px; }
+
   /* Code panel for the spec dump */
   .spec-dump {
     margin-top: var(--space-8);
@@ -296,8 +379,23 @@
       <span class="en-only">The whole site is driven by these CSS custom properties. Flip the theme switch top-right and every section follows.</span>
     </p>
 
+    <nav class="tk-jumpnav" aria-label="Section navigation">
+      <a href="#surfaces"><span class="zh-only">表面</span><span class="en-only">Surfaces</span></a>
+      <a href="#text"><span class="zh-only">文字</span><span class="en-only">Text</span></a>
+      <a href="#accent"><span class="zh-only">主色</span><span class="en-only">Accent</span></a>
+      <a href="#palette"><span class="zh-only">色相</span><span class="en-only">Palette</span></a>
+      <a href="#states"><span class="zh-only">互動狀態</span><span class="en-only">States</span></a>
+      <a href="#gradients"><span class="zh-only">漸層</span><span class="en-only">Gradients</span></a>
+      <a href="#spacing"><span class="zh-only">間距</span><span class="en-only">Spacing</span></a>
+      <a href="#elevation"><span class="zh-only">陰影 / 圓角</span><span class="en-only">Elevation</span></a>
+      <a href="#motion"><span class="zh-only">動效</span><span class="en-only">Motion</span></a>
+      <a href="#type"><span class="zh-only">字體</span><span class="en-only">Type</span></a>
+      <a href="#components"><span class="zh-only">元件</span><span class="en-only">Components</span></a>
+      <a href="#spec">Spec</a>
+    </nav>
+
     <!-- ===== SURFACE ===== -->
-    <section class="tk-section">
+    <section class="tk-section" id="surfaces">
       <h2><span class="zh-only">背景與表面 · Surfaces</span><span class="en-only">Surfaces</span></h2>
       <p class="sub">
         <span class="zh-only">頁面背景、卡片、提升卡片、邊框。一律以語義 token 引用，不要硬編 hex。</span>
@@ -366,7 +464,7 @@
     </section>
 
     <!-- ===== TEXT ===== -->
-    <section class="tk-section">
+    <section class="tk-section" id="text">
       <h2><span class="zh-only">文字 · Text</span><span class="en-only">Text</span></h2>
       <p class="sub">
         <span class="zh-only">三階文字色 + accent text。記得：標題用 --text，內文用 --text-2，附註用 --text-3。</span>
@@ -409,7 +507,7 @@
     </section>
 
     <!-- ===== ACCENT / BRAND ===== -->
-    <section class="tk-section">
+    <section class="tk-section" id="accent">
       <h2><span class="zh-only">主色 · Accent</span><span class="en-only">Accent</span></h2>
       <p class="sub">
         <span class="zh-only">主互動色：按鈕背景、focus ring、強調文字。淺色用較飽和、深色用較粉嫩，兩邊都過 AA 對比。</span>
@@ -452,7 +550,7 @@
     </section>
 
     <!-- ===== PALETTE ===== -->
-    <section class="tk-section">
+    <section class="tk-section" id="palette">
       <h2><span class="zh-only">色相 · Palette</span><span class="en-only">Palette</span></h2>
       <p class="sub">
         <span class="zh-only">三個招牌色：粉、薰衣草、藍。FAQ badge、callout、icon container 都從這套挑。</span>
@@ -508,10 +606,127 @@
           </div>
         </div>
       </div>
+
+      <p class="sub" style="margin-top:var(--space-8);">
+        <span class="zh-only">每個色相另外配一組低透明度背景 + 邊框，是 badge 與 callout 實際套用的底色。</span>
+        <span class="en-only">Each hue also ships a low-alpha background + border pair — the actual fill used by badges and callouts.</span>
+      </p>
+      <div class="tk-grid">
+        <div class="swatch">
+          <div class="swatch-chip" style="background:var(--bg-2);display:grid;place-items:center;">
+            <div style="width:72%;height:66%;border-radius:var(--radius-sm);background:var(--c-pink-bg);border:1px solid var(--c-pink-border);"></div>
+          </div>
+          <div class="swatch-meta">
+            <span class="name">--c-pink-bg / --c-pink-border</span>
+            <span class="role"><span class="zh-only">粉色 badge / callout 底色</span><span class="en-only">Pink badge / callout fill</span></span>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-chip" style="background:var(--bg-2);display:grid;place-items:center;">
+            <div style="width:72%;height:66%;border-radius:var(--radius-sm);background:var(--c-lavender-bg);border:1px solid var(--c-lavender-border);"></div>
+          </div>
+          <div class="swatch-meta">
+            <span class="name">--c-lavender-bg / --c-lavender-border</span>
+            <span class="role"><span class="zh-only">薰衣草 badge / callout 底色</span><span class="en-only">Lavender badge / callout fill</span></span>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-chip" style="background:var(--bg-2);display:grid;place-items:center;">
+            <div style="width:72%;height:66%;border-radius:var(--radius-sm);background:var(--c-blue-bg);border:1px solid var(--c-blue-border);"></div>
+          </div>
+          <div class="swatch-meta">
+            <span class="name">--c-blue-bg / --c-blue-border</span>
+            <span class="role"><span class="zh-only">藍色 callout--info 底色</span><span class="en-only">Blue callout--info fill</span></span>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-chip" style="background:var(--bg-2);display:grid;place-items:center;">
+            <div style="width:72%;height:66%;border-radius:var(--radius-sm);background:var(--c-amber-bg);border:1px solid var(--c-amber-border);"></div>
+          </div>
+          <div class="swatch-meta">
+            <span class="name">--c-amber-bg / --c-amber-border</span>
+            <span class="role"><span class="zh-only">amber callout--warn 底色</span><span class="en-only">Amber callout--warn fill</span></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== STATES & OVERLAYS ===== -->
+    <section class="tk-section" id="states">
+      <h2><span class="zh-only">互動與疊層 · States &amp; Overlays</span><span class="en-only">States &amp; Overlays</span></h2>
+      <p class="sub">
+        <span class="zh-only">半透明的暫時性狀態色 — hover、active、focus，以及導覽列的毛玻璃背板。一律疊在 --bg 或 --surface 之上，不單獨使用。</span>
+        <span class="en-only">Semi-transparent tokens for transient hover / active / focus states, plus the frosted nav backdrop. Always composited over --bg or --surface — never used standalone.</span>
+      </p>
+      <div class="tk-grid">
+        <div class="swatch">
+          <div class="swatch-chip" style="background:var(--bg-2);background-image:linear-gradient(var(--grid-line) 1px, transparent 1px),linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);background-size:16px 16px;"></div>
+          <div class="swatch-meta">
+            <span class="name">--grid-line</span>
+            <span class="role"><span class="zh-only">Hero 背景網格線</span><span class="en-only">Hero background grid</span></span>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-chip" style="background:var(--gradient-bg);display:flex;align-items:center;padding:0 12px;">
+            <div style="width:100%;height:34px;border-radius:var(--radius-sm);background:var(--nav-bg);border:1px solid var(--nav-border);backdrop-filter:blur(6px);display:flex;align-items:center;padding:0 10px;gap:6px;">
+              <span style="width:8px;height:8px;border-radius:50%;background:var(--accent);"></span>
+              <span style="font-family:var(--font-mono);font-size:10px;color:var(--text-3);">nav</span>
+            </div>
+          </div>
+          <div class="swatch-meta">
+            <span class="name">--nav-bg / --nav-border</span>
+            <span class="role"><span class="zh-only">導覽列毛玻璃背板</span><span class="en-only">Frosted nav backdrop</span></span>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-chip" style="background:var(--surface-hover);"></div>
+          <div class="swatch-meta">
+            <span class="name">--surface-hover</span>
+            <span class="role"><span class="zh-only">列表 / 卡片 hover</span><span class="en-only">List row / card hover</span></span>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-chip" style="background:var(--surface-active);"></div>
+          <div class="swatch-meta">
+            <span class="name">--surface-active</span>
+            <span class="role"><span class="zh-only">按下 / active 狀態</span><span class="en-only">Pressed / active state</span></span>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-chip" style="background:var(--accent-bg-soft);"></div>
+          <div class="swatch-meta">
+            <span class="name">--accent-bg-soft</span>
+            <span class="role"><span class="zh-only">極淡強調底色</span><span class="en-only">Faintest accent wash</span></span>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-chip" style="background:var(--accent-bg);"></div>
+          <div class="swatch-meta">
+            <span class="name">--accent-bg</span>
+            <span class="role"><span class="zh-only">badge / pill 底色</span><span class="en-only">Badge / pill fill</span></span>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-chip" style="background:var(--accent-bg-strong);"></div>
+          <div class="swatch-meta">
+            <span class="name">--accent-bg-strong</span>
+            <span class="role"><span class="zh-only">progress track / focus</span><span class="en-only">Progress track / focus</span></span>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-chip" style="background:var(--surface);display:grid;place-items:center;">
+            <span style="font-family:var(--font-mono);font-size:11px;padding:3px 8px;border-radius:5px;background:var(--kbd-bg);color:var(--text-2);border:1px solid var(--border);">⌘K</span>
+          </div>
+          <div class="swatch-meta">
+            <span class="name">--kbd-bg</span>
+            <span class="role"><span class="zh-only">快捷鍵 kbd 底色</span><span class="en-only">Keyboard-shortcut chip fill</span></span>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- ===== GRADIENTS ===== -->
-    <section class="tk-section">
+    <section class="tk-section" id="gradients">
       <h2><span class="zh-only">漸層 · Gradients</span><span class="en-only">Gradients</span></h2>
       <p class="sub">
         <span class="zh-only">三個漸層各有用途 — 文字（粉→紫→藍）、按鈕（粉→紫，2 stop）、背景（半透明三色）。</span>
@@ -548,8 +763,31 @@
       </div>
     </section>
 
+    <!-- ===== SPACING ===== -->
+    <section class="tk-section" id="spacing">
+      <h2><span class="zh-only">間距 · Spacing</span><span class="en-only">Spacing</span></h2>
+      <p class="sub">
+        <span class="zh-only">4px 為基準的間距刻度，從 --space-1 到 --space-24。版面留白、卡片內距、區塊間距都從這裡取值，不要隨手寫死 px。</span>
+        <span class="en-only">A 4px-based scale from --space-1 to --space-24. Padding, gaps, and section rhythm all pull from here — avoid hardcoding px.</span>
+      </p>
+      <div class="space-scale">
+        <div class="space-row"><span class="name">--space-1</span><div class="bar" style="width:4px;"></div><span class="px">4px</span></div>
+        <div class="space-row"><span class="name">--space-2</span><div class="bar" style="width:8px;"></div><span class="px">8px</span></div>
+        <div class="space-row"><span class="name">--space-3</span><div class="bar" style="width:12px;"></div><span class="px">12px</span></div>
+        <div class="space-row"><span class="name">--space-4</span><div class="bar" style="width:16px;"></div><span class="px">16px</span></div>
+        <div class="space-row"><span class="name">--space-5</span><div class="bar" style="width:20px;"></div><span class="px">20px</span></div>
+        <div class="space-row"><span class="name">--space-6</span><div class="bar" style="width:24px;"></div><span class="px">24px</span></div>
+        <div class="space-row"><span class="name">--space-8</span><div class="bar" style="width:32px;"></div><span class="px">32px</span></div>
+        <div class="space-row"><span class="name">--space-10</span><div class="bar" style="width:40px;"></div><span class="px">40px</span></div>
+        <div class="space-row"><span class="name">--space-12</span><div class="bar" style="width:48px;"></div><span class="px">48px</span></div>
+        <div class="space-row"><span class="name">--space-16</span><div class="bar" style="width:64px;"></div><span class="px">64px</span></div>
+        <div class="space-row"><span class="name">--space-20</span><div class="bar" style="width:80px;"></div><span class="px">80px</span></div>
+        <div class="space-row"><span class="name">--space-24</span><div class="bar" style="width:96px;"></div><span class="px">96px</span></div>
+      </div>
+    </section>
+
     <!-- ===== TYPE ===== -->
-    <section class="tk-section">
+    <section class="tk-section" id="type">
       <h2><span class="zh-only">字體 · Type</span><span class="en-only">Type</span></h2>
       <p class="sub">
         <span class="zh-only">三套字 — Inter Tight 標題、Inter 內文、JetBrains Mono 為 code 與小標。中文以 Noto Sans TC 處理。</span>
@@ -584,7 +822,7 @@
     </section>
 
     <!-- ===== COMPONENTS ===== -->
-    <section class="tk-section">
+    <section class="tk-section" id="components">
       <h2><span class="zh-only">元件 · Components</span><span class="en-only">Components</span></h2>
       <p class="sub">
         <span class="zh-only">直接由 token 組成的元件樣本，方便確認 light / dark 兩個模式都正確。</span>
@@ -656,11 +894,11 @@
     </section>
 
     <!-- ===== ELEVATION ===== -->
-    <section class="tk-section">
+    <section class="tk-section" id="elevation">
       <h2><span class="zh-only">陰影 & 圓角 · Elevation</span><span class="en-only">Elevation & radius</span></h2>
       <p class="sub">
-        <span class="zh-only">陰影只有兩個 — 一般卡片與較高的搜尋面板。圓角分四階：xs / sm / md / lg。</span>
-        <span class="en-only">Just two shadows — regular cards, and the elevated search panel. Four radii: xs / sm / md / lg.</span>
+        <span class="zh-only">陰影只有兩個 — 一般卡片與較高的搜尋面板。圓角分五階：xs / sm / md / lg / pill。</span>
+        <span class="en-only">Just two shadows — regular cards, and the elevated search panel. Five radii: xs / sm / md / lg / pill.</span>
       </p>
       <div class="tk-grid tk-grid--two">
         <div class="shadow-demo">--shadow</div>
@@ -692,17 +930,70 @@
           </div>
           <div class="swatch-meta"><span class="name">--radius-lg</span><span class="role">18px</span></div>
         </div>
+        <div class="swatch">
+          <div class="swatch-chip" style="background:var(--surface);display:grid;place-items:center;">
+            <div style="width:70px;height:26px;background:var(--accent);border-radius:var(--radius-pill);"></div>
+          </div>
+          <div class="swatch-meta"><span class="name">--radius-pill</span><span class="role">999px</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== MOTION ===== -->
+    <section class="tk-section" id="motion">
+      <h2><span class="zh-only">動效 · Motion</span><span class="en-only">Motion</span></h2>
+      <p class="sub">
+        <span class="zh-only">兩個時長 + 一個緩動曲線，涵蓋全站的 hover、頁籤切換與卡片過場。滑鼠移到卡片上感受差異。</span>
+        <span class="en-only">Two durations and one easing curve cover every hover, tab switch, and card transition site-wide. Hover a card to feel the difference.</span>
+      </p>
+      <div class="comp-row">
+        <div class="motion-card" style="--motion-dur:140ms;">
+          <div class="swatch-square"></div>
+          <div>
+            <div class="name">--dur-fast</div>
+            <div class="role">140ms · <span class="zh-only">細節回饋（copy tag、icon）</span><span class="en-only">micro feedback (copy tag, icons)</span></div>
+          </div>
+        </div>
+        <div class="motion-card" style="--motion-dur:220ms;">
+          <div class="swatch-square"></div>
+          <div>
+            <div class="name">--dur-base</div>
+            <div class="role">220ms · <span class="zh-only">卡片、頁籤、按鈕過場</span><span class="en-only">cards, tabs, button transitions</span></div>
+          </div>
+        </div>
+        <div class="motion-card" style="--motion-dur:500ms;">
+          <div class="swatch-square"></div>
+          <div>
+            <div class="name">--ease-out</div>
+            <div class="role">cubic-bezier(0.2, 0.7, 0.2, 1) · <span class="zh-only">500ms 示範以利觀察曲線</span><span class="en-only">500ms demo speed to show the curve</span></div>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- ===== SPEC DUMP ===== -->
-    <section class="tk-section">
+    <section class="tk-section" id="spec">
       <h2><span class="zh-only">給工程師 · Spec dump</span><span class="en-only">For engineers · spec dump</span></h2>
       <p class="sub">
         <span class="zh-only">複製進你的設計檔或 storybook。完整定義在 <code style="font-family:var(--font-mono);background:var(--surface-2);padding:1px 6px;border-radius:4px;color:var(--accent-text);">styles.css</code> 最上方。</span>
         <span class="en-only">Paste this into your design file or storybook. The canonical source lives at the top of <code style="font-family:var(--font-mono);background:var(--surface-2);padding:1px 6px;border-radius:4px;color:var(--accent-text);">styles.css</code>.</span>
       </p>
-      <div class="spec-dump"><span class="c">/* light mode */</span>
+      <div class="spec-dump"><span class="c">/* metrics — shared across themes */</span>
+<span class="k">--radius-xs</span>:     <span class="v">4px</span>;
+<span class="k">--radius-sm</span>:     <span class="v">8px</span>;
+<span class="k">--radius-md</span>:     <span class="v">12px</span>;
+<span class="k">--radius-lg</span>:     <span class="v">18px</span>;
+<span class="k">--radius-pill</span>:   <span class="v">999px</span>;
+
+<span class="c">/* spacing — 4px base */</span>
+<span class="k">--space-1</span> … <span class="k">--space-24</span>: <span class="v">4px … 96px</span>;
+
+<span class="c">/* motion */</span>
+<span class="k">--dur-fast</span>:      <span class="v">140ms</span>;
+<span class="k">--dur-base</span>:      <span class="v">220ms</span>;
+<span class="k">--ease-out</span>:      <span class="v">cubic-bezier(0.2, 0.7, 0.2, 1)</span>;
+
+<span class="c">/* light mode */</span>
 <span class="k">--bg</span>:            <span class="v">#fbf9fc</span>;
 <span class="k">--bg-2</span>:          <span class="v">#f5f0fa</span>;
 <span class="k">--surface</span>:       <span class="v">#ffffff</span>;
@@ -715,10 +1006,13 @@
 <span class="k">--accent</span>:        <span class="v">#7e5be0</span>;
 <span class="k">--accent-deep</span>:   <span class="v">#6a47c8</span>;
 <span class="k">--on-accent</span>:     <span class="v">#ffffff</span>;
-<span class="k">--c-pink</span>:       <span class="v">#e15ba3</span>;
-<span class="k">--c-lavender</span>:   <span class="v">#7e5be0</span>;
-<span class="k">--c-blue</span>:       <span class="v">#2e7adb</span>;
-<span class="k">--success</span>:      <span class="v">#1a8f6e</span>;
+<span class="k">--highlight</span>:     <span class="v">#2e7adb</span>;
+<span class="k">--c-pink</span>:        <span class="v">#e15ba3</span>;
+<span class="k">--c-lavender</span>:    <span class="v">#7e5be0</span>;
+<span class="k">--c-blue</span>:        <span class="v">#2e7adb</span>;
+<span class="k">--c-amber</span>:       <span class="v">#d18e1a</span>;
+<span class="k">--success</span>:       <span class="v">#1a8f6e</span>;
+<span class="k">--danger</span>:        <span class="v">#c63a3a</span>;
 
 <span class="c">/* dark mode */</span>
 <span class="k">--bg</span>:            <span class="v">#0b0a13</span>;
@@ -733,10 +1027,17 @@
 <span class="k">--accent</span>:        <span class="v">#b69cf5</span>;
 <span class="k">--accent-deep</span>:   <span class="v">#9170e8</span>;
 <span class="k">--on-accent</span>:     <span class="v">#14101f</span>;
-<span class="k">--c-pink</span>:       <span class="v">#f8a5d8</span>;
-<span class="k">--c-lavender</span>:   <span class="v">#b69cf5</span>;
-<span class="k">--c-blue</span>:       <span class="v">#7ab8ff</span>;
-<span class="k">--success</span>:      <span class="v">#7ee0c5</span>;</div>
+<span class="k">--highlight</span>:     <span class="v">#7ab8ff</span>;
+<span class="k">--c-pink</span>:        <span class="v">#f8a5d8</span>;
+<span class="k">--c-lavender</span>:    <span class="v">#b69cf5</span>;
+<span class="k">--c-blue</span>:        <span class="v">#7ab8ff</span>;
+<span class="k">--c-amber</span>:       <span class="v">#f4c97b</span>;
+<span class="k">--success</span>:       <span class="v">#7ee0c5</span>;
+<span class="k">--danger</span>:        <span class="v">#f08585</span>;
+
+<span class="c">/* alpha / derived overlays — hover states, badge & callout fills,
+   nav backdrop. Defined per-theme in styles.css; see "States & Overlays"
+   section above for the rendered swatches. */</span></div>
     </section>
 
   </section>
