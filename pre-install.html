@@ -312,9 +312,10 @@
                       </button>
                     </div>
       <pre>wsl.exe --list --verbose</pre>
-    </div> </li>      
-                   
+    </div> </li>
+
                 </ol>
+
                 <div class="callout callout--success" style="margin-top:var(--space-4);">
                  <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M20 6 9 17l-5-5"/></svg></span>
                  <div>
@@ -328,6 +329,72 @@
                   <div>
                     <span class="zh-only">若安裝過程中遇到權限限制，請聯繫貴公司的 IT 或 MIS 部門協助排除。</span>
                     <span class="en-only">After installing, QSC showing <code>you have no devices connected</code> is normal (no board attached yet).</span>
+                  </div>
+                </div>
+
+                <div class="faq-list" style="margin-top:var(--space-4);">
+                  <div class="faq-item faq-item--warn">
+                    <div class="faq-summary">
+                      <span class="label">
+                        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M10.3 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.7 3.86a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></span>
+                        <span class="zh-only"><code>wsl.exe --list --verbose</code> 沒看到 Ubuntu-22.04，或安裝過程中出現錯誤？點開查看解法</span>
+                        <span class="en-only">Don't see Ubuntu-22.04 in <code>wsl.exe --list --verbose</code>, or hit an error during install? Click to see the fix</span>
+                      </span>
+                      <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                    </div>
+                    <div class="faq-body">
+                      <p><span class="zh-only">請依序執行以下指令：</span><span class="en-only">Run the following commands in order:</span></p>
+                      <ol class="step-list">
+                        <li>
+                          <span class="zh-only">查看可安裝的發行版清單。</span>
+                          <span class="en-only">List the available distros online.</span>
+                          <div class="code">
+                           <div class="code-head">
+                           <span class="lang">bash</span>
+                            <button class="copy-btn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2"/>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                            </svg>
+                            <span class="copy-label">Copy</span>
+                            </button>
+                          </div>
+      <pre>wsl --list --online</pre>
+    </div> </li>
+                        <li>
+                          <span class="zh-only">更新 WSL 核心元件。</span>
+                          <span class="en-only">Update the WSL core components.</span>
+                          <div class="code">
+                           <div class="code-head">
+                           <span class="lang">bash</span>
+                            <button class="copy-btn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2"/>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                            </svg>
+                            <span class="copy-label">Copy</span>
+                            </button>
+                          </div>
+      <pre>wsl --update</pre>
+    </div> </li>
+                        <li>
+                          <span class="zh-only">改用網頁下載方式重新安裝 Ubuntu-22.04。</span>
+                          <span class="en-only">Reinstall Ubuntu-22.04 using web download instead.</span>
+                          <div class="code">
+                           <div class="code-head">
+                           <span class="lang">bash</span>
+                            <button class="copy-btn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2"/>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                            </svg>
+                            <span class="copy-label">Copy</span>
+                            </button>
+                          </div>
+      <pre>wsl --install -d Ubuntu-22.04 --web-download --no-launch</pre>
+    </div> </li>
+                      </ol>
+                    </div>
                   </div>
                 </div>
               </div>
