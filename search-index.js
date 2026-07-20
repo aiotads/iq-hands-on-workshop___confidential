@@ -140,6 +140,11 @@ window.SEARCH_INDEX = [
     body: '[Q911] 推送 INT8 模型/設定檔，啟動 INT8 streampipe 9ch',
     bodyEn: '[Q911] Push the INT8 model/config, start INT8 streampipe 9ch.',
     tags: ['int8', 'streampipe', 'online', '連網', 'step_5_5', '9ch'] },
+  { page: 'script', pageLabel: '腳本 / SCRIPT', href: 'script.html#s6',
+    title: '正確關閉 WSL', titleEn: 'Properly shut down WSL',
+    body: '[WSL] Ctrl+C 後會停留在 WSL 裡，先 exit 再執行 wsl --shutdown',
+    bodyEn: '[WSL] After Ctrl+C you land back in the WSL shell — exit, then run wsl --shutdown.',
+    tags: ['wsl', 'shutdown', '關閉', 'exit', 'wsl --shutdown', 'step_6'] },
 
   // ----- Agenda (on homepage) -----
   { page: 'agenda', pageLabel: '議程 / AGENDA', href: 'index.html#agenda',

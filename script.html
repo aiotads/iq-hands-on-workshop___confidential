@@ -190,6 +190,7 @@
         <a href="#s5_3"><span class="num">5.3</span> mAP</a>
         <a href="#s5_4"><span class="num">5.4</span> <span class="zh-only">裝置測試</span><span class="en-only">Device test</span></a>
         <a href="#s5_5"><span class="num">5.5</span> INT8 streampipe</a>
+        <a href="#s6"><span class="num">6</span> <span class="zh-only">關閉 WSL</span><span class="en-only">Shut down WSL</span></a>
       </aside>
 
       <div>
@@ -697,6 +698,42 @@
                 </summary>
                 <div class="success-body"></div>
               </details>
+            </div>
+          </div>
+        </article>
+
+        <!-- 6 -->
+        <article class="step" id="s6">
+          <div class="step-num">6</div>
+          <div class="step-body">
+            <h3><span class="zh-only">正確關閉 WSL</span><span class="en-only">Properly shut down WSL</span></h3>
+            <div class="sub">[WSL] · <span class="zh-only">幾秒</span><span class="en-only">seconds</span></div>
+            <p>
+              <span class="zh-only">Step 5.5 的 INT8 streampipe 跑完、按 <code>Ctrl+C</code> 之後，畫面會停留在 WSL 裡面。離開前，先退出 WSL，再關閉它：</span>
+              <span class="en-only">After Step 5.5's INT8 streampipe finishes and you press <code>Ctrl+C</code>, you'll be left inside the WSL shell. Before wrapping up, exit WSL and then shut it down:</span>
+            </p>
+            <div class="code">
+              <div class="code-head"><span class="lang">bash</span>
+                <button class="copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">Copy</span></button>
+              </div>
+<pre>exit</pre>
+            </div>
+            <p style="margin-top:var(--space-6);">
+              <span class="zh-only">回到 Windows PowerShell 後，執行：</span>
+              <span class="en-only">Back at the Windows PowerShell prompt, run:</span>
+            </p>
+            <div class="code">
+              <div class="code-head"><span class="lang">powershell</span>
+                <button class="copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">Copy</span></button>
+              </div>
+<pre>wsl --shutdown</pre>
+            </div>
+            <div class="callout">
+              <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></span>
+              <div>
+                <span class="zh-only">執行完 <code>wsl --shutdown</code> 後，就可以關閉 PowerShell 視窗了。</span>
+                <span class="en-only">Once <code>wsl --shutdown</code> finishes, you can close the PowerShell window.</span>
+              </div>
             </div>
           </div>
         </article>
