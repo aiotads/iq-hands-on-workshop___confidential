@@ -1355,6 +1355,35 @@ h2.display { font-size: clamp(32px, 4.4vw, 56px); }
   color: var(--accent-text);
 }
 
+/* Collapsible success-message callout */
+details.callout { display: block; }
+details.callout summary {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+  font-weight: 600;
+}
+details.callout summary::-webkit-details-marker { display: none; }
+details.callout summary::marker { content: ''; }
+details.callout summary .icon { margin-top: 0; }
+details.callout summary .chev {
+  margin-left: auto;
+  width: 16px; height: 16px;
+  flex-shrink: 0;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+details.callout[open] summary .chev { transform: rotate(180deg); }
+details.callout[open] summary { margin-bottom: 8px; }
+details.callout .success-body {
+  padding-left: 28px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
 /* ===== FAQ(x) ===== */
 .faq-list { display: flex; flex-direction: column; gap: 8px; margin-top: var(--space-8); }
 .faq-item {

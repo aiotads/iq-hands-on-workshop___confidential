@@ -109,11 +109,11 @@
               </tr>
               <tr>
                 <td class="tool">Host <span class="zh-only">網路</span><span class="en-only">internet</span></td>
-                <td><span class="zh-only">Step 1–3、4_1、5_2 需要（apt / Docker Hub / AI Hub）</span><span class="en-only">Required for Steps 1–3, 4_1, 5_2 (apt / Docker Hub / AI Hub)</span></td>
+                <td><span class="zh-only">Step 1–3 一定需要（apt / Docker Hub）；Step 4、5.2 僅在選擇「連網」模式時才需要（AI Hub）——預設的「離線」模式不需要</span><span class="en-only">Always required for Steps 1–3 (apt / Docker Hub); Step 4 and 5.2 only need it if you pick "Online" mode (AI Hub) — the default "Offline" mode doesn't</span></td>
               </tr>
               <tr>
                 <td class="tool">Q911 <span class="zh-only">網路</span><span class="en-only">internet</span></td>
-                <td><span class="zh-only">Step 4_2 第一次執行需要（自動下載 streampipe image，約 3 分鐘）</span><span class="en-only">Required on first run of Step 4_2 (auto-pulls the streampipe image, ~3 min)</span></td>
+                <td><span class="zh-only">僅在 Step 4 選擇「連網」模式且第一次執行時需要（自動下載 streampipe image，約 3 分鐘）；「離線」模式完全不需要</span><span class="en-only">Only needed on first run if you pick "Online" mode for Step 4 (auto-pulls the streampipe image, ~3 min); the "Offline" mode needs none</span></td>
               </tr>
             </tbody>
           </table>
@@ -156,7 +156,7 @@
               </tr>
               <tr>
                 <td class="tool">iqf_save/</td>
-                <td><span class="zh-only">模型（yolo26n.pt）、校正圖片、COCO val2017 資料集、裝置端 venv tarball</span><span class="en-only">Models (yolo26n.pt), calibration images, COCO val2017 dataset, device venv tarball</span></td>
+                <td><span class="zh-only">模型（yolo26n.pt）、校正圖片、COCO val2017 資料集、裝置端 venv tarball、預先量化好的 INT8 模型（Step 5.2 離線模式用）</span><span class="en-only">Models (yolo26n.pt), calibration images, COCO val2017 dataset, device venv tarball, a pre-quantized INT8 model (used by Step 5.2's offline mode)</span></td>
               </tr>
               <tr>
                 <td class="tool">iqs_config/</td>
@@ -164,7 +164,7 @@
               </tr>
               <tr>
                 <td class="tool">docker_images/</td>
-                <td><span class="zh-only">離線 Docker image tarball（沒有網路時的備援）</span><span class="en-only">Offline Docker image tarballs (fallback when there is no network)</span></td>
+                <td><span class="zh-only">離線 Docker image tarball，以及 FP32 / INT8 streampipe 離線 bundle（Step 4、5.5 離線模式用）</span><span class="en-only">Offline Docker image tarballs, plus FP32 / INT8 streampipe offline bundles (used by the offline modes of Step 4 and 5.5)</span></td>
               </tr>
               <tr>
                 <td class="tool">command_w.sh / command_ub.sh</td>
@@ -184,8 +184,7 @@
         <a href="#s1"><span class="num">1</span> adb</a>
         <a href="#s2"><span class="num">2</span> Docker</a>
         <a href="#s3"><span class="num">3</span> AI Hub</a>
-        <a href="#s4_1"><span class="num">4.1</span> <span class="zh-only">FP32 匯出</span><span class="en-only">FP32 export</span></a>
-        <a href="#s4_2"><span class="num">4.2</span> FP32 streampipe</a>
+        <a href="#s4"><span class="num">4</span> <span class="zh-only">FP32 匯出／streampipe</span><span class="en-only">FP32 export / streampipe</span></a>
         <a href="#s5_1"><span class="num">5.1</span> Q911 venv</a>
         <a href="#s5_2"><span class="num">5.2</span> <span class="zh-only">量化</span><span class="en-only">Quantize</span></a>
         <a href="#s5_3"><span class="num">5.3</span> mAP</a>
@@ -236,6 +235,14 @@
                 <span class="en-only">When it finishes, a WSL Ubuntu terminal opens automatically. <strong>All remaining steps run inside WSL.</strong></span>
               </div>
             </div>
+            <details class="callout callout--success" style="margin-top:var(--space-4);">
+              <summary>
+                <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M20 6 9 17l-5-5"/></svg></span>
+                <span class="zh-only">成功訊息</span><span class="en-only">Success message</span>
+                <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+              </summary>
+              <div class="success-body"></div>
+            </details>
           </div>
         </article>
 
@@ -287,6 +294,14 @@
                 <span class="en-only"><strong><code>adb devices</code> doesn't list the Q911?</strong> Check that the USB-C cable is seated and that the usbipd USB passthrough from Step 0 completed; go back and rerun <code>setup-windows-wsl.ps1</code> if needed.</span>
               </div>
             </div>
+            <details class="callout callout--success" style="margin-top:var(--space-4);">
+              <summary>
+                <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M20 6 9 17l-5-5"/></svg></span>
+                <span class="zh-only">成功訊息</span><span class="en-only">Success message</span>
+                <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+              </summary>
+              <div class="success-body">[Step 1/4] DONE  Directory: /mnt/c/Users/IPA/Desktop/hands_on_workshop_package_v0.0.6<br>[Step 2/4] DONE  Package index updated<br>[Step 3/4] DONE  adb installed<br>[Step 4/4] DONE  adb device check finished<br>All steps completed successfully!</div>
+            </details>
           </div>
         </article>
 
@@ -306,6 +321,14 @@
               </div>
 <pre>./step_2.sh</pre>
             </div>
+            <details class="callout callout--success" style="margin-top:var(--space-4);">
+              <summary>
+                <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M20 6 9 17l-5-5"/></svg></span>
+                <span class="zh-only">成功訊息</span><span class="en-only">Success message</span>
+                <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+              </summary>
+              <div class="success-body">[Step 1/4] DONE  Directory: /mnt/c/Users/IPA/Desktop/hands_on_workshop_package_v0.0.6/github/iQ-Foundry<br>[Step 2/4] DONE  Docker installed<br>[Step 3/4] DONE  Image loaded<br>[Step 4/4] DONE  Image verified<br>All steps completed successfully!</div>
+            </details>
           </div>
         </article>
 
@@ -332,58 +355,120 @@
                 <span class="en-only">Replace <code>&lt;YOUR_QAI_HUB_API_KEY&gt;</code> with your own personal API token from <a class="link" href="https://aihub.qualcomm.com/" target="_blank" rel="noopener">aihub.qualcomm.com</a>. Please remove the <code>&lt; &gt;</code> brackets.</span>
               </div>
             </div>
+            <details class="callout callout--success" style="margin-top:var(--space-4);">
+              <summary>
+                <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M20 6 9 17l-5-5"/></svg></span>
+                <span class="zh-only">成功訊息</span><span class="en-only">Success message</span>
+                <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+              </summary>
+              <div class="success-body">[Step 1/3] DONE  Directory: /mnt/c/Users/IPA/Desktop/hands_on_workshop_package_v0.0.6<br>[Step 2/3] DONE  Login submitted <br>[Step 3/3] DONE  Login verified <br>All steps completed successfully!</div>
+            </details>
           </div>
         </article>
 
-        <!-- 4.1 -->
-        <article class="step" id="s4_1">
-          <div class="step-num">4.1</div>
+        <!-- 4 -->
+        <article class="step" id="s4">
+          <div class="step-num">4</div>
           <div class="step-body">
-            <h3><span class="zh-only">FP32 匯出（YOLO26 → .tflite）</span><span class="en-only">FP32 export (YOLO26 → .tflite)</span></h3>
-            <div class="sub">[HOST · AI Hub] · <span class="zh-only">約 1–2 分鐘</span><span class="en-only">~1–2 min</span></div>
-            <p>
-              <span class="zh-only">建置 <code>iqf-aihub</code> image，匯出 YOLO26 FP32 TFLite 模型。</span>
-              <span class="en-only">Build the <code>iqf-aihub</code> image, export YOLO26 FP32 TFLite.</span>
-            </p>
-            <div class="code">
-              <div class="code-head"><span class="lang">bash</span>
-                <button class="copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">Copy</span></button>
+            <div style="display:flex;gap:var(--space-4);align-items:flex-start;justify-content:space-between;flex-wrap:wrap;">
+              <h3 class="tab-panel on" data-mode-group="s4" data-mode-panel="offline" style="margin:0;"><span class="zh-only">推送離線 FP32 bundle，執行 FP32 streampipe 9ch</span><span class="en-only">Push offline FP32 bundle, run FP32 streampipe 9ch</span></h3>
+              <h3 class="tab-panel" data-mode-group="s4" data-mode-panel="online" style="margin:0;"><span class="zh-only">FP32 匯出，安裝 iQ-Studio 並執行 streampipe</span><span class="en-only">FP32 export, install iQ-Studio and run streampipe</span></h3>
+              <div class="tabs" data-mode-group="s4" role="tablist">
+                <button class="tab on" type="button" data-mode-group="s4" data-mode="offline"><span class="zh-only">離線（推薦）</span><span class="en-only">Offline (recommended)</span></button>
+                <button class="tab" type="button" data-mode-group="s4" data-mode="online"><span class="zh-only">連網</span><span class="en-only">Online</span></button>
               </div>
+            </div>
+
+            <!-- 4 · offline (default) -->
+            <div class="tab-panel on" data-mode-group="s4" data-mode-panel="offline">
+              <div class="sub">[Q911] · <span class="zh-only">約 3 分 45 秒</span><span class="en-only">~3 min 45 sec</span></div>
+              <p>
+                <span class="zh-only">不需要 host 或 Q911 連網：直接使用套件內附、已經匯出好的 FP32 bundle（模型 + streampipe image tarball），推送並安裝到 Q911，啟動 FP32 streampipe 9ch。</span>
+                <span class="en-only">No internet needed on the host or the Q911: uses the pre-built FP32 bundle included in the package (model + streampipe image tarball), pushes and installs it on the Q911, and starts FP32 streampipe 9ch.</span>
+              </p>
+              <div class="code">
+                <div class="code-head"><span class="lang">bash</span>
+                  <button class="copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">Copy</span></button>
+                </div>
+<pre>./step_4_offline.sh</pre>
+              </div>
+              <div class="callout">
+                <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></span>
+                <div>
+                  <span class="zh-only">腳本會在 Q911 螢幕顯示即時 9 路推論畫面，完成後按 <code>Ctrl+C</code> 即可，腳本會自動清除裝置上殘留的 streampipe container。</span>
+                  <span class="en-only">The script shows a live 9-channel inference grid on the Q911's monitor — press <code>Ctrl+C</code> when done; it automatically cleans up any leftover streampipe container on the device.</span>
+                </div>
+              </div>
+              <details class="callout callout--success" style="margin-top:var(--space-4);">
+                <summary>
+                  <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M20 6 9 17l-5-5"/></svg></span>
+                  <span class="zh-only">成功訊息</span><span class="en-only">Success message</span>
+                  <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </summary>
+                <div class="success-body"></div>
+              </details>
+            </div>
+
+            <!-- 4 · online (4.1 + 4.2) -->
+            <div class="tab-panel" data-mode-group="s4" data-mode-panel="online">
+
+              <div class="sub">[HOST · AI Hub] · <span class="zh-only">約 1–2 分鐘</span><span class="en-only">~1–2 min</span></div>
+              <p>
+                <span class="zh-only"><strong>4.1</strong> 建置 <code>iqf-aihub</code> image，匯出 YOLO26 FP32 TFLite 模型。</span>
+                <span class="en-only"><strong>4.1</strong> Build the <code>iqf-aihub</code> image, export YOLO26 FP32 TFLite.</span>
+              </p>
+              <div class="code">
+                <div class="code-head"><span class="lang">bash</span>
+                  <button class="copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">Copy</span></button>
+                </div>
 <pre>./step_4_1.sh</pre>
-            </div>
-            <div class="sub"><span class="zh-only">產出：</span><span class="en-only">Output:</span> <code>iqf_save/models/qualcomm_ai_hub_fp32/yolo26_det-tflite-float/yolo26_det.tflite</code></div>
-          </div>
-        </article>
+              </div>
+              <div class="sub"><span class="zh-only">產出：</span><span class="en-only">Output:</span> <code>iqf_save/models/qualcomm_ai_hub_fp32/yolo26_det-tflite-float/yolo26_det.tflite</code></div>
+              <details class="callout callout--success" style="margin-top:var(--space-4);">
+                <summary>
+                  <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M20 6 9 17l-5-5"/></svg></span>
+                  <span class="zh-only">成功訊息</span><span class="en-only">Success message</span>
+                  <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </summary>
+                <div class="success-body"></div>
+              </details>
 
-        <!-- 4.2 -->
-        <article class="step" id="s4_2">
-          <div class="step-num">4.2</div>
-          <div class="step-body">
-            <h3><span class="zh-only">安裝 iQ-Studio 到 Q911，執行 FP32 streampipe 9ch</span><span class="en-only">Install iQ-Studio on Q911 and run FP32 streampipe 9ch</span></h3>
-            <div class="sub">[Q911 · <span class="zh-only">首次執行</span><span class="en-only">first run</span>] · <span class="zh-only">首次約 3 分鐘</span><span class="en-only">~3 min first run</span></div>
-            <p>
-              <span class="zh-only">把 iQ-Studio 推送並安裝到 Q911，啟動 FP32 streampipe 9ch。</span>
-              <span class="en-only">Push and install iQ-Studio on Q911, start FP32 streampipe 9ch.</span>
-            </p>
-            <div class="code">
-              <div class="code-head"><span class="lang">bash</span>
-                <button class="copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">Copy</span></button>
-              </div>
+              <div style="margin-top:var(--space-6);padding-top:var(--space-6);border-top:1px dashed var(--border);">
+                <div class="sub">[Q911 · <span class="zh-only">首次執行</span><span class="en-only">first run</span>] · <span class="zh-only">首次約 3 分鐘</span><span class="en-only">~3 min first run</span></div>
+                <p>
+                  <span class="zh-only"><strong>4.2</strong> 把 iQ-Studio 推送並安裝到 Q911，啟動 FP32 streampipe 9ch。</span>
+                  <span class="en-only"><strong>4.2</strong> Push and install iQ-Studio on Q911, start FP32 streampipe 9ch.</span>
+                </p>
+                <div class="code">
+                  <div class="code-head"><span class="lang">bash</span>
+                    <button class="copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">Copy</span></button>
+                  </div>
 <pre>./step_4_2.sh</pre>
-            </div>
-            <div class="callout">
-              <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></span>
-              <div>
-                <span class="zh-only">第一次執行需要 Q911 能連上網路（自動下載 streampipe image，約 3 分鐘）。腳本會在 Q911 螢幕顯示即時 9 路推論畫面，完成後按 <code>Ctrl+C</code> 即可，腳本會自動清除裝置上殘留的 streampipe container。</span>
-                <span class="en-only">The Q911 needs internet access on first run (auto-pulls the streampipe image, ~3 min). The script shows a live 9-channel inference grid on the Q911's monitor — press <code>Ctrl+C</code> when done; it automatically cleans up any leftover streampipe container on the device.</span>
+                </div>
+                <div class="callout">
+                  <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></span>
+                  <div>
+                    <span class="zh-only">第一次執行需要 Q911 能連上網路（自動下載 streampipe image，約 3 分鐘）。腳本會在 Q911 螢幕顯示即時 9 路推論畫面，完成後按 <code>Ctrl+C</code> 即可，腳本會自動清除裝置上殘留的 streampipe container。</span>
+                    <span class="en-only">The Q911 needs internet access on first run (auto-pulls the streampipe image, ~3 min). The script shows a live 9-channel inference grid on the Q911's monitor — press <code>Ctrl+C</code> when done; it automatically cleans up any leftover streampipe container on the device.</span>
+                  </div>
+                </div>
+                <div class="callout">
+                  <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></span>
+                  <div>
+                    <span class="zh-only"><strong>Q911 沒有網路？</strong>切換到上方的「離線」頁籤，改用 Step 4 的離線模式。</span>
+                    <span class="en-only"><strong>No internet on the Q911?</strong> Switch to the "Offline" tab above and use Step 4's offline mode instead.</span>
+                  </div>
+                </div>
+                <details class="callout callout--success" style="margin-top:var(--space-4);">
+                  <summary>
+                    <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M20 6 9 17l-5-5"/></svg></span>
+                    <span class="zh-only">成功訊息</span><span class="en-only">Success message</span>
+                    <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                  </summary>
+                  <div class="success-body"></div>
+                </details>
               </div>
-            </div>
-            <div class="callout">
-              <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></span>
-              <div>
-                <span class="zh-only"><strong>Q911 沒有網路？</strong>改用離線 tarball 載入 streampipe image（<code>docker_images/</code>；參考 <code>command_ub.sh</code> 內的「(2-fallback)」段落）。</span>
-                <span class="en-only"><strong>No internet on the Q911?</strong> Load the streampipe image from the offline tarball instead (<code>docker_images/</code>; see the "(2-fallback)" section in <code>command_ub.sh</code>).</span>
-              </div>
+
             </div>
           </div>
         </article>
@@ -411,6 +496,14 @@
                 <span class="en-only">From here through Step 5.4, host-side <code>adb</code> will be unavailable — this is expected; the USB device has been handed to the adb inside the container. Step 5.5 runs <code>adb start-server</code> to restore it.</span>
               </div>
             </div>
+            <details class="callout callout--success" style="margin-top:var(--space-4);">
+              <summary>
+                <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M20 6 9 17l-5-5"/></svg></span>
+                <span class="zh-only">成功訊息</span><span class="en-only">Success message</span>
+                <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+              </summary>
+              <div class="success-body"></div>
+            </details>
           </div>
         </article>
 
@@ -418,19 +511,62 @@
         <article class="step" id="s5_2">
           <div class="step-num">5.2</div>
           <div class="step-body">
-            <h3><span class="zh-only">INT8 量化（qc）</span><span class="en-only">INT8 quantization (qc)</span></h3>
-            <div class="sub">[HOST · AI Hub] · <span class="zh-only">約 5–9 分鐘</span><span class="en-only">~5–9 min</span></div>
-            <p>
-              <span class="zh-only">qc 量化流程：YOLO26 <code>.pt</code> → INT8 <code>.tflite</code>。</span>
-              <span class="en-only">qc quantization: YOLO26 <code>.pt</code> → INT8 <code>.tflite</code>.</span>
-            </p>
-            <div class="code">
-              <div class="code-head"><span class="lang">bash</span>
-                <button class="copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">Copy</span></button>
+            <div style="display:flex;gap:var(--space-4);align-items:flex-start;justify-content:space-between;flex-wrap:wrap;">
+              <h3 class="tab-panel on" data-mode-group="s5_2" data-mode-panel="offline" style="margin:0;"><span class="zh-only">複製預先量化好的 INT8 模型</span><span class="en-only">Copy the pre-quantized INT8 model</span></h3>
+              <h3 class="tab-panel" data-mode-group="s5_2" data-mode-panel="online" style="margin:0;"><span class="zh-only">INT8 量化（qc）</span><span class="en-only">INT8 quantization (qc)</span></h3>
+              <div class="tabs" data-mode-group="s5_2" role="tablist">
+                <button class="tab on" type="button" data-mode-group="s5_2" data-mode="offline"><span class="zh-only">離線（推薦）</span><span class="en-only">Offline (recommended)</span></button>
+                <button class="tab" type="button" data-mode-group="s5_2" data-mode="online"><span class="zh-only">連網</span><span class="en-only">Online</span></button>
               </div>
-<pre>./step_5_2.sh</pre>
             </div>
-            <div class="sub"><span class="zh-only">產出：</span><span class="en-only">Output:</span> <code>github/iQ-Foundry/out/model/yolov26/yolov26_int8_&lt;timestamp&gt;.tflite</code></div>
+
+            <!-- 5.2 · offline (default) -->
+            <div class="tab-panel on" data-mode-group="s5_2" data-mode-panel="offline">
+              <div class="sub">[HOST] · <span class="zh-only">約 3 秒</span><span class="en-only">~3 sec</span></div>
+              <p>
+                <span class="zh-only">不需要連上 AI Hub，也不需要下載任何東西：直接把套件內預先量化好的 INT8 模型複製到輸出路徑。</span>
+                <span class="en-only">No AI Hub connection or downloads needed: copies the pre-quantized INT8 model already included in the package to the output path.</span>
+              </p>
+              <div class="code">
+                <div class="code-head"><span class="lang">bash</span>
+                  <button class="copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">Copy</span></button>
+                </div>
+<pre>./step_5_2_offline.sh</pre>
+              </div>
+              <div class="sub"><span class="zh-only">產出：</span><span class="en-only">Output:</span> <code>github/iQ-Foundry/out/model/yolov26/yolov26_int8.tflite</code></div>
+              <details class="callout callout--success" style="margin-top:var(--space-4);">
+                <summary>
+                  <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M20 6 9 17l-5-5"/></svg></span>
+                  <span class="zh-only">成功訊息</span><span class="en-only">Success message</span>
+                  <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </summary>
+                <div class="success-body"></div>
+              </details>
+            </div>
+
+            <!-- 5.2 · online -->
+            <div class="tab-panel" data-mode-group="s5_2" data-mode-panel="online">
+              <div class="sub">[HOST · AI Hub] · <span class="zh-only">約 5–9 分鐘</span><span class="en-only">~5–9 min</span></div>
+              <p>
+                <span class="zh-only">qc 量化流程：YOLO26 <code>.pt</code> → INT8 <code>.tflite</code>。</span>
+                <span class="en-only">qc quantization: YOLO26 <code>.pt</code> → INT8 <code>.tflite</code>.</span>
+              </p>
+              <div class="code">
+                <div class="code-head"><span class="lang">bash</span>
+                  <button class="copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">Copy</span></button>
+                </div>
+<pre>./step_5_2.sh</pre>
+              </div>
+              <div class="sub"><span class="zh-only">產出：</span><span class="en-only">Output:</span> <code>github/iQ-Foundry/out/model/yolov26/yolov26_int8_&lt;timestamp&gt;.tflite</code></div>
+              <details class="callout callout--success" style="margin-top:var(--space-4);">
+                <summary>
+                  <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M20 6 9 17l-5-5"/></svg></span>
+                  <span class="zh-only">成功訊息</span><span class="en-only">Success message</span>
+                  <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </summary>
+                <div class="success-body"></div>
+              </details>
+            </div>
           </div>
         </article>
 
@@ -451,6 +587,14 @@
 <pre>./step_5_3.sh</pre>
             </div>
             <div class="sub"><span class="zh-only">產出：</span><span class="en-only">Output:</span> <code>github/iQ-Foundry/out/mAP_results/yolov26/</code></div>
+            <details class="callout callout--success" style="margin-top:var(--space-4);">
+              <summary>
+                <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M20 6 9 17l-5-5"/></svg></span>
+                <span class="zh-only">成功訊息</span><span class="en-only">Success message</span>
+                <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+              </summary>
+              <div class="success-body"></div>
+            </details>
           </div>
         </article>
 
@@ -471,6 +615,14 @@
 <pre>./step_5_4.sh</pre>
             </div>
             <div class="sub"><span class="zh-only">產出：</span><span class="en-only">Output:</span> <code>github/iQ-Foundry/out/test/yolov26/</code></div>
+            <details class="callout callout--success" style="margin-top:var(--space-4);">
+              <summary>
+                <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M20 6 9 17l-5-5"/></svg></span>
+                <span class="zh-only">成功訊息</span><span class="en-only">Success message</span>
+                <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+              </summary>
+              <div class="success-body"></div>
+            </details>
           </div>
         </article>
 
@@ -478,24 +630,73 @@
         <article class="step" id="s5_5">
           <div class="step-num">5.5</div>
           <div class="step-body">
-            <h3><span class="zh-only">執行 INT8 streampipe 9ch</span><span class="en-only">Run INT8 streampipe 9ch</span></h3>
-            <div class="sub"><span class="zh-only">離線</span><span class="en-only">Offline</span> · <span class="zh-only">幾秒</span><span class="en-only">seconds</span></div>
-            <p>
-              <span class="zh-only">推送 INT8 模型與設定檔，啟動 INT8 streampipe 9ch。</span>
-              <span class="en-only">Push the INT8 model and config, start INT8 streampipe 9ch.</span>
-            </p>
-            <div class="code">
-              <div class="code-head"><span class="lang">bash</span>
-                <button class="copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">Copy</span></button>
+            <div style="display:flex;gap:var(--space-4);align-items:flex-start;justify-content:space-between;flex-wrap:wrap;">
+              <h3 class="tab-panel on" data-mode-group="s5_5" data-mode-panel="offline" style="margin:0;"><span class="zh-only">推送離線 INT8 bundle，執行 INT8 streampipe 9ch</span><span class="en-only">Push offline INT8 bundle, run INT8 streampipe 9ch</span></h3>
+              <h3 class="tab-panel" data-mode-group="s5_5" data-mode-panel="online" style="margin:0;"><span class="zh-only">執行 INT8 streampipe 9ch</span><span class="en-only">Run INT8 streampipe 9ch</span></h3>
+              <div class="tabs" data-mode-group="s5_5" role="tablist">
+                <button class="tab on" type="button" data-mode-group="s5_5" data-mode="offline"><span class="zh-only">離線（推薦）</span><span class="en-only">Offline (recommended)</span></button>
+                <button class="tab" type="button" data-mode-group="s5_5" data-mode="online"><span class="zh-only">連網</span><span class="en-only">Online</span></button>
               </div>
-<pre>./step_5_5.sh</pre>
             </div>
-            <div class="callout">
-              <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M20 6 9 17l-5-5"/></svg></span>
-              <div>
-                <span class="zh-only">同樣會在 Q911 螢幕顯示即時 9 路畫面，完成後按 <code>Ctrl+C</code>。腳本會執行 <code>adb start-server</code>，把 host 端的 adb 恢復。</span>
-                <span class="en-only">Again shows a live 9-channel grid on the Q911's monitor — press <code>Ctrl+C</code> when done. The script runs <code>adb start-server</code> to restore host-side adb.</span>
+
+            <!-- 5.5 · offline (default) -->
+            <div class="tab-panel on" data-mode-group="s5_5" data-mode-panel="offline">
+              <div class="sub">[Q911] · <span class="zh-only">約 40 秒</span><span class="en-only">~40 sec</span></div>
+              <p>
+                <span class="zh-only">不需要連網：直接使用套件內附的離線 INT8 bundle（模型 + streampipe 設定檔），推送到 Q911 並啟動 INT8 streampipe 9ch。</span>
+                <span class="en-only">No internet needed: uses the offline INT8 bundle included in the package (model + streampipe config), pushes it to the Q911, and starts INT8 streampipe 9ch.</span>
+              </p>
+              <div class="code">
+                <div class="code-head"><span class="lang">bash</span>
+                  <button class="copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">Copy</span></button>
+                </div>
+<pre>./step_5_5_offline.sh</pre>
               </div>
+              <div class="callout">
+                <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M20 6 9 17l-5-5"/></svg></span>
+                <div>
+                  <span class="zh-only">同樣會在 Q911 螢幕顯示即時 9 路畫面，完成後按 <code>Ctrl+C</code>。腳本會執行 <code>adb start-server</code>，把 host 端的 adb 恢復。</span>
+                  <span class="en-only">Again shows a live 9-channel grid on the Q911's monitor — press <code>Ctrl+C</code> when done. The script runs <code>adb start-server</code> to restore host-side adb.</span>
+                </div>
+              </div>
+              <details class="callout callout--success" style="margin-top:var(--space-4);">
+                <summary>
+                  <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M20 6 9 17l-5-5"/></svg></span>
+                  <span class="zh-only">成功訊息</span><span class="en-only">Success message</span>
+                  <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </summary>
+                <div class="success-body"></div>
+              </details>
+            </div>
+
+            <!-- 5.5 · online -->
+            <div class="tab-panel" data-mode-group="s5_5" data-mode-panel="online">
+              <div class="sub">[Q911] · <span class="zh-only">幾秒</span><span class="en-only">seconds</span></div>
+              <p>
+                <span class="zh-only">推送 INT8 模型與設定檔，啟動 INT8 streampipe 9ch。</span>
+                <span class="en-only">Push the INT8 model and config, start INT8 streampipe 9ch.</span>
+              </p>
+              <div class="code">
+                <div class="code-head"><span class="lang">bash</span>
+                  <button class="copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">Copy</span></button>
+                </div>
+<pre>./step_5_5.sh</pre>
+              </div>
+              <div class="callout">
+                <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M20 6 9 17l-5-5"/></svg></span>
+                <div>
+                  <span class="zh-only">同樣會在 Q911 螢幕顯示即時 9 路畫面，完成後按 <code>Ctrl+C</code>。腳本會執行 <code>adb start-server</code>，把 host 端的 adb 恢復。</span>
+                  <span class="en-only">Again shows a live 9-channel grid on the Q911's monitor — press <code>Ctrl+C</code> when done. The script runs <code>adb start-server</code> to restore host-side adb.</span>
+                </div>
+              </div>
+              <details class="callout callout--success" style="margin-top:var(--space-4);">
+                <summary>
+                  <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M20 6 9 17l-5-5"/></svg></span>
+                  <span class="zh-only">成功訊息</span><span class="en-only">Success message</span>
+                  <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </summary>
+                <div class="success-body"></div>
+              </details>
             </div>
           </div>
         </article>
@@ -541,5 +742,41 @@
 
 <script src="search-index.js"></script>
 <script src="app.js"></script>
+<script>
+(function(){
+  function applyMode(group, mode){
+    document.querySelectorAll('[data-mode-group="' + group + '"]').forEach(function(el){
+      if (el.classList.contains('tab')) {
+        el.classList.toggle('on', el.dataset.mode === mode);
+      } else if (el.classList.contains('tab-panel')) {
+        el.classList.toggle('on', el.dataset.modePanel === mode);
+      }
+    });
+  }
+  function initModeSwitches(){
+    var groups = [];
+    document.querySelectorAll('[data-mode-group]').forEach(function(el){
+      if (groups.indexOf(el.dataset.modeGroup) === -1) groups.push(el.dataset.modeGroup);
+    });
+    groups.forEach(function(group){
+      var saved = null;
+      try { saved = localStorage.getItem('how_mode_' + group); } catch(e) {}
+      applyMode(group, saved === 'online' ? 'online' : 'offline');
+    });
+    document.querySelectorAll('[data-mode-group].tab').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var group = btn.dataset.modeGroup, mode = btn.dataset.mode;
+        applyMode(group, mode);
+        try { localStorage.setItem('how_mode_' + group, mode); } catch(e) {}
+      });
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initModeSwitches);
+  } else {
+    initModeSwitches();
+  }
+})();
+</script>
 </body>
 </html>
