@@ -906,7 +906,7 @@
           <div class="flow-head"><span class="zh-only">執行 <code class="badge">lsusb</code>，確認未出現 <code class="badge">Qualcomm、exmp-q911</code></span><span class="en-only">Run <code class="badge">lsusb</code> and confirm <code class="badge">911</code> is missing</span></div>
           <div class="term"><span class="u">user@IPA001</span>:<span class="p">/mnt/c/Users/IPA/Desktop/hands_on_workshop_package_v1.0.0/scripts</span> $ lsusb
 Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
-<span class="u">user@IPA001</span>:<span class="p">/mnt/c/Users/IPA/Desktop/hands_on_workshop_package_v0.0.7/scripts</span>$</div>
+<span class="u">user@IPA001</span>:<span class="p">/mnt/c/Users/IPA/Desktop/hands_on_workshop_package_v1.0.0/scripts</span>$</div>
           <div class="flow-desc">
             <span class="zh-only">清單中只有 root hub、沒有 <code class="badge">911</code> 裝置，代表 USB 裝置未掛入 WSL。</span>
             <span class="en-only">Only root hubs are listed — no <code class="badge">911</code> device — meaning the USB device hasn't been attached to WSL.</span>
@@ -918,7 +918,7 @@ Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
           <div class="flow-head"><span class="zh-only">執行 <code class="badge">exit</code>，退出 WSL 回到 PowerShell</span><span class="en-only">Run <code class="badge">exit</code> to leave WSL and return to PowerShell</span></div>
           <div class="term"><span class="u">user@IPA001</span>:<span class="p">/mnt/c/Users/IPA/Desktop/hands_on_workshop_package_v1.0.0/scripts</span>$ exit
 logout
-PS C:\Users\IPA\Desktop\hands_on_workshop_package_v0.0.7\scripts&gt;</div>
+PS C:\Users\IPA\Desktop\hands_on_workshop_package_v1.0.0\scripts&gt;</div>
           <div class="flow-desc">
             <span class="zh-only">出現 <code class="badge">logout</code> 並回到 <code class="badge">PS C:\...&gt;</code> 提示符，代表已回到 PowerShell。</span>
             <span class="en-only">Seeing <code class="badge">logout</code> and the <code class="badge">PS C:\...&gt;</code> prompt means you're back at PowerShell.</span>
@@ -928,14 +928,14 @@ PS C:\Users\IPA\Desktop\hands_on_workshop_package_v0.0.7\scripts&gt;</div>
         <div class="flow-step">
           <div class="flow-num">3</div>
           <div class="flow-head"><span class="zh-only">回 PowerShell 以 STEP_0 重新進入 WSL</span><span class="en-only">Re-enter WSL from PowerShell via STEP_0</span></div>
-          <div class="term">PS C:\Users\IPA\Desktop\hands_on_workshop_package_v0.0.7\scripts&gt; powershell -ExecutionPolicy Bypass -File .\setup-windows-wsl.ps1</div>
+          <div class="term">PS C:\Users\IPA\Desktop\hands_on_workshop_package_v1.0.0\scripts&gt; powershell -ExecutionPolicy Bypass -File .\setup-windows-wsl.ps1</div>
         </div>
         <div class="flow-step">
           <div class="flow-num">4</div>
           <div class="flow-head"><span class="zh-only">重新進入後再執行一次lsusb，確認出現<code class="badge">Qualcomm、exmp-q911</code></span><span class="en-only">Re-enter WSL from PowerShell via STEP_0</span></div>
           <div class="term"><span class="u">user@IPA001</span>:<span class="p">/mnt/c/Users/IPA/Desktop/hands_on_workshop_package_v1.0.0/scripts</span> $ lsusb
 Bus 001 Device 001: ID 05c6:9135 Qualcomm, Inc. exmp-q911
-<span class="u">user@IPA001</span>:<span class="p">/mnt/c/Users/IPA/Desktop/hands_on_workshop_package_v0.0.7/scripts</span>$</div>
+<span class="u">user@IPA001</span>:<span class="p">/mnt/c/Users/IPA/Desktop/hands_on_workshop_package_v1.0.0/scripts</span>$</div>
         </div>
 
       </div>
@@ -978,9 +978,9 @@ Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
         <div class="flow-step">
           <div class="flow-num">2</div>
           <div class="flow-head"><span class="zh-only">執行 <code class="badge">exit</code>，退出 WSL 回到 PowerShell</span><span class="en-only">Run <code class="badge">exit</code> to leave WSL and return to PowerShell</span></div>
-          <div class="term"><span class="u">user@IPA001</span>:<span class="p">/mnt/c/Users/IPA/Desktop/hands_on_workshop_package_v0.0.7/scripts</span>$ exit
+          <div class="term"><span class="u">user@IPA001</span>:<span class="p">/mnt/c/Users/IPA/Desktop/hands_on_workshop_package_v1.0.0/scripts</span>$ exit
 logout
-PS C:\Users\IPA\Desktop\hands_on_workshop_package_v0.0.7\scripts&gt;</div>
+PS C:\Users\IPA\Desktop\hands_on_workshop_package_v1.0.0\scripts&gt;</div>
           <div class="flow-desc">
             <span class="zh-only">出現 <code class="badge">logout</code> 並回到 <code class="badge">PS C:\...&gt;</code> 提示符，代表已回到 PowerShell。</span>
             <span class="en-only">Seeing <code class="badge">logout</code> and the <code class="badge">PS C:\...&gt;</code> prompt means you're back at PowerShell.</span>
@@ -990,7 +990,7 @@ PS C:\Users\IPA\Desktop\hands_on_workshop_package_v0.0.7\scripts&gt;</div>
         <div class="flow-step">
           <div class="flow-num">3</div>
           <div class="flow-head"><span class="zh-only">回 PowerShell 以 STEP_0 重新進入 WSL</span><span class="en-only">Re-enter WSL from PowerShell via STEP_0</span></div>
-          <div class="term">PS C:\Users\IPA\Desktop\hands_on_workshop_package_v0.0.7\scripts&gt; powershell -ExecutionPolicy Bypass -File .\setup-windows-wsl.ps1</div>
+          <div class="term">PS C:\Users\IPA\Desktop\hands_on_workshop_package_v1.0.0\scripts&gt; powershell -ExecutionPolicy Bypass -File .\setup-windows-wsl.ps1</div>
           <div class="flow-desc">
             <span class="zh-only">重新進入 WSL 後繼續下一步。</span>
             <span class="en-only">Once back in WSL, continue to the next step.</span>
