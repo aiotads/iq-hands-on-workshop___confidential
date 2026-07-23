@@ -355,6 +355,10 @@
               <span class="zh-only">登入 Qualcomm AI Hub 並驗證 token（需要帶入 API key 參數）。</span>
               <span class="en-only">Log in to Qualcomm AI Hub and verify the token (API key argument required).</span>
             </p>
+            <p style="margin-top:6px;font-size:13px;color:var(--text-3);">
+              <span class="zh-only">Step 4.1、5.2 會用到這個登入；若走離線模式則不需要（但我們還是會帶大家操作這一步）。</span>
+              <span class="en-only">Steps 4.1 and 5.2 rely on this login; not needed if you're using offline mode (but we'll still walk through this step together).</span>
+            </p>
             <div class="code">
               <div class="code-head"><span class="lang">bash</span>
                 <button class="copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">Copy</span></button>
@@ -722,6 +726,10 @@
               </summary>
               <div class="success-body">[Step 1/3] DONE  Directory<br>[Step 2/3] DONE <br>[Step 3/3] DONE  Results<br>All steps completed successfully!</div>
             </details>
+            <div><button class="step-help-link" type="button" data-open-modal="troubleshoot-modal-2">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              <span class="zh-only">這步驟出問題？點我看疑難排解</span><span class="en-only">Having trouble? View troubleshooting</span>
+            </button></div>
           </div>
         </article>
 
@@ -797,6 +805,10 @@
                 <div class="success-body">[Step 1/4] DONE  Directory<br>[Step 2/4] DONE<br>[Step 3/4] DONE  Model and config pushed <br>[Step 4/4] DONE  INT8 streampipe stopped <br>All steps completed successfully! Workshop pipeline finished.</div>
               </details>
             </div>
+            <div><button class="step-help-link" type="button" data-open-modal="troubleshoot-modal-1">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              <span class="zh-only">這步驟出問題？點我看疑難排解</span><span class="en-only">Having trouble? View troubleshooting</span>
+            </button></div>
           </div>
         </article>
 
@@ -885,13 +897,13 @@
 <div class="modal-overlay" id="troubleshoot-modal-1" role="dialog" aria-modal="true">
   <div class="modal-panel">
     <div class="modal-head">
-      <h3><span class="zh-only">STEP_1 ~ 5.2 疑難排解</span><span class="en-only">STEP_1 ~ 5.2 troubleshooting</span></h3>
+      <h3><span class="zh-only">STEP_1 ~ 5.2、5.5 疑難排解</span><span class="en-only">STEP_1 ~ 5.2, 5.5 troubleshooting</span></h3>
       <button class="modal-close" data-modal-close aria-label="Close">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
       </button>
     </div>
     <div class="modal-body">
-      <div class="sub"><span class="zh-only">適用步驟：</span><span class="en-only">Applies to:</span> STEP_1 ~ 5.2</div>
+      <div class="sub"><span class="zh-only">適用步驟：</span><span class="en-only">Applies to:</span> STEP_1 ~ 5.2、5.5</div>
       <div class="sub" style="margin-top:var(--space-3);"><span class="zh-only">檢查指令：</span><span class="en-only">Check command:</span> <code class="badge">lsusb</code></div>
       <p class="flow-summary" style="margin-top:var(--space-4);">
         <span class="zh-only">未出現 <code class="badge">911</code><span class="arrow">→</span><code class="badge">exit</code><span class="arrow">→</span>回 PowerShell 以 STEP_0 重新進入 WSL</span>
