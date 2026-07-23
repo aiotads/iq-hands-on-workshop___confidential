@@ -270,23 +270,9 @@
           <h2 class="display" style="font-size:clamp(22px,2.6vw,30px);margin-top:var(--space-3);">
             <span class="zh-only">工作坊步驟</span><span class="en-only">Workshop Steps</span>
           </h2>
-          <p class="lead" style="font-size:15px;">
-            <span class="zh-only">在 WSL 內，先切換到套件的 <code>scripts</code> 資料夾：</span>
-            <span class="en-only">Inside WSL, first change into the package's <code>scripts</code> folder:</span>
-          </p>
-          <div class="code">
-            <div class="code-head"><span class="lang">bash</span>
-              <button class="copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">Copy</span></button>
-            </div>
-<pre>cd "$(find /mnt/c/Users -maxdepth 4 -type d -iname 'hands_on_workshop_package*' -print -quit)/scripts"</pre>
-          </div>
           <p style="margin-top:var(--space-4);color:var(--text-2);font-size:15px;">
             <span class="zh-only">依序執行以下腳本即可（每支腳本都會自動定位套件路徑，並檢查自己的前置條件）：</span>
             <span class="en-only">Run the scripts in order (each script locates the package path and checks its own preconditions automatically):</span>
-          </p>
-          <p style="margin-top:var(--space-3);color:var(--text-3);font-size:13.5px;">
-            <span class="zh-only">想看更多細節？可以參考套件內的 <code>README</code> / <code>README_AGENTIC</code>。</span>
-            <span class="en-only">Want more detail? See the <code>README</code> / <code>README_AGENTIC</code> files included in the package.</span>
           </p>
         </div>
 
@@ -917,11 +903,10 @@
 
         <div class="flow-step">
           <div class="flow-num">1</div>
-          <div class="flow-head"><span class="zh-only">執行 <code class="badge">lsusb</code>，確認未出現 <code class="badge">911</code></span><span class="en-only">Run <code class="badge">lsusb</code> and confirm <code class="badge">911</code> is missing</span></div>
-          <div class="term"><span class="u">user@IPA001</span>:<span class="p">~/scripts</span>$ lsusb
-Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+          <div class="flow-head"><span class="zh-only">執行 <code class="badge">lsusb</code>，確認未出現 <code class="badge">Qualcomm、exmp-q911</code></span><span class="en-only">Run <code class="badge">lsusb</code> and confirm <code class="badge">911</code> is missing</span></div>
+          <div class="term"><span class="u">user@IPA001</span>:<span class="p">/mnt/c/Users/IPA/Desktop/hands_on_workshop_package_v1.0.0/scripts</span> $ lsusb
 Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
-<span class="u">user@IPA001</span>:<span class="p">~/scripts</span>$</div>
+<span class="u">user@IPA001</span>:<span class="p">/mnt/c/Users/IPA/Desktop/hands_on_workshop_package_v0.0.7/scripts</span>$</div>
           <div class="flow-desc">
             <span class="zh-only">清單中只有 root hub、沒有 <code class="badge">911</code> 裝置，代表 USB 裝置未掛入 WSL。</span>
             <span class="en-only">Only root hubs are listed — no <code class="badge">911</code> device — meaning the USB device hasn't been attached to WSL.</span>
@@ -931,7 +916,7 @@ Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
         <div class="flow-step">
           <div class="flow-num">2</div>
           <div class="flow-head"><span class="zh-only">執行 <code class="badge">exit</code>，退出 WSL 回到 PowerShell</span><span class="en-only">Run <code class="badge">exit</code> to leave WSL and return to PowerShell</span></div>
-          <div class="term"><span class="u">user@IPA001</span>:<span class="p">/mnt/c/Users/IPA/Desktop/hands_on_workshop_package_v0.0.7/scripts</span>$ exit
+          <div class="term"><span class="u">user@IPA001</span>:<span class="p">/mnt/c/Users/IPA/Desktop/hands_on_workshop_package_v1.0.0/scripts</span>$ exit
 logout
 PS C:\Users\IPA\Desktop\hands_on_workshop_package_v0.0.7\scripts&gt;</div>
           <div class="flow-desc">
@@ -944,10 +929,13 @@ PS C:\Users\IPA\Desktop\hands_on_workshop_package_v0.0.7\scripts&gt;</div>
           <div class="flow-num">3</div>
           <div class="flow-head"><span class="zh-only">回 PowerShell 以 STEP_0 重新進入 WSL</span><span class="en-only">Re-enter WSL from PowerShell via STEP_0</span></div>
           <div class="term">PS C:\Users\IPA\Desktop\hands_on_workshop_package_v0.0.7\scripts&gt; powershell -ExecutionPolicy Bypass -File .\setup-windows-wsl.ps1</div>
-          <div class="flow-desc">
-            <span class="zh-only">重新進入後再執行一次 <code class="badge">lsusb</code>，確認 <code class="badge">911</code> 裝置已出現。</span>
-            <span class="en-only">After re-entering, run <code class="badge">lsusb</code> again and confirm the <code class="badge">911</code> device now appears.</span>
-          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">4</div>
+          <div class="flow-head"><span class="zh-only">重新進入後再執行一次lsusb，確認出現<code class="badge">Qualcomm、exmp-q911</code></span><span class="en-only">Re-enter WSL from PowerShell via STEP_0</span></div>
+          <div class="term"><span class="u">user@IPA001</span>:<span class="p">/mnt/c/Users/IPA/Desktop/hands_on_workshop_package_v1.0.0/scripts</span> $ lsusb
+Bus 001 Device 001: ID 05c6:9135 Qualcomm, Inc. exmp-q911
+<span class="u">user@IPA001</span>:<span class="p">/mnt/c/Users/IPA/Desktop/hands_on_workshop_package_v0.0.7/scripts</span>$</div>
         </div>
 
       </div>

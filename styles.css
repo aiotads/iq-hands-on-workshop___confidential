@@ -1802,8 +1802,8 @@ code.badge {
   overflow-x: auto;
   white-space: pre;
 }
-.term .u { color: #f2a8dc; }
-.term .p { color: #7ab8ff; }
+.term .u { color: #4ade80; }
+.term .p { color: #4a90e2; }
 .term .hl { color: #7ee0c5; }
 
 /* ===== IMAGE GALLERY + LIGHTBOX ===== */
