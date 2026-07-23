@@ -287,6 +287,26 @@
     });
   }
 
+  // ---------- GENERIC MODAL ----------
+  function initModals() {
+    document.querySelectorAll('[data-open-modal]').forEach(btn => {
+      const overlay = document.getElementById(btn.getAttribute('data-open-modal'));
+      if (!overlay) return;
+      btn.addEventListener('click', () => overlay.classList.add('on'));
+    });
+    document.querySelectorAll('.modal-overlay').forEach(overlay => {
+      overlay.querySelectorAll('[data-modal-close]').forEach(b => {
+        b.addEventListener('click', () => overlay.classList.remove('on'));
+      });
+      overlay.addEventListener('click', (e) => { if (e.target === overlay) overlay.classList.remove('on'); });
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.modal-overlay.on').forEach(o => o.classList.remove('on'));
+      }
+    });
+  }
+
   // ---------- BOOT ----------
   document.addEventListener('DOMContentLoaded', () => {
     initTheme();
@@ -297,5 +317,6 @@
     initSearch();
     initFaq();
     initLightbox();
+    initModals();
   });
 })();

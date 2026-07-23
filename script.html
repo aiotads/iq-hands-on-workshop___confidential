@@ -199,6 +199,14 @@
         <a href="#s5_4"><span class="num">5.4</span> <span class="zh-only">裝置測試</span><span class="en-only">Device test</span></a>
         <a href="#s5_5"><span class="num">5.5</span> INT8 streampipe</a>
         <a href="#s6"><span class="num">6</span> <span class="zh-only">關閉 WSL</span><span class="en-only">Shut down WSL</span></a>
+        <button class="side-nav-btn" type="button" data-open-modal="troubleshoot-modal-1">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <span class="zh-only">STEP_1~5.2 疑難排解</span><span class="en-only">STEP_1~5.2 troubleshooting</span>
+        </button>
+        <button class="side-nav-btn" type="button" data-open-modal="troubleshoot-modal-2">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <span class="zh-only">STEP_5.3、5.4 疑難排解</span><span class="en-only">STEP_5.3, 5.4 troubleshooting</span>
+        </button>
       </aside>
 
       <div>
@@ -250,6 +258,7 @@
                 <span class="zh-only">成功畫面</span><span class="en-only">Success screen</span>
                 <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
               </summary>
+       
               <div class="success-body"><span class="zh-only">如果看到藍色和綠色的文字，就代表你已經成功進入 WSL。</span><span class="en-only">If blue and green text is displayed, you have successfully entered WSL.</span></div>
               <img class="shot" src="uploads\wsl_success.png" style="border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); margin-top:var(--space-4);">
             </details>
@@ -310,8 +319,12 @@
                 <span class="zh-only">成功訊息</span><span class="en-only">Success message</span>
                 <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
               </summary>
-              <div class="success-body">[Step 1/4] DONE  Directory: /mnt/c/Users/IPA/Desktop/hands_on_workshop_package_v0.0.6<br>[Step 2/4] DONE  Package index updated<br>[Step 3/4] DONE  adb installed<br>[Step 4/4] DONE  adb device check finished<br>All steps completed successfully!</div>
+              <div class="success-body">[Step 1/4] DONE  Directory<br>[Step 2/4] DONE  Package index updated<br>[Step 3/4] DONE  adb installed<br>[Step 4/4] DONE  adb device check finished<br>All steps completed successfully!</div>
             </details>
+            <div><button class="step-help-link" type="button" data-open-modal="troubleshoot-modal-1">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              <span class="zh-only">這步驟出問題？點我看疑難排解</span><span class="en-only">Having trouble? View troubleshooting</span>
+            </button></div>
           </div>
         </article>
 
@@ -337,8 +350,12 @@
                 <span class="zh-only">成功訊息</span><span class="en-only">Success message</span>
                 <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
               </summary>
-              <div class="success-body">[Step 1/4] DONE  Directory: /mnt/c/Users/IPA/Desktop/hands_on_workshop_package_v0.0.6/github/iQ-Foundry<br>[Step 2/4] DONE  Docker installed<br>[Step 3/4] DONE  Image loaded<br>[Step 4/4] DONE  Image verified<br>All steps completed successfully!</div>
+              <div class="success-body">[Step 1/4] DONE  Directoryub<br>[Step 2/4] DONE  Docker installed<br>[Step 3/4] DONE  Image loaded<br>[Step 4/4] DONE  Image verified<br>All steps completed successfully!</div>
             </details>
+            <div><button class="step-help-link" type="button" data-open-modal="troubleshoot-modal-1">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              <span class="zh-only">這步驟出問題？點我看疑難排解</span><span class="en-only">Having trouble? View troubleshooting</span>
+            </button></div>
           </div>
         </article>
 
@@ -371,8 +388,12 @@
                 <span class="zh-only">成功訊息</span><span class="en-only">Success message</span>
                 <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
               </summary>
-              <div class="success-body">[Step 1/3] DONE  Directory: /mnt/c/Users/IPA/Desktop/hands_on_workshop_package_v0.0.6<br>[Step 2/3] DONE  Login submitted <br>[Step 3/3] DONE  Login verified <br>All steps completed successfully!</div>
+              <div class="success-body">[Step 1/3] DONE  Directory<br>[Step 2/3] DONE  Login submitted <br>[Step 3/3] DONE  Login verified <br>All steps completed successfully!</div>
             </details>
+            <div><button class="step-help-link" type="button" data-open-modal="troubleshoot-modal-1">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              <span class="zh-only">這步驟出問題？點我看疑難排解</span><span class="en-only">Having trouble? View troubleshooting</span>
+            </button></div>
           </div>
         </article>
 
@@ -409,13 +430,20 @@
                   <span class="en-only">The script shows a live 9-channel inference grid on the Q911's monitor — press <code>Ctrl+C</code> when done; it automatically cleans up any leftover streampipe container on the device.</span>
                 </div>
               </div>
+              <div class="callout">
+                <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></span>
+                <div>
+                  <span class="zh-only">畫面出現後，就可以 <strong>接上相機</strong>。</span>
+                  <span class="en-only">Once the screen appears, you can <strong>connect the camera</strong>.</span>
+                </div>
+              </div>
               <details class="callout callout--success" style="margin-top:var(--space-4);">
                 <summary>
                   <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M20 6 9 17l-5-5"/></svg></span>
                   <span class="zh-only">成功訊息</span><span class="en-only">Success message</span>
                   <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
                 </summary>
-                <div class="success-body">[Step 1/4] DONE  Directory: /mnt/c/Users/IPA/Desktop/hands_on_workshop_package_v0.0.6/streampipe <br>[Step 2/4] DONE  Bundle pushed to /data/local/tmp/streampipe <br>[Step 3/4] DONE  Bundle verified <br>[Step 4/4] DONE  FP32 streampipe stopped <br>All steps completed successfully!</div>
+                <div class="success-body">[Step 1/4] DONE  Directory<br>[Step 2/4] DONE  Bundle pushed to /data/local/tmp/streampipe <br>[Step 3/4] DONE  Bundle verified <br>[Step 4/4] DONE  FP32 streampipe stopped <br>All steps completed successfully!</div>
               </details>
             </div>
 
@@ -440,7 +468,7 @@
                   <span class="zh-only">成功訊息</span><span class="en-only">Success message</span>
                   <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
                 </summary>
-                <div class="success-body">[Step 1/4] DONE  Directory: /mnt/c/Users/IPA/Desktop/hands_on_workshop_package_v0.0.6 <br>[Step 2/4] DONE  Image built <br>[Step 3/4] DONE  Export finished <br>[Step 4/4] DONE  FP32 model: /mnt/c/Users/IPA/Desktop/hands_on_workshop_package_v0.0.6/iqf_save/models/qualcomm_ai_hub_fp32/yolo26_det-tflite-float/yolo26_det.tflite <br>All steps completed successfully!</div>
+                <div class="success-body">[Step 1/4] DONE  Directory<br>[Step 2/4] DONE  Image built <br>[Step 3/4] DONE  Export finished <br>[Step 4/4] DONE  FP32 model<br>All steps completed successfully!</div>
               </details>
 
               <div style="margin-top:var(--space-6);padding-top:var(--space-6);border-top:1px dashed var(--border);">
@@ -465,6 +493,13 @@
                 <div class="callout">
                   <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></span>
                   <div>
+                    <span class="zh-only">畫面出現後，就可以接上相機了（現場會提供相機）。</span>
+                    <span class="en-only">Once the screen appears, you can connect the camera (a camera will be provided on-site).</span>
+                  </div>
+                </div>
+                <div class="callout">
+                  <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></span>
+                  <div>
                     <span class="zh-only"><strong>Q911 沒有網路？</strong>切換到上方的「離線」頁籤，改用 Step 4 的離線模式。</span>
                     <span class="en-only"><strong>No internet on the Q911?</strong> Switch to the "Offline" tab above and use Step 4's offline mode instead.</span>
                   </div>
@@ -475,10 +510,14 @@
                     <span class="zh-only">成功訊息</span><span class="en-only">Success message</span>
                     <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
                   </summary>
-                  <div class="success-body">[Step 1/5] DONE  Directory: /mnt/c/Users/IPA/Desktop/hands_on_workshop_package_v0.0.6 <br>[Step 2/5] DONE  iQ-Studio pushed <br>[Step 3/5] DONE  iQ-Studio installed <br>[Step 4/5] DONE  Model and config pushed <br>[Step 5/5] DONE  FP32 streampipe stopped <br>All steps completed successfully!</div>
+                  <div class="success-body">[Step 1/5] DONE  Directory<br>[Step 2/5] DONE  iQ-Studio pushed <br>[Step 3/5] DONE  iQ-Studio installed <br>[Step 4/5] DONE  Model and config pushed <br>[Step 5/5] DONE  FP32 streampipe stopped <br>All steps completed successfully!</div>
                 </details>
               </div>
             </div>
+            <div><button class="step-help-link" type="button" data-open-modal="troubleshoot-modal-1">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              <span class="zh-only">這步驟出問題？點我看疑難排解</span><span class="en-only">Having trouble? View troubleshooting</span>
+            </button></div>
           </div>
         </article>
 
@@ -511,8 +550,12 @@
                 <span class="zh-only">成功訊息</span><span class="en-only">Success message</span>
                 <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
               </summary>
-              <div class="success-body">[Step 1/4] DONE  Directory: /mnt/c/Users/IPA/Desktop/hands_on_workshop_package_v0.0.6 <br>[Step 2/4] DONE  Tarball pushed <br>[Step 3/4] DONE  venv deployed <br>[Step 4/4] DONE  adb server killed <br>All steps completed successfully!</div>
+              <div class="success-body">[Step 1/4] DONE  Directory<br>[Step 2/4] DONE  Tarball pushed <br>[Step 3/4] DONE  venv deployed <br>[Step 4/4] DONE  adb server killed <br>All steps completed successfully!</div>
             </details>
+            <div><button class="step-help-link" type="button" data-open-modal="troubleshoot-modal-1">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              <span class="zh-only">這步驟出問題？點我看疑難排解</span><span class="en-only">Having trouble? View troubleshooting</span>
+            </button></div>
           </div>
         </article>
 
@@ -549,7 +592,7 @@
                   <span class="zh-only">成功訊息</span><span class="en-only">Success message</span>
                   <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
                 </summary>
-                <div class="success-body">[Step 1/3] DONE  Directory: /mnt/c/Users/IPA/Desktop/hands_on_workshop_package_v0.0.6/github/iQ-Foundry <br>[Step 2/3] DONE  INT8 model placed <br>[Step 3/3] DONE  INT8=/mnt/c/Users/IPA/Desktop/hands_on_workshop_package_v0.0.6/github/iQ-Foundry/out/model/yolov26/yolov26_litert_int8_offline_20260721_163706.tflite <br>All steps completed successfully!</div>
+                <div class="success-body">[Step 1/3] DONE  Directory<br>[Step 2/3] DONE  INT8 model placed <br>[Step 3/3] DONE <br>All steps completed successfully!</div>
               </details>
             </div>
 
@@ -573,9 +616,13 @@
                   <span class="zh-only">成功訊息</span><span class="en-only">Success message</span>
                   <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
                 </summary>
-                <div class="success-body">[Step 1/3] DONE  Directory: /mnt/c/Users/IPA/Desktop/hands_on_workshop_package_v0.0.6/github/iQ-Foundry <br>[Step 2/3] DONE  Quantization finished <br>[Step 3/3] DONE  INT8=/mnt/c/Users/IPA/Desktop/hands_on_workshop_package_v0.0.6/github/iQ-Foundry/out/model/yolov26/yolov26_litert_int8_20260721_074513.tflite</div>
+                <div class="success-body">[Step 1/3] DONE  Directory<br>[Step 2/3] DONE  Quantization finished <br>[Step 3/3] DONE</div>
               </details>
             </div>
+            <div><button class="step-help-link" type="button" data-open-modal="troubleshoot-modal-1">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              <span class="zh-only">這步驟出問題？點我看疑難排解</span><span class="en-only">Having trouble? View troubleshooting</span>
+            </button></div>
           </div>
         </article>
 
@@ -600,7 +647,6 @@
 <pre>./step_5_3.sh</pre>
                 </div>
               </li>
-              <br>
               <li style="margin-top:14px;">
                 <span class="zh-only"><strong>查看結果：</strong>完成後，可以到 <code>github/iQ-Foundry/out/mAP/yolo26/</code> 查看結果。</span>
                 <span class="en-only"><strong>View the results:</strong> Once complete, you can view the results at <code>github/iQ-Foundry/out/mAP/yolo26/</code>.</span>
@@ -612,8 +658,12 @@
                 <span class="zh-only">成功訊息</span><span class="en-only">Success message</span>
                 <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
               </summary>
-              <div class="success-body">[Step 1/3] DONE  Directory: /mnt/c/Users/IPA/Desktop/hands_on_workshop_package_v0.0.6/github/iQ-Foundry <br>[Step 2/3] DONE  INT8=/mnt/c/Users/IPA/Desktop/hands_on_workshop_package_v0.0.6/github/iQ-Foundry/out/model/yolov26/yolov26_litert_int8_20260721_074513.tflite <br>[Step 3/3] DONE  Results: /mnt/c/Users/IPA/Desktop/hands_on_workshop_package_v0.0.6/github/iQ-Foundry/out/mAP/yolo26/ <br>All steps completed successfully!</div>
+              <div class="success-body">[Step 1/3] DONE  Directory<br>[Step 2/3] DONE<br>All steps completed successfully!</div>
             </details>
+            <div><button class="step-help-link" type="button" data-open-modal="troubleshoot-modal-2">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              <span class="zh-only">這步驟出問題？點我看疑難排解</span><span class="en-only">Having trouble? View troubleshooting</span>
+            </button></div>
           </div>
         </article>
 
@@ -684,7 +734,7 @@
                 <span class="zh-only">成功訊息</span><span class="en-only">Success message</span>
                 <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
               </summary>
-              <div class="success-body">[Step 1/3] DONE  Directory: /mnt/c/Users/IPA/Desktop/hands_on_workshop_package_v0.0.6/github/iQ-Foundry <br>[Step 2/3] DONE  INT8=/mnt/c/Users/IPA/Desktop/hands_on_workshop_package_v0.0.6/github/iQ-Foundry/out/model/yolov26/yolov26_litert_int8_20260721_074513.tflite <br>[Step 3/3] DONE  Results: /mnt/c/Users/IPA/Desktop/hands_on_workshop_package_v0.0.6/github/iQ-Foundry/out/test/yolov26/ <br>All steps completed successfully!</div>
+              <div class="success-body">[Step 1/3] DONE  Directory<br>[Step 2/3] DONE <br>[Step 3/3] DONE  Results<br>All steps completed successfully!</div>
             </details>
           </div>
         </article>
@@ -728,7 +778,7 @@
                   <span class="zh-only">成功訊息</span><span class="en-only">Success message</span>
                   <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
                 </summary>
-                <div class="success-body">[Step 1/4] DONE  Directory: /mnt/c/Users/IPA/Desktop/hands_on_workshop_package_v0.0.6/streampipe <br>[Step 2/4] DONE  Bundle already present on Q911, skip push <br>[Step 3/4] DONE  Bundle verified <br>[Step 4/4] DONE  INT8 streampipe stopped <br>All steps completed successfully!</div>
+                <div class="success-body">[Step 1/4] DONE  Directory<br>[Step 2/4] DONE  Bundle already present on Q911, skip push <br>[Step 3/4] DONE  Bundle verified <br>[Step 4/4] DONE  INT8 streampipe stopped <br>All steps completed successfully!</div>
               </details>
             </div>
 
@@ -758,7 +808,7 @@
                   <span class="zh-only">成功訊息</span><span class="en-only">Success message</span>
                   <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
                 </summary>
-                <div class="success-body">[Step 1/4] DONE  Directory: /mnt/c/Users/IPA/Desktop/hands_on_workshop_package_v0.0.6 <br>[Step 2/4] DONE  INT8=/mnt/c/Users/IPA/Desktop/hands_on_workshop_package_v0.0.6/github/iQ-Foundry/out/model/yolov26/yolov26_litert_int8_20260721_074513.tflite <br>[Step 3/4] DONE  Model and config pushed <br>[Step 4/4] DONE  INT8 streampipe stopped <br>All steps completed successfully! Workshop pipeline finished.</div>
+                <div class="success-body">[Step 1/4] DONE  Directory<br>[Step 2/4] DONE<br>[Step 3/4] DONE  Model and config pushed <br>[Step 4/4] DONE  INT8 streampipe stopped <br>All steps completed successfully! Workshop pipeline finished.</div>
               </details>
             </div>
           </div>
@@ -844,6 +894,150 @@
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
   </button>
   <img id="img-lightbox-img" src="" alt="">
+</div>
+
+<div class="modal-overlay" id="troubleshoot-modal-1" role="dialog" aria-modal="true">
+  <div class="modal-panel">
+    <div class="modal-head">
+      <h3><span class="zh-only">STEP_1 ~ 5.2 疑難排解</span><span class="en-only">STEP_1 ~ 5.2 troubleshooting</span></h3>
+      <button class="modal-close" data-modal-close aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="sub"><span class="zh-only">適用步驟：</span><span class="en-only">Applies to:</span> STEP_1 ~ 5.2</div>
+      <div class="sub" style="margin-top:var(--space-3);"><span class="zh-only">檢查指令：</span><span class="en-only">Check command:</span> <code class="badge">lsusb</code></div>
+      <p class="flow-summary" style="margin-top:var(--space-4);">
+        <span class="zh-only">未出現 <code class="badge">911</code><span class="arrow">→</span><code class="badge">exit</code><span class="arrow">→</span>回 PowerShell 以 STEP_0 重新進入 WSL</span>
+        <span class="en-only">If <code class="badge">911</code> doesn't show up<span class="arrow">→</span><code class="badge">exit</code><span class="arrow">→</span>back at PowerShell, re-enter WSL via STEP_0</span>
+      </p>
+
+      <div class="flow-title"><span class="zh-only">出現異常時的處理流程</span><span class="en-only">Steps to resolve</span></div>
+      <div class="flow">
+
+        <div class="flow-step">
+          <div class="flow-num">1</div>
+          <div class="flow-head"><span class="zh-only">執行 <code class="badge">lsusb</code>，確認未出現 <code class="badge">911</code></span><span class="en-only">Run <code class="badge">lsusb</code> and confirm <code class="badge">911</code> is missing</span></div>
+          <div class="term"><span class="u">user@IPA001</span>:<span class="p">~/scripts</span>$ lsusb
+Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+<span class="u">user@IPA001</span>:<span class="p">~/scripts</span>$</div>
+          <div class="flow-desc">
+            <span class="zh-only">清單中只有 root hub、沒有 <code class="badge">911</code> 裝置，代表 USB 裝置未掛入 WSL。</span>
+            <span class="en-only">Only root hubs are listed — no <code class="badge">911</code> device — meaning the USB device hasn't been attached to WSL.</span>
+          </div>
+        </div>
+
+        <div class="flow-step">
+          <div class="flow-num">2</div>
+          <div class="flow-head"><span class="zh-only">執行 <code class="badge">exit</code>，退出 WSL 回到 PowerShell</span><span class="en-only">Run <code class="badge">exit</code> to leave WSL and return to PowerShell</span></div>
+          <div class="term"><span class="u">user@IPA001</span>:<span class="p">/mnt/c/Users/IPA/Desktop/hands_on_workshop_package_v0.0.7/scripts</span>$ exit
+logout
+PS C:\Users\IPA\Desktop\hands_on_workshop_package_v0.0.7\scripts&gt;</div>
+          <div class="flow-desc">
+            <span class="zh-only">出現 <code class="badge">logout</code> 並回到 <code class="badge">PS C:\...&gt;</code> 提示符，代表已回到 PowerShell。</span>
+            <span class="en-only">Seeing <code class="badge">logout</code> and the <code class="badge">PS C:\...&gt;</code> prompt means you're back at PowerShell.</span>
+          </div>
+        </div>
+
+        <div class="flow-step">
+          <div class="flow-num">3</div>
+          <div class="flow-head"><span class="zh-only">回 PowerShell 以 STEP_0 重新進入 WSL</span><span class="en-only">Re-enter WSL from PowerShell via STEP_0</span></div>
+          <div class="term">PS C:\Users\IPA\Desktop\hands_on_workshop_package_v0.0.7\scripts&gt; powershell -ExecutionPolicy Bypass -File .\setup-windows-wsl.ps1</div>
+          <div class="flow-desc">
+            <span class="zh-only">重新進入後再執行一次 <code class="badge">lsusb</code>，確認 <code class="badge">911</code> 裝置已出現。</span>
+            <span class="en-only">After re-entering, run <code class="badge">lsusb</code> again and confirm the <code class="badge">911</code> device now appears.</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="troubleshoot-modal-2" role="dialog" aria-modal="true">
+  <div class="modal-panel">
+    <div class="modal-head">
+      <h3><span class="zh-only">STEP_5.3、5.4 疑難排解</span><span class="en-only">STEP_5.3, 5.4 troubleshooting</span></h3>
+      <button class="modal-close" data-modal-close aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="sub"><span class="zh-only">適用步驟：</span><span class="en-only">Applies to:</span> STEP_5.3、5.4</div>
+      <div class="sub" style="margin-top:var(--space-3);"><span class="zh-only">檢查指令：</span><span class="en-only">Check command:</span> <code class="badge">lsusb</code></div>
+      <p class="flow-summary" style="margin-top:var(--space-4);">
+        <span class="zh-only">未出現 <code class="badge">911</code><span class="arrow">→</span><code class="badge">exit</code><span class="arrow">→</span>回 PowerShell 以 STEP_0 重新進入 WSL<span class="arrow">→</span>加執行 <code class="badge">adb kill-server</code></span>
+        <span class="en-only">If <code class="badge">911</code> doesn't show up<span class="arrow">→</span><code class="badge">exit</code><span class="arrow">→</span>back at PowerShell, re-enter WSL via STEP_0<span class="arrow">→</span>also run <code class="badge">adb kill-server</code></span>
+      </p>
+
+      <div class="flow-title"><span class="zh-only">出現異常時的處理流程</span><span class="en-only">Steps to resolve</span></div>
+      <div class="flow">
+
+        <div class="flow-step">
+          <div class="flow-num">1</div>
+          <div class="flow-head"><span class="zh-only">執行 <code class="badge">lsusb</code>，確認未出現 <code class="badge">911</code></span><span class="en-only">Run <code class="badge">lsusb</code> and confirm <code class="badge">911</code> is missing</span></div>
+          <div class="term"><span class="u">user@IPA001</span>:<span class="p">~/scripts</span>$ lsusb
+Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+<span class="u">user@IPA001</span>:<span class="p">~/scripts</span>$</div>
+          <div class="flow-desc">
+            <span class="zh-only">清單中只有 root hub、沒有 <code class="badge">911</code> 裝置，代表 USB 裝置未掛入 WSL。</span>
+            <span class="en-only">Only root hubs are listed — no <code class="badge">911</code> device — meaning the USB device hasn't been attached to WSL.</span>
+          </div>
+        </div>
+
+        <div class="flow-step">
+          <div class="flow-num">2</div>
+          <div class="flow-head"><span class="zh-only">執行 <code class="badge">exit</code>，退出 WSL 回到 PowerShell</span><span class="en-only">Run <code class="badge">exit</code> to leave WSL and return to PowerShell</span></div>
+          <div class="term"><span class="u">user@IPA001</span>:<span class="p">/mnt/c/Users/IPA/Desktop/hands_on_workshop_package_v0.0.7/scripts</span>$ exit
+logout
+PS C:\Users\IPA\Desktop\hands_on_workshop_package_v0.0.7\scripts&gt;</div>
+          <div class="flow-desc">
+            <span class="zh-only">出現 <code class="badge">logout</code> 並回到 <code class="badge">PS C:\...&gt;</code> 提示符，代表已回到 PowerShell。</span>
+            <span class="en-only">Seeing <code class="badge">logout</code> and the <code class="badge">PS C:\...&gt;</code> prompt means you're back at PowerShell.</span>
+          </div>
+        </div>
+
+        <div class="flow-step">
+          <div class="flow-num">3</div>
+          <div class="flow-head"><span class="zh-only">回 PowerShell 以 STEP_0 重新進入 WSL</span><span class="en-only">Re-enter WSL from PowerShell via STEP_0</span></div>
+          <div class="term">PS C:\Users\IPA\Desktop\hands_on_workshop_package_v0.0.7\scripts&gt; powershell -ExecutionPolicy Bypass -File .\setup-windows-wsl.ps1</div>
+          <div class="flow-desc">
+            <span class="zh-only">重新進入 WSL 後繼續下一步。</span>
+            <span class="en-only">Once back in WSL, continue to the next step.</span>
+          </div>
+        </div>
+
+        <div class="flow-step">
+          <div class="flow-num">4</div>
+          <div class="flow-head"><span class="zh-only">執行 <code class="badge">ps aux | grep adb</code>，確認是否有 adb server 殘留</span><span class="en-only">Run <code class="badge">ps aux | grep adb</code> to check for a leftover adb server</span></div>
+          <div class="term"><span class="u">user@IPA001</span>:<span class="p">~/scripts</span>$ ps aux |grep adb
+user      1027  0.1  0.0 386592  6268 ?    Ssl  11:29   0:00 <span class="hl">adb</span> -L tcp:5037 fork-server server --reply-fd 4
+user      1090  0.0  0.0   4036  2360 pts/0 S+  11:30   0:00 grep --color=auto <span class="hl">adb</span>
+<span class="u">user@IPA001</span>:<span class="p">~/scripts</span>$</div>
+          <div class="flow-desc">
+            <span class="zh-only">看到 <code class="badge">adb -L tcp:5037 fork-server server</code> 這行代表 adb server 還在，需要清除。</span>
+            <span class="en-only">Seeing the <code class="badge">adb -L tcp:5037 fork-server server</code> line means the adb server is still running and needs to be cleared.</span>
+          </div>
+        </div>
+
+        <div class="flow-step">
+          <div class="flow-num">5</div>
+          <div class="flow-head"><span class="zh-only">執行 <code class="badge">adb kill-server</code>，再確認已清除</span><span class="en-only">Run <code class="badge">adb kill-server</code>, then confirm it's cleared</span></div>
+          <div class="term"><span class="u">user@IPA001</span>:<span class="p">~/scripts</span>$ adb kill-server
+<span class="u">user@IPA001</span>:<span class="p">~/scripts</span>$ ps aux |grep adb
+user      1113  0.0  0.0   4036  2356 pts/0 S+  11:31   0:00 grep --color=auto <span class="hl">adb</span>
+<span class="u">user@IPA001</span>:<span class="p">~/scripts</span>$</div>
+          <div class="flow-desc">
+            <span class="zh-only">只剩 <code class="badge">grep --color=auto adb</code> 自己這行，代表 adb server 已停止，可繼續操作。</span>
+            <span class="en-only">Only the <code class="badge">grep --color=auto adb</code> line itself remains — the adb server has stopped and you can continue.</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
 </div>
 
 <script src="search-index.js"></script>
