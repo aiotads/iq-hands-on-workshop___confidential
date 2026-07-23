@@ -259,6 +259,34 @@
     });
   }
 
+  // ---------- IMAGE LIGHTBOX ----------
+  function initLightbox() {
+    const overlay = document.getElementById('img-lightbox');
+    const img = document.getElementById('img-lightbox-img');
+    if (!overlay || !img) return;
+
+    const open = (src, alt) => {
+      img.src = src;
+      img.alt = alt || '';
+      overlay.classList.add('on');
+    };
+    const close = () => {
+      overlay.classList.remove('on');
+      img.src = '';
+    };
+
+    document.querySelectorAll('[data-lightbox-src]').forEach(el => {
+      el.addEventListener('click', () => {
+        open(el.getAttribute('data-lightbox-src'), el.getAttribute('data-lightbox-alt') || '');
+      });
+    });
+    overlay.querySelectorAll('[data-lightbox-close]').forEach(b => b.addEventListener('click', close));
+    overlay.addEventListener('click', (e) => { if (e.target === overlay) close(); });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && overlay.classList.contains('on')) close();
+    });
+  }
+
   // ---------- BOOT ----------
   document.addEventListener('DOMContentLoaded', () => {
     initTheme();
@@ -268,5 +296,6 @@
     initCopy();
     initSearch();
     initFaq();
+    initLightbox();
   });
 })();
